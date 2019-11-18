@@ -11,19 +11,27 @@
 <title>海大拍賣系統</title>
 </head>
 <body>
-<nav class="navbar sticky-top navbar-light bg-light"><a class="navbar-brand" href="./index.html">海大拍賣系統</a>
-<form class="form-inline">
+<nav class="navbar sticky-top navbar-light bg-light">
+<a class="navbar-brand col-3" href="./index.html">海大拍賣系統</a>
+<form class="form-inline col-3">
 	<input class="form-control input-lg" type="search" placeholder="搜尋">
 	<button class="btn btn-outline-success" type="submit">搜尋</button>
 </form>
-<a href="#" class="btn btn-info btn-lg"><span class="fas fa-shopping-cart"></span> 購物車
-</a><a class="btn btn-outline-success my-2 my-sm-0" href="./personal.html">個人頁面</a><button class="btn btn-outline-success my-2 my-sm-0" type="submit">登出</button></nav>
-<div class="card mb-3">
+<a href="#" class="btn btn-info btn-lg col-2">
+  <span class="fas fa-shopping-cart"></span> 購物車
+</a>
+<form class="form-group col-2">
+	<a class="btn btn-outline-success my-2 my-sm-0" href="./personal.html">個人頁面</a>
+	<button class="btn btn-outline-success my-2 my-sm-0" type="submit">登出</button>
+</form>
+</nav>
+
+<div class="card">
 	<div class="row no-gutters">
-		<div class="col-md-4">
+		<div class="col-4">
 			<img src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" class="card-img-top" alt="">
 		</div>
-		<div class="card-body col-md-8">
+		<div class="card-body col-8">
 			<h5 class="card-title">個人資訊</h5>
 		</div>
 	</div>
@@ -46,24 +54,24 @@
 	<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 		<div class="card mb-3">
 			<div class="row no-gutters">
-				<div class="col-md-4">
+				<div class="col-4">
 					<img src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" class="card-img-top" alt="">
 				</div>
-				<div class="card-body col-md-8">
+				<div class="card-body col-8">
 					<div class="card">
 						<div class="card-body">
 							<h5 class="card-title">衛生紙</h5>
 						</div>
 					</div>
 					<div class="row">
-						<div class="card col-md-5">
+						<div class="card col-5">
 							<div class="card-body">
 								<p class="card-text">
 									底價
 								</p>
 							</div>
 						</div>
-						<div class="card col-md-5">
+						<div class="card col-5">
 							<div class="card-body">
 								<p class="card-text">
 									競標價
@@ -72,14 +80,14 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="card col-md-4">
+						<div class="card col-4">
 							<div class="card-body">
 								<p class="card-text">
 									單位競標價
 								</p>
 							</div>
 						</div>
-						<div class="card col-md-7">
+						<div class="card col-7">
 							<div class="card-body">
 								<p class="card-text">
 									結束日期
@@ -99,27 +107,27 @@
 	<div class="tab-pane fade" id="transaction" role="tabpanel" aria-labelledby="transaction-tab">
 		<div class="card mb-3">
 			<div class="row no-gutters">
-				<div class="col-md-1">
-					<h2 class="card-title col-md-2">您是賣家</h2>
+				<div class="col-1">
+					<h2 class="card-title col-2">您是賣家</h2>
 				</div>
-				<div class="col-md-4">
+				<div class="col-4">
 					<img src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" class="card-img-top" alt="">
 				</div>
-				<div class="card-body col-md-7">
+				<div class="card-body col-7">
 					<div class="card">
 						<div class="card-body">
 							<h5 class="card-title">衛生紙</h5>
 						</div>
 					</div>
 					<div class="row">
-						<div class="card col-md-5">
+						<div class="card col-5">
 							<div class="card-body">
 								<p class="card-text">
 									商品單價
 								</p>
 							</div>
 						</div>
-						<div class="card col-md-5">
+						<div class="card col-5">
 							<div class="card-body">
 								<p class="card-text">
 									商品個數
@@ -134,8 +142,8 @@
 						</div>
 					</div>
 					<div class="row">
-						<a class="btn btn-outline-success col-md-5" href="./registered.html">前往預約板</a>
-						<button class="btn btn-outline-success col-md-5" type="submit">交易完成</button>
+						<a class="btn btn-outline-success col-5" href="./registered.html">前往預約板</a>
+						<button class="btn btn-outline-success col-5" type="submit">交易完成</button>
 					</div>
 				</div>
 			</div>
@@ -144,27 +152,27 @@
 	<div class="tab-pane fade" id="record" role="tabpanel" aria-labelledby="record-tab">
 		<div class="card mb-3">
 			<div class="row no-gutters">
-				<div class="col-md-1">
-					<h2 class="card-title col-md-2">您是賣家</h2>
+				<div class="col-1">
+					<h2 class="card-title col-2">您是賣家</h2>
 				</div>
-				<div class="col-md-4">
+				<div class="col-4">
 					<img src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" class="card-img-top" alt="">
 				</div>
-				<div class="card-body col-md-7">
+				<div class="card-body col-7">
 					<div class="card">
 						<div class="card-body">
 							<h5 class="card-title">衛生紙</h5>
 						</div>
 					</div>
 					<div class="row">
-						<div class="card col-md-5">
+						<div class="card col-5">
 							<div class="card-body">
 								<p class="card-text">
 									商品單價
 								</p>
 							</div>
 						</div>
-						<div class="card col-md-5">
+						<div class="card col-5">
 							<div class="card-body">
 								<p class="card-text">
 									商品個數
@@ -173,13 +181,13 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="card col-md-5">
+						<div class="card col-5">
 							<div class="card-body">
 										買家:
 								<a class="btn" href="#">我是買家123</a>
 							</div>
 						</div>
-						<div class="card col-md-5">
+						<div class="card col-5">
 							<div class="card-body">
 								<p class="card-text">
 									賣家評價:★★★★★
@@ -201,24 +209,24 @@
 	<div class="tab-pane fade" id="browse" role="tabpanel" aria-labelledby="browse-tab">
 		<div class="card mb-3">
 			<div class="row no-gutters">
-				<div class="col-md-4">
+				<div class="col-4">
 					<img src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" class="card-img-top" alt="">
 				</div>
-				<div class="card-body col-md-8">
+				<div class="card-body col-8">
 					<div class="card">
 						<div class="card-body">
 							<h5 class="card-title">衛生紙</h5>
 						</div>
 					</div>
 					<div class="row">
-						<div class="card col-md-5">
+						<div class="card col-5">
 							<div class="card-body">
 								<p class="card-text">
 									底價
 								</p>
 							</div>
 						</div>
-						<div class="card col-md-5">
+						<div class="card col-5">
 							<div class="card-body">
 								<p class="card-text">
 									競標價
@@ -227,14 +235,14 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="card col-md-4">
+						<div class="card col-4">
 							<div class="card-body">
 								<p class="card-text">
 									單位競標價
 								</p>
 							</div>
 						</div>
-						<div class="card col-md-7">
+						<div class="card col-7">
 							<div class="card-body">
 								<p class="card-text">
 									結束日期
@@ -251,7 +259,7 @@
 			</div>
 		</div>
 	</div>
-	<a class="btn btn-outline-success col-md-12" href="#">預約板</a>
+	<a class="btn btn-outline-success col-12" href="#">預約板</a>
 </div>
 <!-- Optional JavaScript --><!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
