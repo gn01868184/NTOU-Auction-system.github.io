@@ -33,12 +33,13 @@
   <div class="text-center">
     <li class="col-12 list-group-item ">預約板</li>
   </div>
+	<div class="card">
       <div class="row">
         <div class="col-3 text-center">
           <img src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" class="img" style="height: 100px;" alt="...">
         </div>
         <div class="row col-9">
-          <div class="col-10">
+          <div class="col-10 list-group-item">
             <h5>XXX於某年某月購買了您的OOOO商品</h5>
             <h5>於yy年yy日yy月 在口口面交</h5>
           </div>
@@ -49,14 +50,25 @@
             </button>
             </div>
             <div class="row">
-            <button type="button" class="btn btn-lg">
+            <button type="button" class="btn btn-lg" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false">
               <span class="fas fa-angle-down"></span>
             </button>
+
             </div>
           </div>
         </div>
       </div>
-
+			</div>
+			<div class="collapse card" id="collapseExample">
+				<div class="row">
+				<div class="col-3 text-center">
+					<img src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" class="img" style="height: 50px;" alt="...">
+				</div>
+				<div class="row col-9 list-group-item">
+					你什麼時候可以????
+				</div>
+				</div>
+			</div>
 
 <!-- Optional JavaScript --><!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
