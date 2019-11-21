@@ -142,8 +142,10 @@
 						</div>
 					</div>
 					<div class="row">
-						<a class="btn btn-outline-success col-5" href="./registered.html">前往預約板</a>
-						<button class="btn btn-outline-success col-5" type="submit">交易完成</button>
+						<a class="btn btn-outline-success col-5" href="./reservation.html">前往預約板</a>
+						<button type="button" class="btn btn-primary col-5" data-toggle="modal" data-target="#evaluationModal">
+							交易完成
+						</button>
 					</div>
 				</div>
 			</div>
@@ -259,16 +261,90 @@
 			</div>
 		</div>
 	</div>
-	<button type="button" class="btn btn-primary col-12" data-toggle="modal" data-target="#exampleModal">
+	<button type="button" class="btn btn-primary col-12" data-toggle="modal" data-target="#productModal">
 	  上架商品
 	</button>
 	<a class="btn btn-outline-success col-12" href="./reservation.html">預約板</a>
 </div>
 <!-- Button trigger modal -->
 
+<!-- evaluationModal -->
+<div class="modal fade" id="evaluationModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">本次交易評價</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+				<form class="form-group">
+					<div class="card">
+							<div class="card-body">
+							<label>賣家評級:</label>
+							<div class="form-check form-check-inline">
+							  <input class="form-check-input" type="radio" name="inlineRadioOptions"  value="option1">
+							  <label class="form-check-label" for="inlineRadio1">1</label>
+							</div>
+							<div class="form-check form-check-inline">
+							  <input class="form-check-input" type="radio" name="inlineRadioOptions" value="option2">
+							  <label class="form-check-label" for="inlineRadio2">2</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" value="option3">
+								<label class="form-check-label" for="inlineRadio3">3</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" value="option4">
+								<label class="form-check-label" for="inlineRadio4">4</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" value="option5">
+								<label class="form-check-label" for="inlineRadio5">5</label>
+							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-body">
+							<label>商品評級:</label>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions2"  value="option1">
+								<label class="form-check-label" for="inlineRadio1">1</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions2" value="option2">
+								<label class="form-check-label" for="inlineRadio2">2</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions2" value="option3">
+								<label class="form-check-label" for="inlineRadio3">3</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions2"  value="option4">
+								<label class="form-check-label" for="inlineRadio4">4</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions2"  value="option5">
+								<label class="form-check-label" for="inlineRadio5">5</label>
+							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-body">
+							<label>商品評價:</label>
+							<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+						</div>
+					</div>
+					<button class="btn btn-outline-success container" type="submit">送出</button>
+				</form>
+      </div>
+    </div>
+  </div>
+</div>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- productModal -->
+<div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
