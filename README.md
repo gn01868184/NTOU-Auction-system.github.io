@@ -20,4 +20,4 @@ gn01868184
 預約板
 搜尋/搜尋結果
 
-This is [an example](http://example.com/ "Title") inline link.
+這邊是 [首頁](https://gn01868184.github.io/NTOU-Auction-system.github.io/index.html)
