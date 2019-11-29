@@ -1,5 +1,7 @@
 # 海大拍賣系統
-- [x] [首頁](https://gn01868184.github.io/NTOU-Auction-system.github.io/index.html) 
+- [x] > [首頁](https://gn01868184.github.io/NTOU-Auction-system.github.io/index.html) 
+>> 頁面
+>> 功能
 - [x] [登入](https://gn01868184.github.io/NTOU-Auction-system.github.io/login.html) 
 - [x] [註冊](https://gn01868184.github.io/NTOU-Auction-system.github.io/registered.html) 
 - [x] [個人資訊](https://gn01868184.github.io/NTOU-Auction-system.github.io/personal.html) 
