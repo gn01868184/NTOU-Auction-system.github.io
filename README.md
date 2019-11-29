@@ -40,11 +40,11 @@
 >> - [ ] 美化
 >> - [ ] 功能
 > - [ ] [搜尋](https://gn01868184.github.io/NTOU-Auction-system.github.io/error.html) 
->> - [ ] 頁面
+>> - [x] 頁面
 >> - [ ] 美化
 >> - [ ] 功能
 > - [ ] [搜尋結果](https://gn01868184.github.io/NTOU-Auction-system.github.io/error.html)
->> - [ ] 頁面
+>> - [x] 頁面
 >> - [ ] 美化
 >> - [ ] 功能
 
