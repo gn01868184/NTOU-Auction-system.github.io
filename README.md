@@ -27,8 +27,8 @@
 >> - [x] 頁面
 >> - [ ] 美化
 >> - [ ] 功能
-> - [ ] [一般商品頁面](https://gn01868184.github.io/NTOU-Auction-system.github.io/error.html) 
->> - [ ] 頁面
+> - [ ] [一般商品頁面](https://gn01868184.github.io/NTOU-Auction-system.github.io/commodityPage.html) 
+>> - [x] 頁面
 >> - [ ] 美化
 >> - [ ] 功能
 > - [ ] [購物車](https://gn01868184.github.io/NTOU-Auction-system.github.io/index.html) 
