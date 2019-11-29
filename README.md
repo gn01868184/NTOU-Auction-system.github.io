@@ -31,7 +31,7 @@
 >> - [x] 頁面
 >> - [ ] 美化
 >> - [ ] 功能
-> - [ ] [購物車](https://gn01868184.github.io/NTOU-Auction-system.github.io/index.html) 
+> - [ ] [購物車](https://gn01868184.github.io/NTOU-Auction-system.github.io/sCart.html) 
 >> - [x] 頁面
 >> - [ ] 美化
 >> - [ ] 功能
