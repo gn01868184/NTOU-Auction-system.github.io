@@ -17,20 +17,30 @@
 <title>海大拍賣系統</title>
 </head>
 <body>
-	<nav class="navbar sticky-top navbar-light bg-light">
-	<a class="navbar-brand col-3" href="./index.html">海大拍賣系統</a>
-	<form class="form-inline col-3">
-		<input class="form-control input-lg" type="search" placeholder="搜尋">
-		<button class="btn btn-outline-success" type="submit">搜尋</button>
-	</form>
-	<a href="#" class="btn btn-info btn-lg col-2">
-	  <span class="fas fa-shopping-cart"></span> 購物車
-	</a>
-	<form class="form-group col-2">
-		<a class="btn btn-outline-success my-2 my-sm-0" href="./personal.html">個人頁面</a>
-		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">登出</button>
-	</form>
-	</nav>
+  <nav class="navbar navbar-light bg-light">
+  		<a class="navbar-brand" href="./index.html">
+			<i class="fas fa-air-freshener">海大拍賣</i>
+		</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+	<div class="collapse navbar-collapse" id="navbarToggleExternalContent">
+		<div class="bg-light p-4">
+			<a href="./personal.html" class="btn btn-link">
+				<span class="fas fa-user"></span>個人中心
+			</a>
+			<a href="./sCart.html" class="btn btn-link">
+				<span class="fas fa-shopping-cart"></span>購物車
+			</a>			
+			<a href="./search.html" class="btn btn-link">
+				<span class="fas fa-search"></span>搜尋
+			</a>
+			<a href="./login.html" class="btn btn-link">
+				<span class="fas fa-sign-out-alt"></span>登出
+			</a>
+		</div>
+	</div>
 
 <div class="row form-group">
 	<div class="col-4">
