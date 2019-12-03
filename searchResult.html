@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-
 <head>
 <!-- Required meta tags -->
 <meta charset="utf-8">
@@ -13,52 +12,74 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
-    <title>海大拍賣</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css"/>
+<!-- jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<title>海大拍賣</title>
 </head>
-
 <body>
-
-  <nav class="navbar navbar-light bg-light">
-  		<a class="navbar-brand" href="./index.html">
-			<i class="fas fa-air-freshener">海大拍賣</i>
+<nav class="navbar navbar-light bg-light"><a class="navbar-brand" href="./index.html"><i class="fas fa-air-freshener">海大拍賣</i></a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button></nav>
+<div class="collapse navbar-collapse" id="navbarToggleExternalContent">
+	<div class="bg-light p-4">
+		<a href="./personal.html" class="btn btn-link">
+		<span class="fas fa-user"></span>個人中心
 		</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  </nav>
-	<div class="collapse navbar-collapse" id="navbarToggleExternalContent">
-		<div class="bg-light p-4">
-			<a href="./personal.html" class="btn btn-link">
-				<span class="fas fa-user"></span>個人中心
-			</a>
-			<a href="./sCart.html" class="btn btn-link">
-				<span class="fas fa-shopping-cart"></span>購物車
-			</a>			
-			<a href="./search.html" class="btn btn-link">
-				<span class="fas fa-search"></span>搜尋
-			</a>
-			<a href="./login.html" class="btn btn-link">
-				<span class="fas fa-sign-out-alt"></span>登出
-			</a>
-		</div>
+		<a href="./sCart.html" class="btn btn-link">
+		<span class="fas fa-shopping-cart"></span>購物車
+		</a>
+		<a href="./search.html" class="btn btn-link">
+		<span class="fas fa-search"></span>搜尋
+		</a>
+		<a href="./login.html" class="btn btn-link">
+		<span class="fas fa-sign-out-alt"></span>登出
+		</a>
 	</div>
-		<div class="row">
-            <div class="col-2  border p-2">
-                <img src="https://www.bigw.com.au/medias/sys_master/images/images/hcd/h70/11889354539038.jpg" class="img " style="height: 120px;" alt="...">
-            </div>
-            <div class="col-8 border p-2 ">水壺｜使用兩三次，優質水壺</div>
-			<div class="col-2 border p-2 ">售價988</div>
-        </div>
-
-
-        <div class="tab-pane fade" id="bid" role="tabpanel" aria-labelledby="bid-tab">
-            <!-- Optional JavaScript -->
-            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-        </div>
-    </div>
+</div>
+<div id="aa">
+</div>
+<script type="text/javascript">
+     $(document).ready(function(){
+       var response = [{name:"水壺",information:"使用兩三次，優質水壺",price:"988"},{name:"水",information:"全新",price:"150"}];
+       var responseLength = response.length;
+       for(var i=0;i<responseLength;i++){
+       $('#aa').append(
+         $('<div/>')
+           .addClass('row')
+           .append(
+             $('<div/>')
+             .addClass('col-2  border p-2')
+             .append(
+               $('<img/>')
+               .addClass('img')
+               .attr('src','https://www.bigw.com.au/medias/sys_master/images/images/hcd/h70/11889354539038.jpg')
+               .attr('style','height: 120px')
+             )
+           )
+           .append(
+             $('<div/>')
+             .addClass('col-8 border p-2')
+             .append(
+               response[i].name + " | " + response[i].information
+             )
+           )
+           .append(
+             $('<div/>')
+             .addClass('col-2 border p-2')
+             .append(
+               response[i].price
+             )
+           )
+        )
+        };
+     });
+  </script>
+<div class="tab-pane fade" id="bid" role="tabpanel" aria-labelledby="bid-tab">
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</div>
+</div>
 </body>
 </html>
