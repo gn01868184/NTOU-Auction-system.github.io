@@ -8,83 +8,148 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <!-- Bootstrap 4 Icons -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<!-- jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <title>海大拍賣系統</title>
 </head>
 <body>
-  <nav class="navbar navbar-light bg-light">
-  		<a class="navbar-brand" href="./index.html">
-			<i class="fas fa-air-freshener">海大拍賣</i>
+<nav class="navbar navbar-light bg-light"><a class="navbar-brand" href="./index.html"><i class="fas fa-air-freshener">海大拍賣</i></a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button></nav>
+<div class="collapse navbar-collapse" id="navbarToggleExternalContent">
+	<div class="bg-light p-4">
+		<a href="./personal.html" class="btn btn-link">
+		<span class="fas fa-user"></span>個人中心
 		</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  </nav>
-	<div class="collapse navbar-collapse" id="navbarToggleExternalContent">
-		<div class="bg-light p-4">
-			<a href="./personal.html" class="btn btn-link">
-				<span class="fas fa-user"></span>個人中心
-			</a>
-			<a href="./sCart.html" class="btn btn-link">
-				<span class="fas fa-shopping-cart"></span>購物車
-			</a>			
-			<a href="./search.html" class="btn btn-link">
-				<span class="fas fa-search"></span>搜尋
-			</a>
-			<a href="./login.html" class="btn btn-link">
-				<span class="fas fa-sign-out-alt"></span>登出
-			</a>
-		</div>
+		<a href="./sCart.html" class="btn btn-link">
+		<span class="fas fa-shopping-cart"></span>購物車
+		</a>
+		<a href="./search.html" class="btn btn-link">
+		<span class="fas fa-search"></span>搜尋
+		</a>
+		<a href="./login.html" class="btn btn-link">
+		<span class="fas fa-sign-out-alt"></span>登出
+		</a>
 	</div>
-
-
-  <div class="text-center">
-    <li class="col-12 list-group-item ">預約板</li>
-  </div>
-	<div class="card">
-      <div class="row">
-        <div class="col-3 text-center">
-          <img src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" class="img" style="height: 100px;" alt="...">
-        </div>
-        <div class="row col-9">
-          <div class="col-10 list-group-item">
-            <h5>XXX於某年某月購買了您的OOOO商品</h5>
-            <h5>於yy年yy日yy月 在口口面交</h5>
-          </div>
-          <div class="col-2">
-            <div class="row">
-            <button type="button" class="btn btn-lg">
-              <span class="fas fa-comment-alt"></span>
-            </button>
-            </div>
-            <div class="row">
-            <button type="button" class="btn btn-lg" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false">
-              <span class="fas fa-angle-down"></span>
-            </button>
-
-            </div>
-          </div>
-        </div>
-      </div>
-			</div>
-			<div class="collapse card" id="collapseExample">
-				<div class="row">
-					<div class="col-3 text-center">
-						<img src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" class="img" style="height: 50px;" alt="...">
-					</div>
-					<div class="col-9 list-group-item">
-						你什麼時候可以????
-					</div>
-				</div>
-				<div class="row align-items-center">
-					<div class="col-9 list-group-item">
-						<input class="form-control input-lg" type="search" placeholder="留言">
-					</div>
-					<div class="col-3 text-center ">
-						<button class="btn btn-outline-success" type="submit">留言</button>
-					</div>
-				</div>
-			</div>
-
+</div>
+<div class="text-center">
+	<li class="col-12 list-group-item ">預約板</li>
+</div>
+<div id='reservation'>
+</div>
+<script type="text/javascript">
+                 $(document).ready(function(){
+                   var response = [{URL:"http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg",buy:"王曉明",name:"水",time:"2020年10月1日",location:"海大"},{URL:"https://www.bigw.com.au/medias/sys_master/images/images/hcd/h70/11889354539038.jpg",buy:"陳咪咪",name:"嬰兒",time:"2021年1月1日",location:"八斗子"}];
+                   var responseLength = response.length;
+                   for(var i=0;i<responseLength;i++){
+                   $('#reservation').append(
+                     $('<div/>')
+                       .addClass('card')
+                       .append(
+                         $('<div/>')
+                         .addClass('row')
+                         .append(
+                           $('<div/>')
+                           .addClass('col-3 text-center')
+                           .append(
+                           $('<img/>')
+                           .addClass('img')
+                           .attr('src',response[i].URL)
+                           .attr('style','height: 100px')
+                           )
+                         )
+                       .append(
+                         $('<div/>')
+                         .addClass('row col-9')
+                         .append(
+                           $('<div/>')
+                           .addClass('col-10 list-group-item')
+                           .append("<h5>" + response[i].buy + "於某年某月購買了您的" + response[i].name + "商品</h5>" +　"<h5>於" + response[i].time + "在" + response[i].location + "面交</h5>")
+                         )
+                         .append(
+                           $('<div/>')
+                           .addClass('col-2')
+                           .append(
+                             $('<div/>')
+                             .addClass('row')
+                             .append(
+                               $('<button/>')
+                               .addClass('btn btn-lg')
+                               .append(
+                                 $('<span/>')
+                                 .addClass('fas fa-comment-alt')
+                               )
+                             )
+                           )
+                           .append(
+                             $('<div/>')
+                             .addClass('row')
+                             .append(
+                               $('<button/>')
+                               .addClass('btn btn-lg')
+                               .attr('data-toggle','collapse')
+                               .attr('data-target','#collapse' + i)
+                               .append(
+                                 $('<span/>')
+                                 .addClass('fas fa-angle-down')
+                               )
+                             )
+                           )
+                         )
+                       )
+                       )
+                       .append(
+                         $('<div/>')
+                         .addClass('collapse card')
+                         .attr('id','collapse' + i)
+                         .append(
+                           $('<div/>')
+                           .addClass('row')
+                           .append(
+                             $('<div/>')
+                             .addClass('col-3 text-center')
+                             .append(
+                               $('<img/>')
+                               .addClass('img')
+                               .attr('src',response[i].URL)
+                               .attr('style','height: 50px')
+                             )
+                           )
+                           .append(
+                             $('<div/>')
+                             .addClass('col-9 list-group-item')
+                             .append(
+                               "你什麼時候可以????"
+                             )
+                           )
+                         )
+                         .append(
+                           $('<div/>')
+                           .addClass('row align-items-center')
+                           .append(
+                             $('<div/>')
+                             .addClass('col-9 list-group-item')
+                             .append(
+                               $('<input/>')
+                               .addClass('form-control input-lg')
+                               .attr('placeholder','留言')
+                             )
+                           )
+                           .append(
+                             $('<div/>')
+                             .addClass('col-3 text-center')
+                             .append(
+                               $('<button/>')
+                               .addClass('btn btn-outline-success')
+                               .append(
+                                 "留言"
+                               )
+                             )
+                           )
+                         )
+                       )
+                    )
+                    };
+                 });
+              </script>
 <!-- Optional JavaScript --><!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
