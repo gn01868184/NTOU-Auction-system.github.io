@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-
 <head>
 <!-- Required meta tags -->
 <meta charset="utf-8">
@@ -13,106 +12,128 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
-    <title>海大拍賣</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css"/>
+<!-- jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<title>海大拍賣</title>
 </head>
-
 <body>
-
-  <nav class="navbar navbar-light bg-light">
-  		<a class="navbar-brand" href="./index.html">
-			<i class="fas fa-air-freshener">海大拍賣</i>
+<nav class="navbar navbar-light bg-light"><a class="navbar-brand" href="./index.html"><i class="fas fa-air-freshener">海大拍賣</i></a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button></nav>
+<div class="collapse navbar-collapse" id="navbarToggleExternalContent">
+	<div class="bg-light p-4">
+		<a href="./personal.html" class="btn btn-link">
+		<span class="fas fa-user"></span>個人中心
 		</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  </nav>
-	<div class="collapse navbar-collapse" id="navbarToggleExternalContent">
-		<div class="bg-light p-4">
-			<a href="./personal.html" class="btn btn-link">
-				<span class="fas fa-user"></span>個人中心
-			</a>
-			<a href="./sCart.html" class="btn btn-link">
-				<span class="fas fa-shopping-cart"></span>購物車
-			</a>			
-			<a href="./search.html" class="btn btn-link">
-				<span class="fas fa-search"></span>搜尋
-			</a>
-			<a href="./login.html" class="btn btn-link">
-				<span class="fas fa-sign-out-alt"></span>登出
-			</a>
+		<a href="./sCart.html" class="btn btn-link">
+		<span class="fas fa-shopping-cart"></span>購物車
+		</a>
+		<a href="./search.html" class="btn btn-link">
+		<span class="fas fa-search"></span>搜尋
+		</a>
+		<a href="./login.html" class="btn btn-link">
+		<span class="fas fa-sign-out-alt"></span>登出
+		</a>
+	</div>
+</div>
+<div class="mx-5 my-3">
+	<nav>
+	<div class="nav nav-tabs justify-content-center nav-fill mb-3" id="nav-tab" role="tablist">
+		<a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">購 物 車</a>
+		<a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">競 標 中</a>
+	</div>
+	</nav>
+	<div class="tab-content" id="nav-tabContent">
+		<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+			<!-- 購物車 -->
+			<div class="row">
+				<button class="btn btn-outline-success col-6" type="submit">選取購買</button>
+				<button class="btn btn-outline-success col-6" type="submit">選取刪除</button>
+			</div>
+		</div>
+		<script type="text/javascript">
+           $(document).ready(function(){
+             var response = [{name:"水壺",information:"使用兩三次，優質水壺",URL:"https://www.bigw.com.au/medias/sys_master/images/images/hcd/h70/11889354539038.jpg"},{name:"嬰兒",information:"全新,看膩了",URL:"https://images-na.ssl-images-amazon.com/images/I/61q%2BcRRsPiL._SL1500_.jpg"},{name:"娃娃玩具",information:"全新,看膩了",URL:"http://www.thequeenstreasures.com/images/detailed/5/LHDLLMI__1__jpcf-af.jpg"}];
+             var responseLength = response.length;
+             for(var i=0;i<responseLength;i++){
+             $('#nav-home').prepend(
+               $('<div/>')
+                 .addClass('row')
+                 .append(
+                   $('<div/>')
+                   .addClass('col-1 border p-2')
+                   .append(
+                     $('<input/>')
+                     .attr('type','checkbox')
+                   )
+                 )
+                 .append(
+                   $('<div/>')
+                   .addClass('col-2  border p-2')
+                   .append(
+                     $('<img/>')
+                     .addClass('img')
+                     .attr('src',response[i].URL)
+                     .attr('style','height: 120px')
+                   )
+                 )
+                 .append(
+                   $('<div/>')
+                   .addClass('col-9 border p-2')
+                   .append(
+                     response[i].name + " | " + response[i].information
+                   )
+                 )
+              )
+              };
+           });
+        </script>
+		<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+			<!--競標商品-->
 		</div>
 	</div>
-		
-		
-
-  
-    <div class="mx-5 my-3">
-        <nav>
-            <div class="nav nav-tabs justify-content-center nav-fill mb-3" id="nav-tab" role="tablist">
-                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">購 物 車</a>
-                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">競 標 中</a>
-            </div>
-        </nav>
-
-        <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                <div class="">
-                    <!-- Stack the columns on mobile by making one full-width and the other half-width -->
-                    <div class="row">
-                        <div class="col-1 border p-2 ">
-                            <input type="radio" aria-label="Radio button for following text input">
-                        </div>
-                        <div class="col-2  border p-2">
-                            <img src="https://www.bigw.com.au/medias/sys_master/images/images/hcd/h70/11889354539038.jpg" class="img " style="height: 120px;" alt="...">
-                        </div>
-                        <div class="col-9 border p-2 ">水壺｜使用兩三次，優質水壺</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-1 border p-2">
-                            <input type="radio" aria-label="Radio button for following text input">
-                        </div>
-                        <div class="col-2  border p-2">
-                            <img src="https://images-na.ssl-images-amazon.com/images/I/61q%2BcRRsPiL._SL1500_.jpg" class="img" style="height: 120px;" alt="...">
-                        </div>
-                        <div class="col-9 border p-2">嬰兒｜全新，看膩了</div>
-                    </div>
-                     <div class="row">
-                        <div class="col-1 border p-2">
-                            <input type="radio" aria-label="Radio button for following text input">
-                        </div>
-                        <div class="col-2  border p-2">
-                            <img src="http://www.thequeenstreasures.com/images/detailed/5/LHDLLMI__1__jpcf-af.jpg" class="img mx-auto" style="height: 120px;" alt="...">
-                        </div>
-                        <div class="col-9 border p-2">娃娃玩具｜全新</div>
-                    </div>
-					
-					<div class="row">
-					<button class="btn btn-outline-success col-6" type="submit">選取購買</button>
-					<button class="btn btn-outline-success col-6" type="submit">選取刪除</button>
-					</div>
-
-                </div>
-			</div>
-            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-				<div class="row">
-
-                    <div class="col-2  border p-2">
-                        <img src="https://www.bigw.com.au/medias/sys_master/images/images/hcd/h70/11889354539038.jpg" class="img " style="height: 120px;" alt="...">
-                    </div>
-                    <div class="col-8 border p-2 ">水壺｜使用兩三次，優質水壺</div>
-					<div class="col-2 border p-2 ">競標中</div>
-                </div>
-			</div>
-        </div>
-
-        <div class="tab-pane fade" id="bid" role="tabpanel" aria-labelledby="bid-tab">
-            <!-- Optional JavaScript -->
-            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-        </div>
-    </div>
+	<script type="text/javascript">
+             $(document).ready(function(){
+               var response = [{name:"水壺",information:"使用兩三次，優質水壺",price:"競標中"},{name:"水",information:"全新",price:"已結標"}];
+               var responseLength = response.length;
+               for(var i=0;i<responseLength;i++){
+               $('#nav-profile').append(
+                 $('<div/>')
+                   .addClass('row')
+                   .append(
+                     $('<div/>')
+                     .addClass('col-2  border p-2')
+                     .append(
+                       $('<img/>')
+                       .addClass('img')
+                       .attr('src','https://www.bigw.com.au/medias/sys_master/images/images/hcd/h70/11889354539038.jpg')
+                       .attr('style','height: 120px')
+                     )
+                   )
+                   .append(
+                     $('<div/>')
+                     .addClass('col-8 border p-2')
+                     .append(
+                       response[i].name + " | " + response[i].information
+                     )
+                   )
+                   .append(
+                     $('<div/>')
+                     .addClass('col-2 border p-2')
+                     .append(
+                       response[i].price
+                     )
+                   )
+                )
+                };
+             });
+          </script>
+	<div class="tab-pane fade" id="bid" role="tabpanel" aria-labelledby="bid-tab">
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+	</div>
+</div>
 </body>
 </html>
