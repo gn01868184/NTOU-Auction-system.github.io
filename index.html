@@ -13,30 +13,42 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-light bg-info">
-        <a class="navbar-brand" href="./index.html">
-            <i class="fas fa-air-freshener text-light">海大拍賣</i>
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </nav>
-    <div class="collapse navbar-collapse bg-info" id="navbarToggleExternalContent">
-        <div class="p-4">
-            <a href="./personal.html" class="btn btn-link text-light">
-                <span class="fas fa-user"></span>個人中心
-            </a>
-            <a href="./sCart.html" class="btn btn-link text-light">
-                <span class="fas fa-shopping-cart"></span>購物車
-            </a>
-            <a href="./search.html" class="btn btn-link text-light">
-                <span class="fas fa-search"></span>搜尋
-            </a>
-            <a href="./login.html" class="btn btn-link text-light">
-                <span class="fas fa-sign-out-alt"></span>登出
-            </a>
-        </div>
+<nav class="navbar navbar-expand-lg navbar-light  bg-info">
+  <a class="navbar-brand  text-light" href="#"><span class="fas fa-tree"></span>&nbsp;海大拍賣</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+     
+    
+      <li class="nav-item">
+          <a href="./search.html" class="btn btn-link text-light">
+                <span class="fas fa-search"></span>&nbsp;搜尋
+          </a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+              <li class="nav-item">
+                  <a href="./sCart.html" class="btn btn-link text-light">
+                      <span class="fas fa-shopping-cart"></span>&nbsp;購物車</a>
+              </li>
+              <li class="nav-item active">
+                  <a href="./personal.html" class="btn btn-link text-light">
+                      <span class="fas fa-user"></span>&nbsp;個人中心
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a href="./login.html" class="btn btn-link text-light">
+                      <span class="fas fa-sign-out-alt"></span>&nbsp;登出
+                  </a>
+              </li>
+          </ul>
+      </form>
     </div>
+</nav>
     <div class="row ">
         <div class="col-2 bg-light">
             <div class="py-4 ">
@@ -63,7 +75,7 @@
             <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                     <div class="row my-3">
-                        <div class="col-1 ml-2 justify-content-center align-self-center">
+                        <div class="col-1 justify-content-center align-self-center">
                             <span class="label label-default">
                                 <h4 class="text-center " style=" writing-mode: vertical-lr">熱門商品</h4>
                             </span>
@@ -99,7 +111,7 @@
                         </div>
                     </div>
                     <div class="row my-3">
-                        <div class="col-1 ml-2  justify-content-center align-self-center ">
+                        <div class="col-1 justify-content-center align-self-center ">
                             <h4 class="text-center " style=" writing-mode: vertical-lr">最新商品</h4>
                         </div>
                         <div class="card-group col-10">
