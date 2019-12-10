@@ -80,20 +80,20 @@
 				</select>
 			</div>
 			<div class="col-8">
-				<input class="form-control input-lg" type="input" placeholder="輸入商品名稱">
+				<input class="form-control input-lg" type="input" id="ProductName" placeholder="輸入商品名稱">
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-6">
-				<input class="form-control input-lg" type="input" placeholder="輸入底價">
+				<input class="form-control input-lg" type="input" id="Lowest_price" placeholder="輸入底價">
 			</div>
 			<div class="col-6">
-				<input class="form-control input-lg" type="input" placeholder="輸入競標價" readonly>
+				<input class="form-control input-lg" type="input"  placeholder="輸入競標價" readonly>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-4">
-				<input class="form-control input-lg" type="input" placeholder="設定單位競標">
+				<input class="form-control input-lg" type="input" id="Bidding_unit_price" placeholder="設定單位競標">
 			</div>
 			<div class="col-8">
 				<div class="input-group date" id="datetimepicker1" data-target-input="nearest">
@@ -106,17 +106,17 @@
 		</div>
 		<div class="row">
 			<div class="col-4">
-				<input class="form-control input-lg" type="input" placeholder="設定商品件數">
+				<input class="form-control input-lg" type="input" id="Amount" placeholder="設定商品件數">
 			</div>
 			<div class="col-8">
-				<input class="form-control input-lg" type="input" placeholder="輸入直購價">
+				<input class="form-control input-lg" type="input" id="Price" placeholder="輸入直購價">
 			</div>
 		</div>
 	</div>
 </div>
 <div class="row">
 	<div class="col-12">
-		<textarea class="form-control" rows="5" placeholder="商品資訊"></textarea>
+		<textarea class="form-control" rows="5" id="Information" placeholder="商品資訊"></textarea>
 	</div>
 </div>
 <div class="row">
@@ -132,6 +132,14 @@
 		$(function () {
 				$('#datetimepicker1').datetimepicker();
 		});
+</script>
+<!--check input value-->
+<script>
+	
+
+
+
+
 </script>
 <!-- Optional JavaScript --><!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
