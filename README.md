@@ -5,7 +5,7 @@
 >> - [ ] 功能
 > - [ ] [登入](https://gn01868184.github.io/NTOU-Auction-system.github.io/login.html) 
 >> - [x] 頁面
->> - [ ] 美化
+>> - [x] 美化
 >> - [ ] 功能
 > - [ ] [註冊](https://gn01868184.github.io/NTOU-Auction-system.github.io/registered.html) 
 >> - [x] 頁面
