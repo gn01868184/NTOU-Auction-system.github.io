@@ -52,15 +52,15 @@
     <span class="border">
     <div class="col-12 mx-auto" align="center" style="margin-top: 2% ">
         <h2><p class="font-weight-bold text-info">登入</p></h2>
-        <form class="form-group col-12"  style="margin-top: 2% ">
+        <form class="form-group col-12"  style="margin-top: 2% " action="/signIn" method="post">
             <div class="col-4 " style="padding-right: 0px; padding-left: 0px">
-                <input class="form-control" type="text" placeholder="帳號"></div>
+                <input name="Account" class="form-control" type="text" placeholder="帳號"></div>
             <div class="col-4 mb-3" style="padding-right: 0px; padding-left: 0px">
-                <input class="form-control mt-3 mb-10" type="text" placeholder="密碼"></div>
+                <input  name="Password" class="form-control mt-3 mb-10" type="text" placeholder="密碼"></div>
 
             <button class="btn btn-outline-success " type="submit">&nbsp;&nbsp;登&nbsp;&nbsp;入&nbsp;&nbsp;</button>
             <br />
-            <a class="btn btn-light mt-2 text-info" href="./registered.html">&nbsp;註&nbsp;&nbsp;冊&nbsp;</a>
+            <a class="btn btn-link mt-2 text-info" href="./registered.html">&nbsp;註&nbsp;&nbsp;冊&nbsp;</a>
         </form>
     </div></span>
     <!-- Optional JavaScript -->
