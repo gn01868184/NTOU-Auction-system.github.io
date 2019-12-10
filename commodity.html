@@ -80,7 +80,10 @@
 				</select>
 			</div>
 			<div class="col-8">
-				<input class="form-control input-lg" type="input" placeholder="輸入商品名稱">
+				<input class="form-control input-lg" type="input" id="ProductName" placeholder="輸入商品名稱">
+			</div>
+			<div id="test">
+				
 			</div>
 		</div>
 		<div class="row">
@@ -106,17 +109,17 @@
 		</div>
 		<div class="row">
 			<div class="col-4">
-				<input class="form-control input-lg" type="input" placeholder="設定商品件數">
+				<input class="form-control input-lg" type="input" id="Amount" placeholder="設定商品件數">
 			</div>
 			<div class="col-8">
-				<input class="form-control input-lg" type="input" placeholder="輸入直購價">
+				<input class="form-control input-lg" type="input" id="Price" placeholder="輸入直購價">
 			</div>
 		</div>
 	</div>
 </div>
 <div class="row">
 	<div class="col-12">
-		<textarea class="form-control" rows="5" placeholder="商品資訊"></textarea>
+		<textarea class="form-control" rows="5" id="Information" placeholder="商品資訊"></textarea>
 	</div>
 </div>
 <div class="row">
@@ -132,6 +135,21 @@
 		$(function () {
 				$('#datetimepicker1').datetimepicker();
 		});
+</script>
+<!--check input value-->
+<script type="text/javascript">
+	document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("ProuductName").addEventListener("blur", chkName);  //事件繫結            
+	});
+
+	function chkName(){
+		var	ProductName = document.getElementById("ProductName").value;
+		if(ProductName == "")
+			document.getElementById("test").innerHTML = "必須輸入文字";
+	}
+
+
+
 </script>
 <!-- Optional JavaScript --><!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
