@@ -19,7 +19,7 @@
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light  bg-info">
-	  <a class="navbar-brand  text-light" href="#"><span class="fas fa-tree"></span>&nbsp;海大拍賣</a>
+	  <a class="navbar-brand  text-light" href="./index.html"><span class="fas fa-tree"></span>&nbsp;海大拍賣</a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
@@ -54,6 +54,27 @@
 	      </form>
 	    </div>
 	</nav>
+
+<!-- 取別的網頁傳來的值 -->
+	<script type="text/javascript">
+   function show () {
+    //URL
+    var url = location.href;
+    //取得問號之後的值
+    var temp = url.split("?");
+    //將值分開
+    var vars = temp[1].split("&");
+
+    //一一顯示出來
+    for (var i = 0; i < vars.length; i++) {
+     alert(vars[i]);
+    };
+   }
+  </script>
+<button onclick="show()">
+ 測試網頁傳值按鈕
+</button>
+
 <div id="product">
 </div>
 <script type="text/javascript">
