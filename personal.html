@@ -1,390 +1,406 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-<!-- Bootstrap 4 Icons -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-<title>海大拍賣系統</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Bootstrap 4 Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <title>海大拍賣系統</title>
 </head>
+
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light  bg-info">
-	  <a class="navbar-brand  text-light" href="./index.html"><span class="fas fa-tree"></span>&nbsp;海大拍賣</a>
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-	    <span class="navbar-toggler-icon"></span>
-	  </button>
-
-	  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-	    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-
-
-	      <li class="nav-item">
-	          <a href="./search.html" class="btn btn-link text-light">
-	                <span class="fas fa-search"></span>&nbsp;搜尋
-	          </a>
-	        </li>
-	      </ul>
-	      <form class="form-inline my-2 my-lg-0">
-	          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-	              <li class="nav-item">
-	                  <a href="./sCart.html" class="btn btn-link text-light">
-	                      <span class="fas fa-shopping-cart"></span>&nbsp;購物車</a>
-	              </li>
-	              <li class="nav-item active">
-	                  <a href="./personal.html" class="btn btn-link text-light">
-	                      <span class="fas fa-user"></span>&nbsp;個人中心
-	                  </a>
-	              </li>
-	              <li class="nav-item">
-	                  <a href="./login.html" class="btn btn-link text-light">
-	                      <span class="fas fa-sign-out-alt"></span>&nbsp;登出
-	                  </a>
-	              </li>
-	          </ul>
-	      </form>
-	    </div>
-	</nav>
-
-<div class="card">
-	<div class="row no-gutters">
-		<div class="col-4">
-			<img src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" class="card-img-top" alt="">
-		</div>
-		<div class="card-body col-8">
-			<h5 class="card-title">個人資訊</h5>
-		</div>
-	</div>
-</div>
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-	<li class="nav-item">
-	<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">上架商品</a>
-	</li>
-	<li class="nav-item">
-	<a class="nav-link" id="transaction-tab" data-toggle="tab" href="#transaction" role="tab" aria-controls="transaction" aria-selected="false">交易中</a>
-	</li>
-	<li class="nav-item">
-	<a class="nav-link" id="record-tab" data-toggle="tab" href="#record" role="tab" aria-controls="record" aria-selected="false">交易紀錄</a>
-	</li>
-	<li class="nav-item">
-	<a class="nav-link" id="browse-tab" data-toggle="tab" href="#browse" role="tab" aria-controls="browse" aria-selected="false">瀏覽紀錄</a>
-	</li>
-</ul>
-<div class="tab-content" id="myTabContent">
-	<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-		<div class="card mb-3">
-			<div class="row no-gutters">
-				<div class="col-4">
-					<img src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" class="card-img-top" alt="">
-				</div>
-				<div class="card-body col-8">
-					<div class="card">
-						<div class="card-body">
-							<h5 class="card-title">衛生紙</h5>
-						</div>
-					</div>
-					<div class="row">
-						<div class="card col-5">
-							<div class="card-body">
-								<p class="card-text">
-									底價
-								</p>
-							</div>
-						</div>
-						<div class="card col-5">
-							<div class="card-body">
-								<p class="card-text">
-									競標價
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="card col-4">
-							<div class="card-body">
-								<p class="card-text">
-									單位競標價
-								</p>
-							</div>
-						</div>
-						<div class="card col-7">
-							<div class="card-body">
-								<p class="card-text">
-									結束日期
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="card">
-						<div class="card-body">
-							<h5 class="card-text">直購價</h5>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="tab-pane fade" id="transaction" role="tabpanel" aria-labelledby="transaction-tab">
-		<div class="card mb-3">
-			<div class="row no-gutters">
-				<div class="col-1">
-					<h2 class="card-title col-2">您是賣家</h2>
-				</div>
-				<div class="col-4">
-					<img src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" class="card-img-top" alt="">
-				</div>
-				<div class="card-body col-7">
-					<div class="card">
-						<div class="card-body">
-							<h5 class="card-title">衛生紙</h5>
-						</div>
-					</div>
-					<div class="row">
-						<div class="card col-5">
-							<div class="card-body">
-								<p class="card-text">
-									商品單價
-								</p>
-							</div>
-						</div>
-						<div class="card col-5">
-							<div class="card-body">
-								<p class="card-text">
-									商品個數
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="card">
-						<div class="card-body">
-								買家:
-							<a class="btn" href="#">我是買家123</a>
-						</div>
-					</div>
-					<div class="row">
-						<a class="btn btn-outline-success col-5" href="./reservation.html">前往預約板</a>
-						<button type="button" class="btn btn-primary col-5" data-toggle="modal" data-target="#evaluationModal">
-							交易完成
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="tab-pane fade" id="record" role="tabpanel" aria-labelledby="record-tab">
-		<div class="card mb-3">
-			<div class="row no-gutters">
-				<div class="col-1">
-					<h2 class="card-title col-2">您是賣家</h2>
-				</div>
-				<div class="col-4">
-					<img src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" class="card-img-top" alt="">
-				</div>
-				<div class="card-body col-7">
-					<div class="card">
-						<div class="card-body">
-							<h5 class="card-title">衛生紙</h5>
-						</div>
-					</div>
-					<div class="row">
-						<div class="card col-5">
-							<div class="card-body">
-								<p class="card-text">
-									商品單價
-								</p>
-							</div>
-						</div>
-						<div class="card col-5">
-							<div class="card-body">
-								<p class="card-text">
-									商品個數
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="card col-5">
-							<div class="card-body">
-										買家:
-								<a class="btn" href="#">我是買家123</a>
-							</div>
-						</div>
-						<div class="card col-5">
-							<div class="card-body">
-								<p class="card-text">
-									賣家評價:★★★★★
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="card">
-						<div class="card-body">
-							<p class="card-text">
-								衛生紙很好用
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="tab-pane fade" id="browse" role="tabpanel" aria-labelledby="browse-tab">
-		<div class="card mb-3">
-			<div class="row no-gutters">
-				<div class="col-4">
-					<img src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" class="card-img-top" alt="">
-				</div>
-				<div class="card-body col-8">
-					<div class="card">
-						<div class="card-body">
-							<h5 class="card-title">衛生紙</h5>
-						</div>
-					</div>
-					<div class="row">
-						<div class="card col-5">
-							<div class="card-body">
-								<p class="card-text">
-									底價
-								</p>
-							</div>
-						</div>
-						<div class="card col-5">
-							<div class="card-body">
-								<p class="card-text">
-									競標價
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="card col-4">
-							<div class="card-body">
-								<p class="card-text">
-									單位競標價
-								</p>
-							</div>
-						</div>
-						<div class="card col-7">
-							<div class="card-body">
-								<p class="card-text">
-									結束日期
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="card">
-						<div class="card-body">
-							<h5 class="card-text">直購價</h5>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<button type="button" class="btn btn-primary col-12" data-toggle="modal" data-target="#productModal">
-	  上架商品
-	</button>
-	<a class="btn btn-outline-success col-12" href="./reservation.html">預約板</a>
-</div>
-<!-- Button trigger modal -->
-
-<!-- evaluationModal -->
-<div class="modal fade" id="evaluationModal" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">本次交易評價</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+    <nav class="navbar navbar-expand-lg navbar-light  bg-info">
+        <a class="navbar-brand  text-light" href="./index.html"><span class="fas fa-tree"></span>&nbsp;海大拍賣</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
         </button>
-      </div>
-      <div class="modal-body">
-				<form class="form-group">
-					<div class="card">
-							<div class="card-body">
-							<label>賣家評級:</label>
-							<div class="form-check form-check-inline">
-							  <input class="form-check-input" type="radio" name="inlineRadioOptions"  value="option1">
-							  <label class="form-check-label" for="inlineRadio1">1</label>
-							</div>
-							<div class="form-check form-check-inline">
-							  <input class="form-check-input" type="radio" name="inlineRadioOptions" value="option2">
-							  <label class="form-check-label" for="inlineRadio2">2</label>
-							</div>
-							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" value="option3">
-								<label class="form-check-label" for="inlineRadio3">3</label>
-							</div>
-							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" value="option4">
-								<label class="form-check-label" for="inlineRadio4">4</label>
-							</div>
-							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" value="option5">
-								<label class="form-check-label" for="inlineRadio5">5</label>
-							</div>
-						</div>
-					</div>
-					<div class="card">
-						<div class="card-body">
-							<label>商品評級:</label>
-							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions2"  value="option1">
-								<label class="form-check-label" for="inlineRadio1">1</label>
-							</div>
-							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions2" value="option2">
-								<label class="form-check-label" for="inlineRadio2">2</label>
-							</div>
-							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions2" value="option3">
-								<label class="form-check-label" for="inlineRadio3">3</label>
-							</div>
-							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions2"  value="option4">
-								<label class="form-check-label" for="inlineRadio4">4</label>
-							</div>
-							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions2"  value="option5">
-								<label class="form-check-label" for="inlineRadio5">5</label>
-							</div>
-						</div>
-					</div>
-					<div class="card">
-						<div class="card-body">
-							<label>商品評價:</label>
-							<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-						</div>
-					</div>
-					<button class="btn btn-outline-success container" type="submit">送出</button>
-				</form>
-      </div>
-    </div>
-  </div>
-</div>
 
-<!-- productModal -->
-<div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">您要上架的商品種類</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-footer">
-				<a class="btn btn-primary" href="./bidding.html">競標商品</a>
-				<a class="btn btn-primary" href="./commodity.html">一般商品</a>
-      </div>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+
+                <li class="nav-item">
+                    <a href="./search.html" class="btn btn-link text-light">
+                        <span class="fas fa-search"></span>&nbsp;搜尋
+                    </a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a href="./sCart.html" class="btn btn-link text-light">
+                            <span class="fas fa-shopping-cart"></span>&nbsp;購物車</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="./personal.html" class="btn btn-link text-light">
+                            <span class="fas fa-user"></span>&nbsp;個人中心
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="./login.html" class="btn btn-link text-light">
+                            <span class="fas fa-sign-in-alt"></span>&nbsp;登入
+                        </a>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </nav>
+    <h2>
+        <p class="font-weight-bold text-info text-center mt-3"><span class="fas fa-user"></span>&nbsp;個人中心</p>
+    </h2>
+    <div class="card">
+        <div class=" row no-gutters mx-3 my-2 ">
+            <span class="col-5 border rounded" align="center">
+                <img src="https://i.imgur.com/P9bHrZf.png" class="card-img-top col-10" alt="" style=" ">
+            </span>
+            <div class="card-body col-5  ml-3 align-self-center">
+                <h4>
+                    <div class="font-weight-bold " style="display:inline ;LINE-HEIGHT:40px">姓名：</div>王陽明<br>
+                    <div class="font-weight-bold" style="display:inline ;LINE-HEIGHT:40px">小名：</div>Sunny<br>
+                    <div class="font-weight-bold" style="display:inline ;LINE-HEIGHT:40px">帳號：</div>PerfectSunny<br>
+                    <div class="font-weight-bold" style="display:inline ;LINE-HEIGHT:40px">手機：</div>0988888888<br>
+                    <div class="font-weight-bold" style="display:inline ;LINE-HEIGHT:40px">信箱：</div>good@gmail.com<br>
+                </h4>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
-<!-- Optional JavaScript --><!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <ul class="nav nav-tabs my-2 mx-1" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">上架商品</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="transaction-tab" data-toggle="tab" href="#transaction" role="tab" aria-controls="transaction" aria-selected="false">交易中</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="record-tab" data-toggle="tab" href="#record" role="tab" aria-controls="record" aria-selected="false">交易紀錄</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="browse-tab" data-toggle="tab" href="#browse" role="tab" aria-controls="browse" aria-selected="false">瀏覽紀錄</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="row">
+            <div class="col-4 mb-3">
+                <div class="row no-gutters">
+                    <span class="col-12 border rounded" align="center">
+                        <img src="https://i.imgur.com/DWnwxol.jpg" class="card-img-top col-10" alt="" style=" ">
+                    </span>
+                </div>
+            </div>
+            <div class="col-8 mb-3">
+                <div class="row no-gutters">
+                   
+                    <div class="card-body col-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">衛生紙</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card col-5">
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        底價
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="card col-5">
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        競標價
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card col-4">
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        單位競標價
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="card col-7">
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        結束日期
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-text">直購價</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="transaction" role="tabpanel" aria-labelledby="transaction-tab">
+            <div class="card mb-3">
+                <div class="row no-gutters">
+                    <div class="col-1">
+                        <h2 class="card-title col-2">您是賣家</h2>
+                    </div>
+                    <div class="col-4">
+                        <img src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" class="card-img-top" alt="">
+                    </div>
+                    <div class="card-body col-7">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">衛生紙</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card col-5">
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        商品單價
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="card col-5">
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        商品個數
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                買家:
+                                <a class="btn" href="#">我是買家123</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <a class="btn btn-outline-success col-5" href="./reservation.html">前往預約板</a>
+                            <button type="button" class="btn btn-primary col-5" data-toggle="modal" data-target="#evaluationModal">
+                                交易完成
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="record" role="tabpanel" aria-labelledby="record-tab">
+            <div class="card mb-3">
+                <div class="row no-gutters">
+                    <div class="col-1">
+                        <h2 class="card-title col-2">您是賣家</h2>
+                    </div>
+                    <div class="col-4">
+                        <img src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" class="card-img-top" alt="">
+                    </div>
+                    <div class="card-body col-7">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">衛生紙</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card col-5">
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        商品單價
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="card col-5">
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        商品個數
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card col-5">
+                                <div class="card-body">
+                                    買家:
+                                    <a class="btn" href="#">我是買家123</a>
+                                </div>
+                            </div>
+                            <div class="card col-5">
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        賣家評價:★★★★★
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <p class="card-text">
+                                    衛生紙很好用
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="browse" role="tabpanel" aria-labelledby="browse-tab">
+            <div class="card mb-3">
+                <div class="row no-gutters">
+                    <div class="col-4">
+                        <img src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" class="card-img-top" alt="">
+                    </div>
+                    <div class="card-body col-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">衛生紙</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card col-5">
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        底價
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="card col-5">
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        競標價
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card col-4">
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        單位競標價
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="card col-7">
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        結束日期
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-text">直購價</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <!-- Button trigger modal -->
+
+    <!-- evaluationModal -->
+    <div class="modal fade" id="evaluationModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">本次交易評價</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-group">
+                        <div class="card">
+                            <div class="card-body">
+                                <label>賣家評級:</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" value="option1">
+                                    <label class="form-check-label" for="inlineRadio1">1</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">2</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" value="option3">
+                                    <label class="form-check-label" for="inlineRadio3">3</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" value="option4">
+                                    <label class="form-check-label" for="inlineRadio4">4</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" value="option5">
+                                    <label class="form-check-label" for="inlineRadio5">5</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <label>商品評級:</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions2" value="option1">
+                                    <label class="form-check-label" for="inlineRadio1">1</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">2</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions2" value="option3">
+                                    <label class="form-check-label" for="inlineRadio3">3</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions2" value="option4">
+                                    <label class="form-check-label" for="inlineRadio4">4</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions2" value="option5">
+                                    <label class="form-check-label" for="inlineRadio5">5</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <label>商品評價:</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline-success container" type="submit">送出</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- productModal -->
+    <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">您要上架的商品種類</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-primary" href="./bidding.html">競標商品</a>
+                    <a class="btn btn-primary" href="./commodity.html">一般商品</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 </body>
+
 </html>
