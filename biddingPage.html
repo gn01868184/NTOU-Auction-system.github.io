@@ -72,19 +72,19 @@
 		<ul class="list-group">
 			<div class="row">
 				<li class="list-group-item col-4">單位競標價</li>
-				<form class="form-group col-8">
-					<div class="row">
-						<input class="form-control col-6" type="text" placeholder="競標價">
-						<button class="btn btn-outline-success col-6" type="submit">下標</button>
-					</div>
-				</form>
+				<!--<form class="form-group col-8">-->
+				<!--	<div class="row">-->
+						<input class="col-4" type="text" style="text-align: center;" placeholder="競標價">
+						<button class="btn btn-outline-success col-4" type="submit">下標</button>
+				<!--	</div>-->
+				<!--</form>-->
 			</div>
 		</ul>
 		<ul class="list-group">
 			<div class="row">
 				<li class="list-group-item col-3">數量</li>
-				<li class="list-group-item col-3">直購價</li>
-				<button class="btn btn-outline-success col-3" type="submit">直接購買</button>
+				<li class="list-group-item col-5">直購價</li>
+				<button class="btn btn-outline-success col-4" type="submit">直接購買</button>
 			</div>
 		</ul>
 	</div>
@@ -109,6 +109,25 @@
 		留言板
 	</div>
 </div>
+<!-- 取別的網頁傳來的值 -->
+<script type="text/javascript">
+	function show () {
+	 //URL
+	 var url = location.href;
+	 //取得問號之後的值
+	 var temp = url.split("?");
+	 //將值分開
+	 var vars = temp[1].split("&");
+ 
+	 //一一顯示出來
+	 for (var i = 0; i < vars.length; i++) {
+	  alert(vars[i]);
+	 };
+	}
+   </script>
+ <button onclick="show()">
+  測試網頁傳值按鈕
+ </button>
 <!-- Optional JavaScript --><!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
