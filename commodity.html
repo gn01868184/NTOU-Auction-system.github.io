@@ -54,18 +54,20 @@
 	    </div>
 	</nav>
 
+<form action="./commodityPage.html">
 <div class="row form-group">
 	<div class="col-4">
 		<img src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" class="img" style="height: 100px;" alt="...">
 		<div class="custom-file">
-			<input type="file" class="custom-file-input" id="File" name="File" accept="image/*">
+			<input type="file" class="custom-file-input" id="File" accept="image/*">
+			<!-- name="File" -->
 			<label class="custom-file-label" for="File">上傳圖片</label>
 		</div>
 	</div>
 	<div class="col-8">
 		<div class="row-2">
 			<div class="col-6">
-				<select class="custom-select" id="Select">
+				<select class="custom-select" id="Select" name="select">
 					<option selected>選擇標籤</option>
 					<option value="3C">3C</option>
 					<option value="homeAppliance">家電</option>
@@ -81,10 +83,7 @@
 
 			</div>
 			<div class="col-6">
-				<input class="form-control input-lg" type="input" id="ProductName" placeholder="輸入商品名稱">
-			</div>
-			<div id="test">
-				
+				<input class="form-control input-lg" type="input" id="ProductName" name="productName" placeholder="輸入商品名稱">
 			</div>
 		</div>
 		<!--<div class="row">
@@ -110,17 +109,17 @@
 		</div>-->
 		<div class="row-2">
 			<div class="col-6">
-				<input class="form-control input-lg" type="input" id="Amount" placeholder="設定商品件數">
+				<input class="form-control input-lg" type="input" id="Amount" name="amount" placeholder="設定商品件數">
 			</div>
 			<div class="col-6">
-				<input class="form-control input-lg" type="input" id="Price" placeholder="輸入直購價">
+				<input class="form-control input-lg" type="input" id="Price" name="price" placeholder="輸入直購價">
 			</div>
 		</div>
 	</div>
 </div>
 <div class="row">
 	<div class="col-12">
-		<textarea class="form-control" rows="5" id="Information" placeholder="商品資訊"></textarea>
+		<textarea class="form-control" rows="5" id="Information" name="information"placeholder="商品資訊"></textarea>
 	</div>
 </div>
 <div class="row">
@@ -131,6 +130,7 @@
 		<button class="btn btn-outline-success" type="submit" id="success">確定</button>
 	</div>
 </div>
+</form>
 <!--datetimepicker-->
 <script type="text/javascript">
 		$(function () {
@@ -148,8 +148,11 @@
 			var	Information = document.getElementById("Information").value;
 			var	Select = document.getElementById("Select").value;
 			console.log(Select);
-			if((ProductName == "") || (Amount == "") || (isNaN(Amount) == true ) || (Price == "") || (isNaN(Price) == true) || (Information == "") || (Select == "選擇標籤") ){
+			if((ProductName == "") || (Amount == "") || (Price == "") || (Information == "") || (Select == "選擇標籤") ){
 				//document.getElementById("test").innerHTML = "必須輸入文字";
+				window.alert("請不要留空！");
+			}
+			else if((isNaN(Amount) == true ) || (isNaN(Price) == true) ){
 				window.alert("請不要亂輸入！");
 			}
 			
