@@ -8,7 +8,9 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <!-- Bootstrap 4 Icons -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-
+<!-- jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <title>海大拍賣系統</title>
 </head>
 <body>
@@ -49,6 +51,26 @@
 	    </div>
 	</nav>
 
+  <script>
+  $(document).ready(function() {
+        $.ajax({
+          url: 'https://ntou-store-system.herokuapp.com/product_information/23',
+          dataType: 'json',
+          type: "GET",
+          data: {
+              message: 'Hello World'
+          },
+          error:function(xhr, ajaxOptions, thrownError){
+            alert(xhr.status+"\n"+thrownError);
+          },
+          success: function(response) {
+            $('#123').append(123)
+            alert('xhr.status+"\n"+thrownError');
+          }
+        });
+  });
+</script>
+<div id="123"></div>
 <div class="row text-center">
 	<div class="col-4">
 		<img src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" class="img" style="height: 200px;" alt="...">
@@ -74,7 +96,7 @@
 				<input class="col-3" type="text" name="amount" placeholder="購買數量">
 				<button class="btn btn-outline-success col-3" type="submit">購買</button>
 				<button class="btn btn-outline-success col-3" type="submit">購物車</button>
-			</div>		
+			</div>
 		</ul>
 	</div>
 </div>
@@ -98,29 +120,7 @@
 		留言板
 	</div>
 </div>
-<!-- 取別的網頁傳來的值 -->
-<script type="text/javascript">
-	function show () {
-	 //URL
-	 var url = location.href;
-	 //取得問號之後的值
-	 var temp = url.split("?");
-	 //將值分開
-	 var vars = temp[1].split("&");
-		console.log(vars);
-	 //一一顯示出來
-	 for (var i = 0; i < vars.length; i++) {
-	  	alert(vars[i]);
-		document.getElementById("Category").innerHTML = vars[i];
-	 };
-	}
-
-</script>
- <button onclick="show()">
-  測試網頁傳值按鈕
- </button>
 <!-- Optional JavaScript --><!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 </body>
