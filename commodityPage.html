@@ -56,18 +56,25 @@
 	<div class="col-8">
 		<ul class="list-group">
 			<div class="row">
-		  <li class="list-group-item col-4">標籤</li>
-		  <li class="list-group-item col-4">商品名稱</li>
-		  <li class="list-group-item col-4">商品品級</li>
+		  		<li class="list-group-item col-4">標籤</li>
+		  		<li class="list-group-item col-4">商品名稱</li>
+		  	    <li class="list-group-item col-4">商品品級</li>
+			</div>
+		</ul>
+		<ul class="list-group">
+			<div class="row">
+			  <li class="list-group-item col-4" id="Category"></li>
+			  <li class="list-group-item col-4" id="ProductName"></li>
+			  <li class="list-group-item col-4" id=""></li>
 			</div>
 		</ul>
 		<ul class="list-group">
 			<div class="row">
 				<li class="list-group-item col-3">商品售價</li>
-				<input class="form-control col-3" type="text" placeholder="購買數量">
+				<input class="col-3" type="text" name="amount" placeholder="購買數量">
 				<button class="btn btn-outline-success col-3" type="submit">購買</button>
 				<button class="btn btn-outline-success col-3" type="submit">購物車</button>
-			</div>
+			</div>		
 		</ul>
 	</div>
 </div>
@@ -91,6 +98,27 @@
 		留言板
 	</div>
 </div>
+<!-- 取別的網頁傳來的值 -->
+<script type="text/javascript">
+	function show () {
+	 //URL
+	 var url = location.href;
+	 //取得問號之後的值
+	 var temp = url.split("?");
+	 //將值分開
+	 var vars = temp[1].split("&");
+		console.log(vars);
+	 //一一顯示出來
+	 for (var i = 0; i < vars.length; i++) {
+	  	alert(vars[i]);
+		document.getElementById("Category").innerHTML = vars[i];
+	 };
+	}
+
+</script>
+ <button onclick="show()">
+  測試網頁傳值按鈕
+ </button>
 <!-- Optional JavaScript --><!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
