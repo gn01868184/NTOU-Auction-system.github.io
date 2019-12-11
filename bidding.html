@@ -87,9 +87,9 @@
 			<div class="col-6">
 				<input class="form-control input-lg" type="input" id="Lowest_price" placeholder="輸入底價">
 			</div>
-			<div class="col-6">
+		<!--	<div class="col-6">
 				<input class="form-control input-lg" type="input"  placeholder="輸入競標價" readonly>
-			</div>
+			</div>-->
 		</div>
 		<div class="row">
 			<div class="col-4">
@@ -164,7 +164,7 @@ $(document).ready(function(){
 			if((Lowest_price == "") || (isNaN(Lowest_price) == true ) || (Bidding_unit_price == "") || (isNaN(Bidding_unit_price) == true) || (Bidding_deadline == "") ){
 				//document.getElementById("test").innerHTML = "必須輸入文字";
 				window.alert("請重新輸入！");
-			}
+			}	
 			
 		});
 	});
