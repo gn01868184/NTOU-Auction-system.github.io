@@ -65,7 +65,7 @@
 	<div class="col-8">
 		<div class="row">
 			<div class="col-4">
-				<select class="custom-select">
+				<select class="custom-select" id="Select">
 					<option selected>選擇標籤</option>
 					<option value="3C">3C</option>
 					<option value="homeAppliance">家電</option>
@@ -80,24 +80,24 @@
 				</select>
 			</div>
 			<div class="col-8">
-				<input class="form-control input-lg" type="input" placeholder="輸入商品名稱">
+				<input class="form-control input-lg" type="input" id="ProductName" placeholder="輸入商品名稱">
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-6">
-				<input class="form-control input-lg" type="input" placeholder="輸入底價">
+				<input class="form-control input-lg" type="input" id="Lowest_price" placeholder="輸入底價">
 			</div>
 			<div class="col-6">
-				<input class="form-control input-lg" type="input" placeholder="輸入競標價" readonly>
+				<input class="form-control input-lg" type="input"  placeholder="輸入競標價" readonly>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-4">
-				<input class="form-control input-lg" type="input" placeholder="設定單位競標">
+				<input class="form-control input-lg" type="input" id="Bidding_unit_price" placeholder="設定單位競標">
 			</div>
 			<div class="col-8">
 				<div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-						<input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1" placeholder="設定結標日期"/>
+						<input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1" id="Bidding_deadline" placeholder="設定結標日期"/>
 						<div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
 								<div class="input-group-text"><i class="fa fa-calendar"></i></div>
 						</div>
@@ -106,17 +106,17 @@
 		</div>
 		<div class="row">
 			<div class="col-4">
-				<input class="form-control input-lg" type="input" placeholder="設定商品件數">
+				<input class="form-control input-lg" type="input" id="Amount" placeholder="設定商品件數">
 			</div>
 			<div class="col-8">
-				<input class="form-control input-lg" type="input" placeholder="輸入直購價">
+				<input class="form-control input-lg" type="input" id="Price" placeholder="輸入直購價">
 			</div>
 		</div>
 	</div>
 </div>
 <div class="row">
 	<div class="col-12">
-		<textarea class="form-control" rows="5" placeholder="商品資訊"></textarea>
+		<textarea class="form-control" rows="5" id="Information" placeholder="商品資訊"></textarea>
 	</div>
 </div>
 <div class="row">
@@ -124,7 +124,7 @@
 		<a class="btn btn-outline-success" href="./registered.html">取消</a>
 	</div>
 	<div class="col-6 text-center">
-		<button class="btn btn-outline-success" type="submit">確定</button>
+		<button class="btn btn-outline-success" type="submit" id="success">確定</button>
 	</div>
 </div>
 <!--datetimepicker-->
@@ -132,6 +132,44 @@
 		$(function () {
 				$('#datetimepicker1').datetimepicker();
 		});
+</script>
+<!--check input value-->
+<script>
+/*	
+	document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("ProuductName").addEventListener("blur", chkName);  //事件繫結            
+	});
+
+	function chkName(){
+		var	ProductName = document.getElementById("ProductName").value;
+		if(ProductName == "")
+			document.getElementById("test").innerHTML = "必須輸入文字";
+	}
+*/
+$(document).ready(function(){
+		$("#success").click(function(){
+			var	ProductName = document.getElementById("ProductName").value;
+			var	Amount = document.getElementById("Amount").value
+			var	Price = document.getElementById("Price").value;
+			var	Information = document.getElementById("Information").value;
+			var	Select = document.getElementById("Select").value;
+			console.log(Select);
+			var	Lowest_price = document.getElementById("Lowest_price").value;
+			var	Bidding_unit_price = document.getElementById("Bidding_unit_price").value;
+			var	Bidding_deadline = document.getElementById("Bidding_deadline").value;
+			if((ProductName == "") || (Amount == "") || (isNaN(Amount) == true ) || (Price == "") || (isNaN(Price) == true) || (Information == "") || (Select == "選擇標籤") ){
+				//document.getElementById("test").innerHTML = "必須輸入文字";
+				window.alert("請不要亂輸入！");
+			}
+			if((Lowest_price == "") || (isNaN(Lowest_price) == true ) || (Bidding_unit_price == "") || (isNaN(Bidding_unit_price) == true) || (Bidding_deadline == "") ){
+				//document.getElementById("test").innerHTML = "必須輸入文字";
+				window.alert("請重新輸入！");
+			}
+			
+		});
+	});
+
+
 </script>
 <!-- Optional JavaScript --><!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
