@@ -68,6 +68,33 @@
             alert('xhr.status+"\n"+thrownError');
           }
         });
+        var a = [
+                  {
+                    "Amount": 300,
+                    "AvgEv": null,
+                    "BiddingDeadline": null,
+                    "BiddingPrice": null,
+                    "BiddingTopUserID": null,
+                    "BiddingUnitPrice": null,
+                    "Category": "animal",
+                    "ImageURL": null,
+                    "Information": null,
+                    "LowestPrice": null,
+                    "Price": 10000,
+                    "ProductID": 23,
+                    "ProductName": "duck",
+                    "SellerID": 6,
+                    "TotalEvCount": 50,
+                    "state": true
+                  }
+                ];
+
+                $('#Category').append(a[0].Category)
+                $('#ProductName').append(a[0].ProductName)
+                $('#AvgEv').append(a[0].AvgEv)
+                $('#Price').append(a[0].Price)
+                $('#Amount').append(a[0].Amount)
+                $('#Information').append(a[0].Information)
   });
 </script>
 <div id="123"></div>
@@ -87,7 +114,7 @@
 			<div class="row">
 			  <li class="list-group-item col-4" id="Category"></li>
 			  <li class="list-group-item col-4" id="ProductName"></li>
-			  <li class="list-group-item col-4" id=""></li>
+			  <li class="list-group-item col-4" id="AvgEv"></li>
 			</div>
 		</ul>
 		<ul class="list-group">
@@ -98,6 +125,12 @@
 				<button class="btn btn-outline-success col-3" type="submit">購物車</button>
 			</div>
 		</ul>
+    <ul class="list-group">
+      <div class="row">
+        <li class="list-group-item col-3" id="Price"></li>
+        <li class="list-group-item col-3" id="Amount">剩餘數量：</li>
+      </div>
+    </ul>
 	</div>
 </div>
 <div class="card">
@@ -111,9 +144,10 @@
 	</div>
 </div>
 <div class="card">
-	<div class="card-body">
-		商品資訊
-	</div>
+  <div class="row">
+    <li class="list-group-item col-2">商品資訊</li>
+    <li class="list-group-item col-10" id="Information"></li>
+  </div>
 </div>
 <div class="card">
 	<div class="card-body">
