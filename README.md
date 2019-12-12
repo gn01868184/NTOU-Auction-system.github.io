@@ -13,7 +13,7 @@
 >> - [ ] 功能
 > - [ ] [個人資訊](https://gn01868184.github.io/NTOU-Auction-system.github.io/personal.html) 
 >> - [x] 頁面
->> - [ ] 美化
+>> - [X] 美化
 >> - [ ] 功能
 > - [ ] [競標上架](https://gn01868184.github.io/NTOU-Auction-system.github.io/bidding.html) 
 >> - [x] 頁面
@@ -51,6 +51,7 @@
 ## 分工
 * [chiafishh](https://github.com/chiafishh)
   * **美化**
+  * **修改頁面**
   * **功能**
     * 登入
     * 註冊
