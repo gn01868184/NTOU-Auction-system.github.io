@@ -93,7 +93,13 @@
 									$('<div/>')
 									.addClass('col-8 border p-2')
 									.append(
-										"商品名稱：" + response[i].ProductName + " | " + "商品資訊：" +　response[i].Information
+										$('<a/>')
+										.attr('href', './commodityPage.html?ProductID=' + response[i].ProductID)
+										.html("商品名稱：" + response[i].ProductName )
+									)
+									.append(
+										$('<p/>')
+										.html("商品資訊：" +　response[i].Information)
 									)
 								)
 								.append(
@@ -112,15 +118,7 @@
 
 <div id="product">
 </div>
-<script type="text/javascript">
-     $(document).ready(function(){
-       var response = [{name:"水壺",information:"使用兩三次，優質水壺",price:"988"},{name:"水",information:"全新",price:"150"}];
-       var responseLength = response.length;
-       for(var i=0;i<responseLength;i++){
 
-        };
-     });
-  </script>
 <div class="tab-pane fade" id="bid" role="tabpanel" aria-labelledby="bid-tab">
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
