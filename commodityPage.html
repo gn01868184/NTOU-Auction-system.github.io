@@ -53,13 +53,18 @@
 
   <script>
   $(document).ready(function() {
+    //取別的網頁傳來的值
+    //URL
+    var url = location.href;
+    //取得問號之後的值
+    var temp = url.split("?");
+    //取ProductID
+    var vars = temp[1].split("=");
+
         $.ajax({
-          url: 'https://ntou-store-system.herokuapp.com/product_information/23',
+          url: 'https://ntou-store-system.herokuapp.com/product_information/' + vars[1],
           dataType: 'json',
           type: "GET",
-          data: {
-              message: 'Hello World'
-          },
           error:function(xhr, ajaxOptions, thrownError){
             alert(xhr.status+"\n"+thrownError);
           },
