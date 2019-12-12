@@ -57,22 +57,58 @@
 
 <!-- 取別的網頁傳來的值 -->
 	<script type="text/javascript">
-   function show () {
-    //URL
-    var url = location.href;
-    //取得問號之後的值
-    var temp = url.split("?");
-    //將值分開
-    var vars = temp[1].split("&");
-    //一一顯示出來
-    for (var i = 0; i < vars.length; i++) {
-     alert(vars[i]);
-    };
-   }
+		$(document).ready(function() {
+	    //取別的網頁傳來的值
+	    //URL
+	    var url = location.href;
+	    //取得問號之後的值
+	    var temp = url.split("?");
+	    //取Category
+	    var vars = temp[1].split("=");
+
+        $.ajax({
+          url: 'https://ntou-store-system.herokuapp.com/product_Category/' + vars[1],
+          dataType: 'json',
+          type: "GET",
+          error:function(xhr, ajaxOptions, thrownError){
+            alert(xhr.status+"\n"+thrownError);
+          },
+          success: function(response) {
+						var responseLength = response.length;
+						for(var i=0;i<responseLength;i++){
+						$('#product').append(
+							$('<div/>')
+								.addClass('row')
+								.append(
+									$('<div/>')
+									.addClass('col-2  border p-2')
+									.append(
+										$('<img/>')
+										.addClass('img')
+										.attr('src', response[i].ImageURL)
+										.attr('style','height: 120px')
+									)
+								)
+								.append(
+									$('<div/>')
+									.addClass('col-8 border p-2')
+									.append(
+										"商品名稱：" + response[i].ProductName + " | " + "商品資訊：" +　response[i].Information
+									)
+								)
+								.append(
+									$('<div/>')
+									.addClass('col-2 border p-2')
+									.append(
+										"售價：" +　response[i].Price
+									)
+								)
+						 )
+          }
+				}
+        });
+  	});
   </script>
-<button onclick="show()">
- 測試網頁傳值按鈕
-</button>
 
 <div id="product">
 </div>
@@ -81,34 +117,7 @@
        var response = [{name:"水壺",information:"使用兩三次，優質水壺",price:"988"},{name:"水",information:"全新",price:"150"}];
        var responseLength = response.length;
        for(var i=0;i<responseLength;i++){
-       $('#product').append(
-         $('<div/>')
-           .addClass('row')
-           .append(
-             $('<div/>')
-             .addClass('col-2  border p-2')
-             .append(
-               $('<img/>')
-               .addClass('img')
-               .attr('src','https://www.bigw.com.au/medias/sys_master/images/images/hcd/h70/11889354539038.jpg')
-               .attr('style','height: 120px')
-             )
-           )
-           .append(
-             $('<div/>')
-             .addClass('col-8 border p-2')
-             .append(
-               response[i].name + " | " + response[i].information
-             )
-           )
-           .append(
-             $('<div/>')
-             .addClass('col-2 border p-2')
-             .append(
-               response[i].price
-             )
-           )
-        )
+
         };
      });
   </script>
