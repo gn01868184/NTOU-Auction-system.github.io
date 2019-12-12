@@ -82,7 +82,7 @@
                     "BiddingTopUserID": null,
                     "BiddingUnitPrice": null,
                     "Category": "animal",
-                    "ImageURL": null,
+                    "ImageURL": "https://i2.kknews.cc/SIG=qnkhq6/ctp-vzntr/EYr9PJp3tQDBvf.jpg",
                     "Information": null,
                     "LowestPrice": null,
                     "Price": 10000,
@@ -93,7 +93,7 @@
                     "state": true
                   }
                 ];
-
+                $('#ImageURL').attr('src', a[0].ImageURL)
                 $('#Category').append(a[0].Category)
                 $('#ProductName').append(a[0].ProductName)
                 $('#AvgEv').append(a[0].AvgEv)
@@ -105,7 +105,7 @@
 <div id="123"></div>
 <div class="row text-center">
 	<div class="col-4">
-		<img src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" class="img" style="height: 200px;" alt="...">
+		<img src="https://icon-library.net/images/img-icon/img-icon-14.jpg" class="img" style="height: 200px;" id="ImageURL">
 	</div>
 	<div class="col-8">
 		<ul class="list-group">
@@ -141,7 +141,7 @@
 <div class="card">
 	<div class="row">
 		<div class="col-2">
-			<img src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" class="img" style="height: 100px;" alt="">
+			<img src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" class="img" style="height: 100px;" >
 		</div>
 		<div class="card-body col-10">
 			<h5 class="card-title">個人資訊</h5>
