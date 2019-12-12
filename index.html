@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
   <!-- Bootstrap 4 Icons -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  <!-- jQuery -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
   <title>海大拍賣系統</title>
 </head>
 
@@ -73,6 +75,37 @@
           <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">系統公告</a>
         </div>
       </nav>
+
+    <script>
+      $(document).ready(function() {
+            $.ajax({
+              url: 'https://ntou-store-system.herokuapp.com/index',
+              dataType: 'json',
+              type: "GET",
+              error:function(xhr, ajaxOptions, thrownError){
+                alert(xhr.status+"\n"+thrownError);
+              },
+              success: function(response) {
+                var responseLength = response[0].length;
+                for(var i=0;i<responseLength;i++){
+                  $('#ImageURL0' + i).attr('src', response[0][i].ImageURL)
+                  $('#ProductName0' + i).append(response[0][i].ProductName)
+                  $('#ProductName0' + i).attr('href', './commodityPage.html?ProductID=' + response[0][i].ProductID)
+                  $('#Price0' + i).append(response[0][i].Price)
+                }
+
+              var responseLength1 = response[1].length;
+              for(var i=0;i<responseLength1;i++){
+                $('#ImageURL1' + i).attr('src', response[1][i].ImageURL)
+                $('#ProductName1' + i).append(response[1][i].ProductName)
+                $('#ProductName1' + i).attr('href', './commodityPage.html?ProductID=' + response[1][i].ProductID)
+                $('#Price1' + i).append(response[1][i].Price)
+              }
+            }
+            });
+      });
+    </script>
+
       <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
           <div class="container">
@@ -82,37 +115,37 @@
               </div>
               <div class="col-10 card-deck">
                 <div class="card">
-                  <img class="card-img-top" src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg">
+                  <img class="card-img-top" src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" id='ImageURL00'>
                   <div class="card-body">
-                    <a class="card-title" href="./commodityPage.html?ProductID=23">皮卡丘</a>
-                    <p class="card-text">售價：20元</p>
+                    <a class="card-title" href="#" id='ProductName00'></a>
+                    <p class="card-text" id='Price00'>售價：</p>
                   </div>
                 </div>
                 <div class="card">
-                  <img class="card-img-top" src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" alt="Card image cap">
+                  <img class="card-img-top" src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" id='ImageURL01'>
                   <div class="card-body">
-                    <h5 class="card-title">皮卡丘</h5>
-                    <p class="card-text">售價：20元</p>
+                    <a class="card-title" href="#" id='ProductName01'></a>
+                    <p class="card-text" id='Price01'>售價：</p>
                   </div>
                 </div>
                 <div class="card">
-                  <img class="card-img-top" src="https://i2.kknews.cc/SIG=2njjmpf/q010008702p9262r355.jpg" alt="Card image cap">
+                  <img class="card-img-top" src="https://i2.kknews.cc/SIG=2njjmpf/q010008702p9262r355.jpg" id='ImageURL02'>
                   <div class="card-body">
-                    <h5 class="card-title">皮卡</h5>
-                    <p class="card-text">售價：100元</p>
+                    <a class="card-title" href="#" id='ProductName02'></a>
+                    <p class="card-text" id='Price02'>售價：</p>
                   </div>
                 </div>
                 <div class="card">
-                  <img class="card-img-top" src="https://i2.kknews.cc/SIG=2njjmpf/q010008702p9262r355.jpg" alt="Card image cap">
+                  <img class="card-img-top" src="https://i2.kknews.cc/SIG=2njjmpf/q010008702p9262r355.jpg" id='ImageURL03'>
                   <div class="card-body">
-                    <h5 class="card-title">皮卡</h5>
-                    <p class="card-text">售價：100元</p>
+                    <a class="card-title" href="#" id='ProductName03'></a>
+                    <p class="card-text" id='Price03'>售價：</p>
                   </div>
                 </div><div class="card">
-                  <img class="card-img-top" src="https://i2.kknews.cc/SIG=2njjmpf/q010008702p9262r355.jpg" alt="Card image cap">
+                  <img class="card-img-top" src="https://i2.kknews.cc/SIG=2njjmpf/q010008702p9262r355.jpg" id='ImageURL04'>
                   <div class="card-body">
-                    <h5 class="card-title">皮卡</h5>
-                    <p class="card-text">售價：100元</p>
+                    <a class="card-title" href="#" id='ProductName04'></a>
+                    <p class="card-text" id='Price04'>售價：</p>
                   </div>
                 </div>
               </div>
@@ -132,37 +165,37 @@
               </div>
               <div class="col-10 card-deck ">
                 <div class="card">
-                  <img class="card-img-top" src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" alt="Card image cap">
+                  <img class="card-img-top" src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" id='ImageURL10'>
                   <div class="card-body">
-                    <h5 class="card-title">皮卡丘</h5>
-                    <p class="card-text">售價：20元</p>
+                    <a class="card-title" href="#" id='ProductName10'></a>
+                    <p class="card-text" id='Price10'>售價：</p>
                   </div>
                 </div>
                 <div class="card">
-                  <img class="card-img-top" src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" alt="Card image cap">
+                  <img class="card-img-top" src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" id='ImageURL11'>
                   <div class="card-body">
-                    <h5 class="card-title">皮卡丘</h5>
-                    <p class="card-text">售價：20元</p>
+                    <a class="card-title" href="#" id='ProductName11'></a>
+                    <p class="card-text" id='Price11'>售價：</p>
                   </div>
                 </div>
                 <div class="card">
-                  <img class="card-img-top" src="https://i2.kknews.cc/SIG=2njjmpf/q010008702p9262r355.jpg" alt="Card image cap">
+                  <img class="card-img-top" src="https://i2.kknews.cc/SIG=2njjmpf/q010008702p9262r355.jpg" id='ImageURL12'>
                   <div class="card-body">
-                    <h5 class="card-title">皮卡</h5>
-                    <p class="card-text">售價：100元</p>
+                    <a class="card-title" href="#" id='ProductName12'></a>
+                    <p class="card-text" id='Price12'>售價：</p>
                   </div>
                 </div>
                 <div class="card">
-                  <img class="card-img-top" src="https://i2.kknews.cc/SIG=2njjmpf/q010008702p9262r355.jpg" alt="Card image cap">
+                  <img class="card-img-top" src="https://i2.kknews.cc/SIG=2njjmpf/q010008702p9262r355.jpg" id='ImageURL13'>
                   <div class="card-body">
-                    <h5 class="card-title">皮卡</h5>
-                    <p class="card-text">售價：100元</p>
+                    <a class="card-title" href="#" id='ProductName13'></a>
+                    <p class="card-text" id='Price13'>售價：</p>
                   </div>
                 </div><div class="card">
-                  <img class="card-img-top" src="https://i2.kknews.cc/SIG=2njjmpf/q010008702p9262r355.jpg" alt="Card image cap">
+                  <img class="card-img-top" src="https://i2.kknews.cc/SIG=2njjmpf/q010008702p9262r355.jpg" id='ImageURL14'>
                   <div class="card-body">
-                    <h5 class="card-title">皮卡</h5>
-                    <p class="card-text">售價：100元</p>
+                    <a class="card-title" href="#" id='ProductName14'></a>
+                    <p class="card-text" id='Price14'>售價：</p>
                   </div>
                 </div>
               </div>
@@ -186,7 +219,6 @@
   </div>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 </body>
