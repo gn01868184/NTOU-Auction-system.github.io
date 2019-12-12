@@ -54,12 +54,14 @@
 	    </div>
 	</nav>
 
-<form action="./commodityPage.html">
+<form action="https://ntou-store-system.herokuapp.com/personalPage/onSale/sale" method="POST">
 <div class="row form-group">
 	<div class="col-4">
-		<img src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" class="img" style="height: 100px;" alt="...">
+		<img src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" class="img" style="height: 100px;">
+    <input name="SellerID" value="6" type="hidden"></input>
+    <input name="Bidding" value="0" type="hidden"></input>
 		<div class="custom-file">
-			<input type="file" class="custom-file-input" id="File" accept="image/*">
+			<input type="file" class="custom-file-input" id="File" accept="image/*" name="ImageURL" >
 			<!-- name="File" -->
 			<label class="custom-file-label" for="File">上傳圖片</label>
 		</div>
@@ -67,8 +69,8 @@
 	<div class="col-8">
 		<div class="row-2">
 			<div class="col-6">
-				<select class="custom-select" id="Select" name="select">
-					<option selected>選擇標籤</option>
+				<select class="custom-select" id="Category" name="Category">
+					<option value="" selected>選擇標籤</option>
 					<option value="3C">3C</option>
 					<option value="homeAppliance">家電</option>
 					<option value="necessities">日用</option>
@@ -83,53 +85,33 @@
 
 			</div>
 			<div class="col-6">
-				<input class="form-control input-lg" type="input" id="ProductName" name="productName" placeholder="輸入商品名稱">
+				<input class="form-control input-lg" type="input" id="ProductName" name="ProductName" placeholder="輸入商品名稱">
 			</div>
 		</div>
-		<!--<div class="row">
-			<div class="col-6">
-				<input class="form-control input-lg" type="input" placeholder="輸入底價" readonly>
-			</div>
-			<div class="col-6">
-				<input class="form-control input-lg" type="input" placeholder="輸入競標價" readonly>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-4">
-				<input class="form-control input-lg" type="input" placeholder="設定單位競標" readonly>
-			</div>
-			<div class="col-8">
-				<div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-						<input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1" placeholder="設定結標日期"/ readonly>
-						<div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
-								<div class="input-group-text"><i class="fa fa-calendar"></i></div>
-						</div>
-				</div>
-			</div>
-		</div>-->
 		<div class="row-2">
 			<div class="col-6">
-				<input class="form-control input-lg" type="input" id="Amount" name="amount" placeholder="設定商品件數">
+				<input class="form-control input-lg" type="input" id="Amount" name="Amount" placeholder="設定商品件數">
 			</div>
 			<div class="col-6">
-				<input class="form-control input-lg" type="input" id="Price" name="price" placeholder="輸入直購價">
+				<input class="form-control input-lg" type="input" id="Price" name="Price" placeholder="輸入直購價">
 			</div>
 		</div>
 	</div>
 </div>
 <div class="row">
 	<div class="col-12">
-		<textarea class="form-control" rows="5" id="Information" name="information"placeholder="商品資訊"></textarea>
+		<textarea class="form-control" rows="5" id="Information" name="Information"placeholder="商品資訊"></textarea>
 	</div>
 </div>
 <div class="row">
 	<div class="col-6 text-center">
-		<a class="btn btn-outline-success" href="./registered.html">取消</a>
+		<a class="btn btn-outline-success" href="./personal.html">取消</a>
 	</div>
 	<div class="col-6 text-center">
 		<button class="btn btn-outline-success" type="submit" id="success">確定</button>
 	</div>
 </div>
+
 </form>
 <!--datetimepicker-->
 <script type="text/javascript">
@@ -146,7 +128,7 @@
 			var	Amount = document.getElementById("Amount").value
 			var	Price = document.getElementById("Price").value;
 			var	Information = document.getElementById("Information").value;
-			var	Select = document.getElementById("Select").value;
+			var	Select = document.getElementById("Category").value;
 			console.log(Select);
 			if((ProductName == "") || (Amount == "") || (Price == "") || (Information == "") || (Select == "選擇標籤") ){
 				//document.getElementById("test").innerHTML = "必須輸入文字";
@@ -155,7 +137,6 @@
 			else if((isNaN(Amount) == true ) || (isNaN(Price) == true) ){
 				window.alert("請不要亂輸入！");
 			}
-			
 		});
 	});
 
