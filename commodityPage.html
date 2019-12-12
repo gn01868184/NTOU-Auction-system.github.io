@@ -78,7 +78,6 @@
             $('#Information').append(response[0].Information)
           }
         });
-
   });
 </script>
 <div id="123"></div>
@@ -104,15 +103,14 @@
 		<ul class="list-group">
 			<div class="row">
 				<li class="list-group-item col-3">商品售價</li>
-      <form action="https://ntou-store-system.herokuapp.com/CheckOutPage" method="POST">
+        <form action="./buy.html">
         <input name="member_id" value="4" type="hidden"></input>
         <input name="product" value="34" type="hidden"></input>
         <input name="price" value="100" type="hidden"></input>
 				<input class="col-3" type="text" name="Amount" placeholder="購買數量">
 				<button class="btn btn-outline-success col-3" type="submit">購買</button>
-        </form>
 				<button class="btn btn-outline-success col-3" type="submit">購物車</button>
-
+      </form>
 			</div>
 		</ul>
     <ul class="list-group">
@@ -144,6 +142,10 @@
 		留言板
 	</div>
 </div>
+
+
+
+
 <!-- Optional JavaScript --><!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
