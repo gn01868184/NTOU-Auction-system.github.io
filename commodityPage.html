@@ -69,37 +69,16 @@
             alert(xhr.status+"\n"+thrownError);
           },
           success: function(response) {
-            $('#123').append(123)
-            alert('xhr.status+"\n"+thrownError');
+            $('#ImageURL').attr('src', response[0].ImageURL)
+            $('#Category').append(response[0].Category)
+            $('#ProductName').append(response[0].ProductName)
+            $('#AvgEv').append(response[0].AvgEv)
+            $('#Price').append(response[0].Price)
+            $('#Amount').append(response[0].Amount)
+            $('#Information').append(response[0].Information)
           }
         });
-        var a = [
-                  {
-                    "Amount": 300,
-                    "AvgEv": null,
-                    "BiddingDeadline": null,
-                    "BiddingPrice": null,
-                    "BiddingTopUserID": null,
-                    "BiddingUnitPrice": null,
-                    "Category": "animal",
-                    "ImageURL": "https://i2.kknews.cc/SIG=qnkhq6/ctp-vzntr/EYr9PJp3tQDBvf.jpg",
-                    "Information": null,
-                    "LowestPrice": null,
-                    "Price": 10000,
-                    "ProductID": 23,
-                    "ProductName": "duck",
-                    "SellerID": 6,
-                    "TotalEvCount": 50,
-                    "state": true
-                  }
-                ];
-                $('#ImageURL').attr('src', a[0].ImageURL)
-                $('#Category').append(a[0].Category)
-                $('#ProductName').append(a[0].ProductName)
-                $('#AvgEv').append(a[0].AvgEv)
-                $('#Price').append(a[0].Price)
-                $('#Amount').append(a[0].Amount)
-                $('#Information').append(a[0].Information)
+
   });
 </script>
 <div id="123"></div>
