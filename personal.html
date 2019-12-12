@@ -59,18 +59,41 @@
             <div class="col-3 mb-3">
                 <div class="row no-gutters " align="center">
                     <span class="col-12 border rounded" align="center">
-                        <img src="https://upload.cc/i1/2019/12/11/4FcIMK.png" class="card-img-top col-10" alt="" style="max-height: 300px;width: auto">
+                        <img src="https://icon-library.net/images/img-icon/img-icon-14.jpg" class="card-img-top col-10" style="max-height: 300px;width: auto" id="ImageURL">
                     </span>
                 </div>
             </div>
 
+            <script>
+              $(document).ready(function() {
+                    $.ajax({
+                      url: 'https://ntou-store-system.herokuapp.com/personalPage',
+                      dataType: 'json',
+                      type: "POST",
+                      data: "ID=6",
+                      error:function(xhr, ajaxOptions, thrownError){
+                        alert(xhr.status+"\n"+thrownError);
+                      },
+                      success: function(response) {
+                        $('#ImageURL').attr('src', response.ImageURL)
+                        $('#Name').append(response.Name)
+                        $('#NickName').append(response.NickName)
+                        $('#Account').append(response.Account)
+                        $('#PhoneNumber').append(response.PhoneNumber)
+                        $('#Email').append(response.Email)
+
+                    }
+                  });
+              });
+            </script>
+
             <div class="card-body col-8 ml-3 align-self-center">
                 <h4>
-                    <div class="font-weight-bold " style="display:inline ;LINE-HEIGHT:40px">姓名：</div>王陽明<br>
-                    <div class="font-weight-bold" style="display:inline ;LINE-HEIGHT:40px">小名：</div>Sunny<br>
-                    <div class="font-weight-bold" style="display:inline ;LINE-HEIGHT:40px">帳號：</div>PerfectSunny<br>
-                    <div class="font-weight-bold" style="display:inline ;LINE-HEIGHT:40px">手機：</div>0988888888<br>
-                    <div class="font-weight-bold" style="display:inline ;LINE-HEIGHT:40px">信箱：</div>good@gmail.com<br>
+                    <div class="font-weight-bold " style="display:inline ;LINE-HEIGHT:40px" id="Name">姓名：</div><br>
+                    <div class="font-weight-bold" style="display:inline ;LINE-HEIGHT:40px" id="NickName">小名：</div><br>
+                    <div class="font-weight-bold" style="display:inline ;LINE-HEIGHT:40px" id="Account">帳號：</div><br>
+                    <div class="font-weight-bold" style="display:inline ;LINE-HEIGHT:40px" id="PhoneNumber">手機：</div><br>
+                    <div class="font-weight-bold" style="display:inline ;LINE-HEIGHT:40px" id="Email">信箱：</div><br>
                 </h4>
             </div>
         </div>
