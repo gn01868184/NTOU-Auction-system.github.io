@@ -54,19 +54,21 @@
 	    </div>
 	</nav>
 
-<form action="./biddingPage.html">
+<form action="https://ntou-store-system.herokuapp.com/personalPage/onSale/sale" method="POST">
 <div class="row form-group">
+	<input name="SellerID" value="6" type="hidden"></input>
+	<input name="Bidding" value="1" type="hidden"></input>
 	<div class="col-4">
 		<img src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" class="img" style="height: 100px;" alt="...">
 		<div class="custom-file">
-			<input type="file" class="custom-file-input">
+			<input type="file" class="custom-file-input" accept="image/*" name="ImageURL">
 			<label class="custom-file-label">上傳圖片</label>
 		</div>
 	</div>
 	<div class="col-8">
 		<div class="row">
 			<div class="col-4">
-				<select class="custom-select" id="Select" name="select">
+				<select class="custom-select" id="Category" name="Category">
 					<option selected>選擇標籤</option>
 					<option value="3C">3C</option>
 					<option value="homeAppliance">家電</option>
@@ -81,24 +83,24 @@
 				</select>
 			</div>
 			<div class="col-8">
-				<input class="form-control input-lg" type="input" id="ProductName" name="productName" placeholder="輸入商品名稱">
+				<input class="form-control input-lg" type="input" id="ProductName" name="ProductName" placeholder="輸入商品名稱">
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-4">
-				<input class="form-control input-lg" type="input" id="Lowest_price" name="lowest_price" placeholder="輸入底價">
+				<input class="form-control input-lg" type="input" id="LowestPrice" name="LowestPrice" placeholder="輸入底價">
 			</div>
 			<div class="col-8">
-				<input class="form-control input-lg" type="input" id="Bidding_price" name="bidding_price" placeholder="輸入競標價">
+				<input class="form-control input-lg" type="input" id="BiddingPrice" name="BiddingPrice" placeholder="輸入競標價">
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-4">
-				<input class="form-control input-lg" type="input" id="Bidding_unit_price" name="bidding_unit_price" placeholder="設定單位競標">
+				<input class="form-control input-lg" type="input" id="BiddingUnitPrice" name="BiddingUnitPrice" placeholder="設定單位競標">
 			</div>
 			<div class="col-8">
 				<div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-						<input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1" id="Bidding_deadline" name="bidding_deadline" placeholder="設定結標日期"/>
+						<input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1" id="BiddingDeadline" name="BiddingDeadline" placeholder="設定結標日期"/>
 						<div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
 								<div class="input-group-text"><i class="fa fa-calendar"></i></div>
 						</div>
@@ -107,17 +109,17 @@
 		</div>
 		<div class="row">
 			<div class="col-4">
-				<input class="form-control input-lg" type="input" id="Amount" name="amount" placeholder="設定商品件數">
+				<input class="form-control input-lg" type="input" id="Amount" name="Amount" placeholder="設定商品件數">
 			</div>
 			<div class="col-8">
-				<input class="form-control input-lg" type="input" id="Price" name="price" placeholder="輸入直購價">
+				<input class="form-control input-lg" type="input" id="Price" name="Price" placeholder="輸入直購價">
 			</div>
 		</div>
 	</div>
 </div>
 <div class="row">
 	<div class="col-12">
-		<textarea class="form-control" rows="5" id="Information" name="information" placeholder="商品資訊"></textarea>
+		<textarea class="form-control" rows="5" id="Information" name="Information" placeholder="商品資訊"></textarea>
 	</div>
 </div>
 <div class="row">
