@@ -61,8 +61,8 @@
 	<div class="col-4">
 		<img src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" class="img" style="height: 100px;" alt="...">
 		<div class="custom-file">
-			<input type="file" class="custom-file-input" accept="image/*" name="ImageURL">
-			<label class="custom-file-label">上傳圖片</label>
+			<input type="file" class="custom-file-input" accept="image/*" id="ImageURL" name="ImageURL">
+			<label class="custom-file-label" for="ImageURL">上傳圖片</label>
 		</div>
 	</div>
 	<div class="col-8">
@@ -130,11 +130,18 @@
 		<button class="btn btn-outline-success" type="submit" id="success">確定</button>
 	</div>
 </div>
-</form>>
+</form>
 <!--datetimepicker-->
 <script type="text/javascript">
 		$(function () {
 				$('#datetimepicker1').datetimepicker();
+		});
+</script>
+<!--Add the following code if you want the name of the file appear on select-->
+<script>
+		$(".custom-file-input").on("change", function() {
+		  var fileName = $(this).val().split("\\").pop();
+		  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
 		});
 </script>
 <!--check input value-->
@@ -173,8 +180,6 @@ $(document).ready(function(){
 			
 		});
 	});
-
-
 </script>
 <!-- Optional JavaScript --><!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
