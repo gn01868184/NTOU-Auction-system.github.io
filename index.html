@@ -47,6 +47,7 @@
               <!--<span class="fas fa-sign-in-alt"></span>&nbsp;登入-->
               <span class="fas fa-sign-out-alt"></span>&nbsp;登出
             </a>
+            <button onclick="eraseCookie("ID")">Click me</button>
           </li>
         </ul>
       </form>
@@ -76,6 +77,10 @@
         </div>
       </nav>
     <script>
+
+    function eraseCookie(ID) {
+      createCookie(ID, "", -1);
+    }
       $(document).ready(function() {
             $.ajax({
               url: 'https://ntou-store-system.herokuapp.com/index',
