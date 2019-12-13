@@ -63,11 +63,9 @@
 	    var url = location.href;
 	    //取得問號之後的值
 	    var temp = url.split("?");
-	    //取Category
-	    var vars = temp[1].split("=");
-
+			
         $.ajax({
-          url: 'https://ntou-store-system.herokuapp.com/product_Category/' + vars[1],
+          url: 'https://ntou-store-system.herokuapp.com/product_Category?' + temp[1],
           dataType: 'json',
           type: "GET",
           error:function(xhr, ajaxOptions, thrownError){
