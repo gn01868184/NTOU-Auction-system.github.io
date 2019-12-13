@@ -1,15 +1,16 @@
 <!doctype html>
 <html lang="en">
 <head>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-<!-- Bootstrap 4 Icons -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-<title>海大拍賣系統</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Bootstrap 4 Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <title>海大拍賣系統</title>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-light  bg-info">
         <a class="navbar-brand  text-light" href="./index.html"><span class="fas fa-tree"></span>&nbsp;海大拍賣</a>
@@ -48,46 +49,49 @@
         </div>
     </nav>
     <span class="border">
-    <div class="col-12 mx-auto" align="center" style="margin-top: 2% ">
-        <h2><p class="font-weight-bold text-info">註冊</p></h2>
+        <div class="col-12 mx-auto" align="center" style="margin-top: 2% ">
+            <h2>
+                <p class="font-weight-bold text-info">註冊</p>
+            </h2>
         </div>
-<div class="col-5 container">
-	<form class="form-group row" action="./signUp">
-			<label class="col-2 col-form-label mb-2">手機</label>
-			<div class="col-10 mb-2">
-				<input type="text" class="form-control" name="Phone" placeholder="手機">
-			</div>
-			<label class="col-2 col-form-label mb-2">用戶姓名</label>
-			<div class="col-10 mb-2">
-				<input type="text" class="form-control" name="Name" placeholder="用戶姓名">
-			</div>
-			<label class="col-2 col-form-label mb-2">暱稱</label>
-			<div class="col-10 mb-2">
-				<input type="text" class="form-control" name="Id" placeholder="暱稱">
-			</div>
-			<label class="col-2 col-form-label mb-2">信箱</label>
-			<div class="col-6 mb-2">
-				<input type="text" class="form-control" name="Email" placeholder="email">
-			</div>
-			<label class="col-4 col-form-label mb-2">@mail.ntou.eud.tw</label>
-			<label class="col-2 col-form-label mb-2">帳號</label>
-			<div class="col-10">
-				<input type="password" class="form-control" name="Account" placeholder="帳號">
-			</div>
-			<label class="col-2 col-form-label mb-2">密碼</label>
-			<div class="col-10 mb-2">
-				<input type="password" class="form-control" name="Password" placeholder="密碼">
-			</div>
-			<label class="col-2 col-form-label mb-4">人機驗證</label>
-			<div class="col-10 mb-4">
-				<input type="button" class="form-control">
-			</div>
-			<button class="btn btn-outline-success col-2 container" type="submit">提&nbsp;&nbsp;交</button>
-	</form>
-</div>
-<!-- Optional JavaScript --><!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-</body>
-</html>
+        <div class="col-5 container">
+            <form class="form-group row" action="https://ntou-store-system.herokuapp.com/signUp" method="GET">
+                <label class="col-2 col-form-label mb-2">手機</label>
+                <div class="col-10 mb-2">
+                    <input type="text" class="form-control" name="Phone" placeholder="手機">
+                </div>
+                <label class="col-2 col-form-label mb-2">用戶姓名</label>
+                <div class="col-10 mb-2">
+                    <input type="text" class="form-control" name="Name" placeholder="用戶姓名">
+                </div>
+                <label class="col-2 col-form-label mb-2">暱稱</label>
+                <div class="col-10 mb-2">
+                    <input type="text" class="form-control" name="Nickname" placeholder="暱稱">
+                </div>
+                <label class="col-2 col-form-label mb-2">信箱</label>
+                <div class="col-6 mb-2">
+                    <input type="text" class="form-control" name="Email" placeholder="email">
+                </div>
+                <label class="col-4 col-form-label mb-2">@mail.ntou.eud.tw</label>
+                <label class="col-2 col-form-label mb-2">帳號</label>
+                <div class="col-10">
+                    <input type="password" class="form-control" name="Account" placeholder="帳號">
+                </div>
+                <label class="col-2 col-form-label mb-2">密碼</label>
+                <div class="col-10 mb-2">
+                    <input type="password" class="form-control" name="Password" placeholder="密碼">
+                </div>
+                <label class="col-2 col-form-label mb-4">人機驗證</label>
+                <div class="col-10 mb-4">
+                    <input type="button" class="form-control">
+                </div>
+                <button class="btn btn-outline-success col-2 container" type="submit">提&nbsp;&nbsp;交</button>
+            </form>
+        </div>
+    </span>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</body></html>
