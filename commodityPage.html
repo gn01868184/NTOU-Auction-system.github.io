@@ -58,11 +58,9 @@
     var url = location.href;
     //取得問號之後的值
     var temp = url.split("?");
-    //取ProductID
-    var vars = temp[1].split("=");
 
         $.ajax({
-          url: 'https://ntou-store-system.herokuapp.com/product_information/' + vars[1],
+          url: 'https://ntou-store-system.herokuapp.com/product_information?' + temp[1],
           dataType: 'json',
           type: "GET",
           error:function(xhr, ajaxOptions, thrownError){
