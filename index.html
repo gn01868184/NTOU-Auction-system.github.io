@@ -75,13 +75,9 @@
           <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">系統公告</a>
         </div>
       </nav>
-<button onclick="alertCookie()">Show cookies</button>
     <script>
     document.cookie = "name=oeschger";
-      document.cookie = "favorite_food=tripe";
-      function alertCookie() {
-        alert(document.cookie);
-      }
+    alert(document.cookie);
       $(document).ready(function() {
             $.ajax({
               url: 'https://ntou-store-system.herokuapp.com/index',
