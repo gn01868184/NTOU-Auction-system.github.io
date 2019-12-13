@@ -47,7 +47,7 @@
               <!--<span class="fas fa-sign-in-alt"></span>&nbsp;登入-->
               <span class="fas fa-sign-out-alt"></span>&nbsp;登出
             </a>
-            <button onclick="eraseCookie(`ID`)">Click me</button>
+            <button onclick="eraseCookie()">Click me</button>
           </li>
         </ul>
       </form>
@@ -78,9 +78,8 @@
       </nav>
     <script>
 
-    function eraseCookie(ID) {
-      document.cookie = "ID=4" + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
-      alert(document.cookie);
+    function eraseCookie() {
+      document.cookie = document.cookie + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
     }
       $(document).ready(function() {
             $.ajax({
