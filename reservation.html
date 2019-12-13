@@ -54,123 +54,138 @@
 </div>
 <div id='reservation'>
 </div>
-<script type="text/javascript">
+<script>
                  $(document).ready(function(){
-                   var response = [{URL:"http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg",buy:"王曉明",name:"水",time:"2020年10月1日",location:"海大"},{URL:"https://www.bigw.com.au/medias/sys_master/images/images/hcd/h70/11889354539038.jpg",buy:"陳咪咪",name:"嬰兒",time:"2021年1月1日",location:"八斗子"}];
-                   var responseLength = response.length;
-                   for(var i=0;i<responseLength;i++){
-                   $('#reservation').append(
-                     $('<div/>')
-                       .addClass('card')
-                       .append(
-                         $('<div/>')
-                         .addClass('row')
-                         .append(
-                           $('<div/>')
-                           .addClass('col-3 text-center')
-                           .append(
-                           $('<img/>')
-                           .addClass('img')
-                           .attr('src',response[i].URL)
-                           .attr('style','height: 100px')
-                           )
-                         )
-                       .append(
-                         $('<div/>')
-                         .addClass('row col-9')
-                         .append(
-                           $('<div/>')
-                           .addClass('col-10 list-group-item')
-                           .append("<h5>" + response[i].buy + "於某年某月購買了您的" + response[i].name + "商品</h5>" +　"<h5>於" + response[i].time + "在" + response[i].location + "面交</h5>")
-                         )
-                         .append(
-                           $('<div/>')
-                           .addClass('col-2')
-                           .append(
-                             $('<div/>')
-                             .addClass('row')
-                             .append(
-                               $('<button/>')
-                               .addClass('btn btn-lg')
-                               .append(
-                                 $('<span/>')
-                                 .addClass('fas fa-comment-alt')
-                               )
-                             )
-                           )
-                           .append(
-                             $('<div/>')
-                             .addClass('row')
-                             .append(
-                               $('<button/>')
-                               .addClass('btn btn-lg')
-                               .attr('data-toggle','collapse')
-                               .attr('data-target','#collapse' + i)
-                               .append(
-                                 $('<span/>')
-                                 .addClass('fas fa-angle-down')
-                               )
-                             )
-                           )
-                         )
-                       )
-                       )
-                       .append(
-                         $('<div/>')
-                         .addClass('collapse card')
-                         .attr('id','collapse' + i)
-                         .append(
-                           $('<div/>')
-                           .addClass('row')
-                           .append(
-                             $('<div/>')
-                             .addClass('col-3 text-center')
-                             .append(
-                               $('<img/>')
-                               .addClass('img')
-                               .attr('src',response[i].URL)
-                               .attr('style','height: 50px')
-                             )
-                           )
-                           .append(
-                             $('<div/>')
-                             .addClass('col-9 list-group-item')
-                             .append(
-                               "你什麼時候可以????"
-                             )
-                           )
-                         )
-                         .append(
-                           $('<div/>')
-                           .addClass('row align-items-center')
-                           .append(
-                             $('<div/>')
-                             .addClass('col-9 list-group-item')
-                             .append(
-                               $('<input/>')
-                               .addClass('form-control input-lg')
-                               .attr('placeholder','留言')
-                             )
-                           )
-                           .append(
-                             $('<div/>')
-                             .addClass('col-3 text-center')
-                             .append(
-                               $('<button/>')
-                               .addClass('btn btn-outline-success')
-                               .append(
-                                 "留言"
-                               )
-                             )
-                           )
-                         )
-                       )
-                    )
-                    };
+
+									 $.ajax({
+					           url: 'https://ntou-store-system.herokuapp.com/personalPage/reservation',
+					           dataType: 'json',
+					           type: "POST",
+					           data: "ID=6",
+					           error:function(xhr, ajaxOptions, thrownError){
+					             alert(xhr.status+"\n"+thrownError);
+					           },
+					           success: function(response) {
+											 var responseLength = response.length;
+											 for(var i=0;i<responseLength;i++){
+												 $('#reservation').append(
+													 $('<div/>')
+														 .addClass('card')
+														 .append(
+															 $('<div/>')
+															 .addClass('row')
+															 .append(
+																 $('<div/>')
+																 .addClass('col-3 text-center')
+																 .append(
+																 $('<img/>')
+																 .addClass('img')
+																 .attr('src',response[i].ProductImg)
+																 .attr('style','height: 100px')
+																 )
+															 )
+														 .append(
+															 $('<div/>')
+															 .addClass('row col-9')
+															 .append(
+																 $('<div/>')
+																 .addClass('col-10 list-group-item')
+																 .append("<h5>" + response[i].BuyerName + "於" +  response[i].BoughtDate + "購買了您的" + response[i].ProductName + "商品</h5>" +　"<h5>於" + response[i].AppointDate + "在" + "???" + "面交</h5>")
+															 )
+															 .append(
+																 $('<div/>')
+																 .addClass('col-2')
+																 .append(
+																	 $('<div/>')
+																	 .addClass('row')
+																	 .append(
+																		 $('<button/>')
+																		 .addClass('btn btn-lg')
+																		 .append(
+																			 $('<span/>')
+																			 .addClass('fas fa-comment-alt')
+																		 )
+																	 )
+																 )
+																 .append(
+																	 $('<div/>')
+																	 .addClass('row')
+																	 .append(
+																		 $('<button/>')
+																		 .addClass('btn btn-lg')
+																		 .attr('data-toggle','collapse')
+																		 .attr('data-target','#collapse' + i)
+																		 .append(
+																			 $('<span/>')
+																			 .addClass('fas fa-angle-down')
+																		 )
+																	 )
+																 )
+															 )
+														 )
+														 )
+														 .append(
+															 $('<div/>')
+															 .addClass('collapse card')
+															 .attr('id','collapse' + i)
+															 )
+														 )
+
+
+													for(var j=0;j<response[i].Comment.length;j++){
+														$('#collapse' + i).append(
+															$('<div/>')
+															.addClass('row')
+															.append(
+																$('<div/>')
+																.addClass('col-3 text-center')
+																.append(
+																	$('<img/>')
+																	.addClass('img')
+																	.attr('src',response[i].ProductImg)
+																	.attr('style','height: 50px')
+																)
+															)
+															.append(
+																$('<div/>')
+																.addClass('col-9 list-group-item')
+																.append(
+																	response[i].Comment[j]
+																)
+															)
+														)
+													}
+													$('#collapse' + i).append(
+														$('<div/>')
+														.addClass('row align-items-center')
+														.append(
+															$('<div/>')
+															.addClass('col-9 list-group-item')
+															.append(
+																$('<input/>')
+																.addClass('form-control input-lg')
+																.attr('placeholder','留言')
+															)
+														)
+														.append(
+															$('<div/>')
+															.addClass('col-3 text-center')
+															.append(
+																$('<button/>')
+																.addClass('btn btn-outline-success')
+																.append(
+																	"留言"
+																)
+															)
+														)
+													)
+										 	 }
+					         	 },
+					       	 });
+
                  });
               </script>
 <!-- Optional JavaScript --><!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 </body>
