@@ -81,7 +81,6 @@
                         $('#Account').append(response.Account)
                         $('#PhoneNumber').append(response.PhoneNumber)
                         $('#Email').append(response.Email)
-
                     }
                   });
               });
@@ -130,43 +129,60 @@
                 <div class="col-6 mb-3">
                     <div class="row no-gutters">
                         <table class="table table-bordered">
-
+            <script>
+              $(document).ready(function() {
+                    $.ajax({
+                      url: 'https://ntou-store-system.herokuapp.com/personalPage',
+                      dataType: 'json',
+                      type: "POST",
+                      data: "ID=6",
+                      error:function(xhr, ajaxOptions, thrownError){
+                        alert(xhr.status+"\n"+thrownError);
+                      },
+                      success: function(response) {
+                        $('#ProductName').append(response.ProductName)
+                        $('#Amount').append(response.Amount)
+                        $('#Price').append(response.Price) $('#Information').append(response.Information)
+                        $('#Category').append(response.Category)
+                        $('#LowestPrice').append(response.LowestPrice) $('#BiddingPrice').append(response.BiddingPrice) $('#BiddingUnitPrice').append(response.BiddingUnitPrice)
+                    }
+                  });
+              });
+            </script>
                             <tbody>
                                 <tr>
-                                    <td>
-                                        <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">品名：</div>全新筆記本
-                                    </td>
-                                    <td>
-                                        <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">數量：</div>3
+                                    <td colspan="2">
+                                        <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px"   id="ProductName">品名：</div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">底價：</div>X
+                                        <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="Amount">數量：</div>
                                     </td>
                                     <td>
-                                        <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">競標價：</div>X
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">競標單位價：</div>X
-                                    </td>
-                                    <td>
-                                        <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">結標時間：</div>2020.03.01 23:59
+                                        <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="Price">直購價：</div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">直購價：</div>300
+                                        <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="LowestPrice">底價：</div>
                                     </td>
                                     <td>
-                                        <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">標籤：</div>文具
+                                        <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="BiddingPrice">競標價：</div>
+                                    </td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="'BiddingUnitPrice'">競標單位價：</div>
+                                    </td>
+                                    <td>
+                                        <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="Category">標籤：</div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td colspan="2">
-                                        <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">商品敘述：</div>抽獎抽到不需要，蠻好看的
+                                        <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="Information">商品敘述：</div>
                                     </td>
                                 </tr>
                             </tbody>
