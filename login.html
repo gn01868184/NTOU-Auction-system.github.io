@@ -76,7 +76,6 @@
                     data: $(this).serialize() + '&time=' + $.now(),
                     dataType: "json",
                     success: function(response) {
-                      var responseLength = response.length;
                       if(response.state==true){
                         alert("登入成功")
                         document.cookie = "ID=" + response.ID ;
