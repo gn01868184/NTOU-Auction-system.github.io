@@ -45,9 +45,9 @@
 	                  </a>
 	              </li>
 	              <li class="nav-item">
-	                  <a href="./login.html" class="btn btn-link text-light">
-	                      <span class="fas fa-sign-out-alt"></span>&nbsp;登出
-	                  </a>
+                  <a onclick="eraseCookie()" class="btn btn-link text-light">
+                    <span class="fas fa-sign-out-alt"></span>&nbsp;登出
+                  </a>
 	              </li>
 	          </ul>
 	      </form>
@@ -121,7 +121,11 @@
 </script>
 <!--check input value-->
 <script type="text/javascript">
-
+//登出function
+function eraseCookie() {
+	document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+	document.location.href="./login.html";
+}
 	$(document).ready(function(){
 		$("#success").click(function(){
 			var	ProductName = document.getElementById("ProductName").value;

@@ -45,9 +45,9 @@
 	                  </a>
 	              </li>
 	              <li class="nav-item">
-	                  <a href="./login.html" class="btn btn-link text-light">
-	                      <span class="fas fa-sign-out-alt"></span>&nbsp;登出
-	                  </a>
+                  <a onclick="eraseCookie()" class="btn btn-link text-light">
+                    <span class="fas fa-sign-out-alt"></span>&nbsp;登出
+                  </a>
 	              </li>
 	          </ul>
 	      </form>
@@ -133,6 +133,11 @@
 </form>
 <!--datetimepicker-->
 <script type="text/javascript">
+//登出function
+function eraseCookie() {
+	document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+	document.location.href="./login.html";
+}
 		$(function () {
 				$('#datetimepicker1').datetimepicker();
 		});
@@ -146,9 +151,9 @@
 </script>
 <!--check input value-->
 <script>
-/*	
+/*
 	document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("ProuductName").addEventListener("blur", chkName);  //事件繫結            
+    document.getElementById("ProuductName").addEventListener("blur", chkName);  //事件繫結
 	});
 
 	function chkName(){
@@ -176,8 +181,8 @@ $(document).ready(function(){
 			else if((isNaN(Amount) == true )|| (isNaN(Lowest_price) == true ) || (isNaN(Price) == true) || (isNaN(Bidding_unit_price) == true) || (isNaN(Bidding_price) == true)){
 				//document.getElementById("test").innerHTML = "必須輸入文字";
 				window.alert("請不要亂輸入！");
-			}	
-			
+			}
+
 		});
 	});
 </script>

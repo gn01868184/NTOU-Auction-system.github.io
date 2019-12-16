@@ -40,9 +40,9 @@
 	                  </a>
 	              </li>
 	              <li class="nav-item">
-	                  <a href="./login.html" class="btn btn-link text-light">
-	                      <span class="fas fa-sign-out-alt"></span>&nbsp;登出
-	                  </a>
+                  <a onclick="eraseCookie()" class="btn btn-link text-light">
+                    <span class="fas fa-sign-out-alt"></span>&nbsp;登出
+                  </a>
 	              </li>
 	          </ul>
 	      </form>
@@ -111,6 +111,11 @@
 </div>
 <!-- 取別的網頁傳來的值 -->
 <script type="text/javascript">
+//登出function
+function eraseCookie() {
+	document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+	document.location.href="./login.html";
+}
 	function show () {
 	 //URL
 	 var url = location.href;
@@ -118,7 +123,7 @@
 	 var temp = url.split("?");
 	 //將值分開
 	 var vars = temp[1].split("&");
- 
+
 	 //一一顯示出來
 	 for (var i = 0; i < vars.length; i++) {
 	  alert(vars[i]);

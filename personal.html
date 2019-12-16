@@ -43,9 +43,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="./login.html" class="btn btn-link text-light">
-                            <span class="fas fa-sign-in-alt"></span>&nbsp;登出
-                        </a>
+                      <a onclick="eraseCookie()" class="btn btn-link text-light">
+    			              <span class="fas fa-sign-out-alt"></span>&nbsp;登出
+    			            </a>
                     </li>
                 </ul>
             </form>
@@ -65,6 +65,10 @@
             </div>
 
             <script>
+            function eraseCookie() {
+              document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+              document.location.href="./login.html";
+            }
               $(document).ready(function() {
                     $.ajax({
                       url: 'https://ntou-store-system.herokuapp.com/personalPage',
@@ -170,7 +174,7 @@
                                     <td>
                                         <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="BiddingPrice">競標價：</div>
                                     </td>
-                                    
+
                                 </tr>
                                 <tr>
                                     <td>

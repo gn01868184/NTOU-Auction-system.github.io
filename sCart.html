@@ -46,9 +46,9 @@
 	                  </a>
 	              </li>
 	              <li class="nav-item">
-	                  <a href="./login.html" class="btn btn-link text-light">
-	                      <span class="fas fa-sign-out-alt"></span>&nbsp;登出
-	                  </a>
+									<a onclick="eraseCookie()" class="btn btn-link text-light">
+										<span class="fas fa-sign-out-alt"></span>&nbsp;登出
+									</a>
 	              </li>
 	          </ul>
 	      </form>
@@ -70,6 +70,10 @@
 			</div>
 		</div>
 		<script type="text/javascript">
+		function eraseCookie() {
+			document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+			document.location.href="./login.html";
+		}
            $(document).ready(function(){
              var response = [{name:"水壺",information:"使用兩三次，優質水壺",URL:"https://www.bigw.com.au/medias/sys_master/images/images/hcd/h70/11889354539038.jpg"},{name:"嬰兒",information:"全新,看膩了",URL:"https://images-na.ssl-images-amazon.com/images/I/61q%2BcRRsPiL._SL1500_.jpg"},{name:"娃娃玩具",information:"全新,看膩了",URL:"http://www.thequeenstreasures.com/images/detailed/5/LHDLLMI__1__jpcf-af.jpg"}];
              var responseLength = response.length;
