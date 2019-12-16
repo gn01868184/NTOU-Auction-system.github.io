@@ -8,7 +8,9 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <!-- Bootstrap 4 Icons -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-
+<!-- jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <title>海大拍賣系統</title>
 </head>
 <body>
@@ -40,9 +42,9 @@
 	                  </a>
 	              </li>
 	              <li class="nav-item">
-                  <a onclick="eraseCookie()" class="btn btn-link text-light">
-                    <span class="fas fa-sign-out-alt"></span>&nbsp;登出
-                  </a>
+	                  <a href="./login.html" class="btn btn-link text-light">
+	                      <span class="fas fa-sign-out-alt"></span>&nbsp;登出
+	                  </a>
 	              </li>
 	          </ul>
 	      </form>
@@ -51,27 +53,27 @@
 
 <div class="row text-center">
 	<div class="col-4">
-		<img src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" class="img" style="height: 200px;" alt="...">
+		<img src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" class="img" style="height: 200px;" id="ImageURL">
 	</div>
 	<div class="col-8">
 		<ul class="list-group">
 			<div class="row">
-		  <li class="list-group-item col-4">標籤</li>
-		  <li class="list-group-item col-4">商品名稱</li>
-		  <li class="list-group-item col-4">商品品級</li>
+		  <li class="list-group-item col-4" id="Category">標籤: </li>
+		  <li class="list-group-item col-4" id="ProductName">商品名稱: </li>
+		  <li class="list-group-item col-4" id="AvgEv">商品品級: </li>
 			</div>
 		</ul>
 		<ul class="list-group">
 			<div class="row">
-			<li class="list-group-item col-3">當前頂標者</li>
-			<li class="list-group-item col-3">底價</li>
-			<li class="list-group-item col-3">競標價</li>
-			<li class="list-group-item col-3">競標時間</li>
+			<li class="list-group-item col-3" id="BiddingTopUserID">當前頂標者: </li>
+			<li class="list-group-item col-3" id="LowestPrice">底價: </li>
+			<li class="list-group-item col-3" id="BiddingPrice">競標價: </li>
+			<li class="list-group-item col-3" id="BiddingDeadline">節標時間: </li>
 			</div>
 		</ul>
 		<ul class="list-group">
 			<div class="row">
-				<li class="list-group-item col-4">單位競標價</li>
+				<li class="list-group-item col-4" id="BiddingUnitPrice">單位競標價: </li>
 				<!--<form class="form-group col-8">-->
 				<!--	<div class="row">-->
 						<input class="col-4" type="text" style="text-align: center;" placeholder="競標價">
@@ -82,8 +84,8 @@
 		</ul>
 		<ul class="list-group">
 			<div class="row">
-				<li class="list-group-item col-3">數量</li>
-				<li class="list-group-item col-5">直購價</li>
+				<li class="list-group-item col-3" id="Amount">數量: </li>
+				<li class="list-group-item col-5" id="Price">直購價: </li>
 				<button class="btn btn-outline-success col-4" type="submit">直接購買</button>
 			</div>
 		</ul>
@@ -100,7 +102,7 @@
 	</div>
 </div>
 <div class="card">
-	<div class="card-body">
+	<div class="card-body" id="Information">
 		商品資訊
 	</div>
 </div>
@@ -111,30 +113,37 @@
 </div>
 <!-- 取別的網頁傳來的值 -->
 <script type="text/javascript">
-//登出function
-function eraseCookie() {
-	document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
-	document.location.href="./login.html";
-}
-	function show () {
-	 //URL
-	 var url = location.href;
-	 //取得問號之後的值
-	 var temp = url.split("?");
-	 //將值分開
-	 var vars = temp[1].split("&");
+	
+	$(document).ready(function(){
 
-	 //一一顯示出來
-	 for (var i = 0; i < vars.length; i++) {
-	  alert(vars[i]);
-	 };
-	}
-   </script>
- <button onclick="show()">
-  測試網頁傳值按鈕
- </button>
+ 
+	$.ajax({
+    	url: 'https://ntou-store-system.herokuapp.com/product_information?ProductID=57' ,
+   	 	type: 'GET',
+   	 	dataType: 'json',
+		error:function(xhr, ajaxOptions, thrownError){
+			alert(xhr.status+"\n"+thrownError);
+   		},
+    	success:function(response){
+			//alert("success");
+			$('#ImageURL').attr('src', response[0].ImageURL)
+            $('#Category').append(response[0].Category)
+            $('#ProductName').append(response[0].ProductName)
+            $('#AvgEv').append(response[0].AvgEv)
+			$('#LowestPrice').append(response[0].LowestPrice)
+			$('#BiddingPrice').append(response[0].BiddingPrice)
+			$('#BiddingDeadline').append(response[0].BiddingDeadline)
+			$('#BiddingUnitPrice').append(response[0].BiddingUnitPrice)
+            $('#Price').append(response[0].Price)
+            $('#Amount').append(response[0].Amount)
+			$('#Information').append(response[0].Information)
+		}   
+	});
+});
+   
+</script>
+
 <!-- Optional JavaScript --><!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 </body>
