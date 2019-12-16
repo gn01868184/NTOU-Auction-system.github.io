@@ -62,7 +62,7 @@ alert(document.cookie);
 					           url: 'https://ntou-store-system.herokuapp.com/personalPage/reservation',
 					           dataType: 'json',
 					           type: "POST",
-					           data: "ID=6",
+					           data: document.cookie,
 					           error:function(xhr, ajaxOptions, thrownError){
 					             alert(xhr.status+"\n"+thrownError);
 					           },
