@@ -74,7 +74,7 @@
                       url: 'https://ntou-store-system.herokuapp.com/personalPage',
                       dataType: 'json',
                       type: "POST",
-                      data: "ID=6",
+                      data: document.cookie,
                       error:function(xhr, ajaxOptions, thrownError){
                         alert(xhr.status+"\n"+thrownError);
                       },
@@ -139,7 +139,7 @@
                       url: 'https://ntou-store-system.herokuapp.com/personalPage',
                       dataType: 'json',
                       type: "POST",
-                      data: "ID=6",
+                      data: document.cookie,
                       error:function(xhr, ajaxOptions, thrownError){
                         alert(xhr.status+"\n"+thrownError);
                       },
