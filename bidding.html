@@ -45,9 +45,9 @@
 	                  </a>
 	              </li>
 	              <li class="nav-item">
-                  <a onclick="eraseCookie()" class="btn btn-link text-light">
-                    <span class="fas fa-sign-out-alt"></span>&nbsp;登出
-                  </a>
+	                  <a href="./login.html" class="btn btn-link text-light">
+	                      <span class="fas fa-sign-out-alt"></span>&nbsp;登出
+	                  </a>
 	              </li>
 	          </ul>
 	      </form>
@@ -59,7 +59,7 @@
 	<input name="SellerID" value="6" type="hidden"></input>
 	<input name="Bidding" value="1" type="hidden"></input>
 	<div class="col-4">
-		<img src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" class="img" style="height: 100px;" alt="...">
+		<img src="" class="img" style="height: 100px;" id="Image">
 		<div class="custom-file">
 			<input type="file" class="custom-file-input" accept="image/*" id="ImageURL" name="ImageURL">
 			<label class="custom-file-label" for="ImageURL">上傳圖片</label>
@@ -133,16 +133,11 @@
 </form>
 <!--datetimepicker-->
 <script type="text/javascript">
-//登出function
-function eraseCookie() {
-	document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
-	document.location.href="./login.html";
-}
 		$(function () {
 				$('#datetimepicker1').datetimepicker();
 		});
 </script>
-<!--Add the following code if you want the name of the file appear on select-->
+<!--the name of the file appear on select-->
 <script>
 		$(".custom-file-input").on("change", function() {
 		  var fileName = $(this).val().split("\\").pop();
@@ -151,9 +146,9 @@ function eraseCookie() {
 </script>
 <!--check input value-->
 <script>
-/*
+/*	
 	document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("ProuductName").addEventListener("blur", chkName);  //事件繫結
+    document.getElementById("ProuductName").addEventListener("blur", chkName);  //事件繫結            
 	});
 
 	function chkName(){
@@ -181,10 +176,29 @@ $(document).ready(function(){
 			else if((isNaN(Amount) == true )|| (isNaN(Lowest_price) == true ) || (isNaN(Price) == true) || (isNaN(Bidding_unit_price) == true) || (isNaN(Bidding_price) == true)){
 				//document.getElementById("test").innerHTML = "必須輸入文字";
 				window.alert("請不要亂輸入！");
-			}
-
+			}	
+			
 		});
 	});
+</script>
+<!--預覽上傳圖片-->
+<script language="javascript">
+
+	$("#ImageURL").change(function() {
+  		readURL(this);		//this代表<input type="file">
+	});
+	
+	function readURL(input) {
+  		if (input.files && input.files[0]) {
+    		var reader = new FileReader();
+    
+    	reader.onload = function(e) {
+     		$('#Image').attr('src', e.target.result);
+    	}
+    
+    	reader.readAsDataURL(input.files[0]);
+    	}
+	}
 </script>
 <!-- Optional JavaScript --><!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
