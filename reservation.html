@@ -66,7 +66,8 @@ function eraseCookie() {
 					           url: 'https://ntou-store-system.herokuapp.com/personalPage/reservation',
 					           dataType: 'json',
 					           type: "POST",
-					           data: document.cookie,
+					           //data: document.cookie,
+										 data: "ID=4",
 					           error:function(xhr, ajaxOptions, thrownError){
 					             alert(xhr.status+"\n"+thrownError);
 					           },
@@ -160,58 +161,48 @@ function eraseCookie() {
 															)
 														)
 													}
-													$('#collapse' + i).append(
-														$('<div/>')
-														.addClass('row align-items-center form')
-														.append(
-															$('<div/>')
-															.addClass('col-9 list-group-item')
-															.append(
-																$('<input/>')
-																.addClass('form-control input-lg')
-																.attr('placeholder','留言')
-															)
-														)
-														.append(
-															$('<div/>')
-															.addClass('col-3 text-center')
-															.append(
-																$('<input/>')
-																.addClass('btn btn-outline-success')
-																.attr('type', 'submit')
-																.append(
-																	"留言"
-																)
-															)
-														)
-													)
 										 	 }
 					         	 },
 					       	 });
-
-									 $("#form").submit(function(e) {
-										 $.ajax({
-						           url: 'https://ntou-store-system.herokuapp.com/personalPage/reservation/comment',
-						           dataType: 'json',
-						           type: "POST",
-						           //data: TradeID=1&ProductID=39&Information="資訊資訊資訊",
-						           error:function(xhr, ajaxOptions, thrownError){
-						             alert(xhr.status+"\n"+thrownError);
-						           },
-						           success: function(response) {
-												 if(response.state==true){
-	                         alert("留言成功")
-	                         window.location.href="./reservation.html";//指定要跳轉到的目標頁面
-	                       }
-	                       else {
-	                         alert("錯誤")
-	                       }
-						         	 },
-						       	 });
-									 });
-
                  });
               </script>
+
+							<form class="row align-items-center form-group" id="form0">
+								<div class="col-3 list-group-item">
+									<input class="form-control input-lg" placeholder="交易序號" name="TradeID">
+								</div>
+								<div class="col-6 list-group-item">
+									<input class="form-control input-lg" placeholder="留言" name="Information">
+								</div>
+								<div class="col-3 text-center">
+									<button class="btn btn-outline-success" type="submit">留言</button>
+								</div>
+							</form>
+							
+							<script>
+							    $(document).ready(function(e) {
+							        //表單發送處理
+							        $("#form0").submit(function(e) {
+							            $.ajax({
+							                    type: "POST",
+							                    url: 'https://ntou-store-system.herokuapp.com/personalPage/reservation/comment',
+							                    data: "TradeID=1&ProductID=34&Information=1",
+							                    dataType: "json",
+							                    success: function(response) {
+							                      if(response.state==true){
+							                        alert("留言成功")
+							                        window.location.href="./reservation.html";//指定要跳轉到的目標頁面
+							                      }
+							                      else {
+							                        alert("失敗")
+							                      }
+							                    }
+							                })
+							            e.preventDefault(); //停止預設動作
+							            //e.unbind(); //解除綁定。停止多個表單提交.
+							        });
+							    });
+							</script>
 <!-- Optional JavaScript --><!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
