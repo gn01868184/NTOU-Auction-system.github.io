@@ -80,7 +80,7 @@
                       },
                       success: function(response) {
                         $('#ImageURL').attr('src', response.ImageURL)
-                        $('#Name').append(response.Name)
+                        
                         $('#NickName').append(response.NickName)
                         $('#Account').append(response.Account)
                         $('#PhoneNumber').append(response.PhoneNumber)
@@ -89,10 +89,12 @@
                   });
               });
             </script>
+            
+           
 
             <div class="card-body col-8 ml-3 align-self-center">
                 <h4>
-                    <div class="font-weight-bold " style="display:inline ;LINE-HEIGHT:40px" id="Name">姓名：</div><br>
+                    <div class="font-weight-bold " style="display:inline ;LINE-HEIGHT:40px" id="1Name">姓名：</div><br>
                     <div class="font-weight-bold" style="display:inline ;LINE-HEIGHT:40px" id="NickName">小名：</div><br>
                     <div class="font-weight-bold" style="display:inline ;LINE-HEIGHT:40px" id="Account">帳號：</div><br>
                     <div class="font-weight-bold" style="display:inline ;LINE-HEIGHT:40px" id="PhoneNumber">手機：</div><br>
@@ -132,7 +134,6 @@
                 </div>
                 <div class="col-6 mb-3">
                     <div class="row no-gutters">
-                        <table class="table table-bordered">
             <script>
               $(document).ready(function() {
                     $.ajax({
@@ -144,7 +145,13 @@
                         alert(xhr.status+"\n"+thrownError);
                       },
                       success: function(response) {
-                        $('#ProductName').append(response.ProductName)
+                          var responseLength = response.length;
+                          for(var i=0;i<responseLength;i++){
+                              
+                               $('#ProductName').append("123"
+                               )
+                         }
+                        $('#ProductName').append("2")
                         $('#Amount').append(response.Amount)
                         $('#Price').append(response.Price) $('#Information').append(response.Information)
                         $('#Category').append(response.Category)
@@ -153,10 +160,38 @@
                   });
               });
             </script>
+                        <script>
+            function eraseCookie() {
+              document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+              document.location.href="./login.html";
+            }
+              $(document).ready(function() {
+                    $.ajax({
+                      url: 'https://ntou-store-system.herokuapp.com/personalPage',
+                      dataType: 'json',
+                      type: "POST",
+                      data: document.cookie,
+                      error:function(xhr, ajaxOptions, thrownError){
+                        alert(xhr.status+"\n"+thrownError);
+                      },
+                      success: function(response) {
+                          $('#tableOnsale').append('<tbody><tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px ">品名：</div></td></tr>','<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="Amount">數量：</div></td><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="Price">直購價：</div></td></tr>'
+                             ,
+                                                   '<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="LowestPrice">底價：</div></td><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="BiddingPrice">競標價：</div></td></tr>'
+                                                  ,'<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="BiddingUnitPrice">競標單位價：</div></td><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="Category">標籤：</div></td></tr>'
+                                                   ,
+                                                   '<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="Information">商品敘述：'+'123'+'</div></td></tr></tbody>'
+                                                  )
+                              
+                    }
+                  });
+              });
+            </script>
+                        <table class="table table-bordered" id="tableOnsale">
                             <tbody>
                                 <tr>
                                     <td colspan="2">
-                                        <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px"   id="ProductName">品名：</div>
+                                        <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="Name">品名：</div>
                                     </td>
                                 </tr>
                                 <tr>
@@ -174,11 +209,10 @@
                                     <td>
                                         <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="BiddingPrice">競標價：</div>
                                     </td>
-
                                 </tr>
                                 <tr>
                                     <td>
-                                        <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="'BiddingUnitPrice'">競標單位價：</div>
+                                        <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="BiddingUnitPrice">競標單位價：</div>
                                     </td>
                                     <td>
                                         <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="Category">標籤：</div>
@@ -190,6 +224,7 @@
                                     </td>
                                 </tr>
                             </tbody>
+                            
                         </table>
                     </div>
                 </div>
