@@ -75,18 +75,19 @@
                       dataType: 'json',
                       type: "POST",
                       data: {
-                            ID: 6 ; 
+                            ID:6
                         },
                       error:function(xhr, ajaxOptions, thrownError){
                         alert(xhr.status+"\n"+thrownError);
                       },
                       success: function(response) {
-                          $('#Name').attr('src', response.Name)
-                        $('#ImageURL').attr('src', response.ImageURL)
-                        $('#NickName').append(response.NickName)
-                        $('#Account').append(response.Account)
-                        $('#PhoneNumber').append(response.PhoneNumber)
-                        $('#Email').append(response.Email)
+                        console.log(response[0].Name)
+                        $('#Name').append(response[0].Name)
+                        $('#ImageURL').attr('src', response[0].ImageURL)
+                        $('#NickName').append(response[0].NickName)
+                        $('#Account').append(response[0].Account)
+                        $('#PhoneNumber').append(response[0].PhoneNumber)
+                        $('#Email').append(response[0].Email)
                     }
                   });
               });
