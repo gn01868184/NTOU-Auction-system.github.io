@@ -69,13 +69,12 @@
                     <input type="text" class="form-control" name="Nickname" placeholder="暱稱">
                 </div>
                 <label class="col-2 col-form-label mb-2">信箱</label>
-                <div class="col-6 mb-2">
+                <div class="col-10 mb-2">
                     <input type="text" class="form-control" name="Email" placeholder="email">
                 </div>
-                <label class="col-4 col-form-label mb-2">@mail.ntou.eud.tw</label>
                 <label class="col-2 col-form-label mb-2">帳號</label>
                 <div class="col-10">
-                    <input type="password" class="form-control" name="Account" placeholder="帳號">
+                    <input type="text" class="form-control" name="Account" placeholder="帳號">
                 </div>
                 <label class="col-2 col-form-label mb-2">密碼</label>
                 <div class="col-10 mb-2">
@@ -87,6 +86,31 @@
                 </div>
                 <button class="btn btn-outline-success col-2 container" type="submit">提&nbsp;&nbsp;交</button>
             </form>
+            <script>
+            $(document).ready(function(e) {
+                //表單發送處理
+                $("#form").submit(function(e) {
+                    $.ajax({
+                            type: $(this).attr("method"),
+                            url: $(this).attr("action"),
+                            data: $(this).serialize() + '&time=' + $.now(),
+                            dataType: "json",
+                            success: function(response) {
+                              if(response.state==true){
+                                alert("請至信箱收認證信")
+                                document.cookie = "ID=" + response.ID ;
+                                window.location.href="./verification.html";//指定要跳轉到的目標頁面
+                              }
+                              else {
+                                alert("有誤")
+                              }
+                            }
+                        })
+                    e.preventDefault(); //停止預設動作
+                    //e.unbind(); //解除綁定。停止多個表單提交.
+                });
+            });
+</script>
         </div>
     </span>
         <!-- Optional JavaScript -->
