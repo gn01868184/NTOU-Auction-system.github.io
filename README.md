@@ -54,8 +54,8 @@
 
 ## 分工
 * [chiafishh](https://github.com/chiafishh)
+  * **增修頁面**
   * **美化**
-  * **修改頁面**
   * **功能**
     * 登入
     * 註冊
