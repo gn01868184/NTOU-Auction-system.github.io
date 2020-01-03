@@ -13,7 +13,7 @@
 >> - [ ] 功能
 > - [ ] [信箱驗證](https://gn01868184.github.io/NTOU-Auction-system.github.io/verification.html) 
 >> - [x] 頁面
->> - [] 美化
+>> - [ ] 美化
 >> - [ ] 功能
 > - [ ] [個人資訊](https://gn01868184.github.io/NTOU-Auction-system.github.io/personal.html) 
 >> - [x] 頁面
