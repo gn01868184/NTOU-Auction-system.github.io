@@ -6,10 +6,14 @@
 > - [x] [登入](https://gn01868184.github.io/NTOU-Auction-system.github.io/login.html) 
 >> - [x] 頁面
 >> - [x] 美化
->> - [x]功能
+>> - [x] 功能
 > - [ ] [註冊](https://gn01868184.github.io/NTOU-Auction-system.github.io/registered.html) 
 >> - [x] 頁面
 >> - [x] 美化
+>> - [ ] 功能
+> - [ ] [信箱驗證](https://gn01868184.github.io/NTOU-Auction-system.github.io/verification.html) 
+>> - [x] 頁面
+>> - [ ] 美化
 >> - [ ] 功能
 > - [ ] [個人資訊](https://gn01868184.github.io/NTOU-Auction-system.github.io/personal.html) 
 >> - [x] 頁面
@@ -50,8 +54,8 @@
 
 ## 分工
 * [chiafishh](https://github.com/chiafishh)
+  * **增修頁面**
   * **美化**
-  * **修改頁面**
   * **功能**
     * 登入
     * 註冊
