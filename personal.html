@@ -43,9 +43,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                      <a onclick="eraseCookie()" class="btn btn-link text-light">
-    			              <span class="fas fa-sign-out-alt"></span>&nbsp;登出
-    			            </a>
+                        <a onclick="eraseCookie()" class="btn btn-link text-light">
+                            <span class="fas fa-sign-out-alt"></span>&nbsp;登出
+                        </a>
                     </li>
                 </ul>
             </form>
@@ -65,34 +65,34 @@
             </div>
 
             <script>
-              $(document).ready(function() {
+                $(document).ready(function() {
                     $.ajax({
-                      url: 'https://ntou-store-system.herokuapp.com/personalPage',
-                      dataType: 'json',
-                      type: "POST",
-                        data:document.cookie ,
-                      /*data: {                          
-                            ID:6
-                        },*/
-                      error:function(xhr, ajaxOptions, thrownError){
-                        alert(xhr.status+"\n"+thrownError);
-                      },
-                      success: function(response) {
-                        console.log(response[1].Name)
-                        $('#Name').append(response[1].Name)
-                        $('#ImageURL').attr('src', response[1].ImageURL)
-                        $('#NickName').append(response[1].NickName)
-                        $('#Account').append(response[1].Account)
-                        $('#PhoneNumber').append(response[1].PhoneNumber)
-                        $('#Email').append(response[1].Email)
-                          console.log(response[0][0].ProductName)
-                          $('#ProductName').append(response[0][0].ProductName)
-                    }
-                  });
-              });
+                        url: 'https://ntou-store-system.herokuapp.com/personalPage',
+                        dataType: 'json',
+                        type: "POST",
+                        data: document.cookie,
+                        /*data: {                          
+                              ID:6
+                          },*/
+                        error: function(xhr, ajaxOptions, thrownError) {
+                            alert(xhr.status + "\n" + thrownError);
+                        },
+                        success: function(response) {
+                            console.log(response[1].Name)
+                            $('#Name').append(response[1].Name)
+                            $('#ImageURL').attr('src', response[1].ImageURL)
+                            $('#NickName').append(response[1].NickName)
+                            $('#Account').append(response[1].Account)
+                            $('#PhoneNumber').append(response[1].PhoneNumber)
+                            $('#Email').append(response[1].Email)
+                            console.log(response[0][0].ProductName)
+                            $('#ProductName').append(response[0][0].ProductName)
+                        }
+                    });
+                });
             </script>
-            
-           
+
+
 
             <div class="card-body col-8 ml-3 align-self-center">
                 <h4>
@@ -106,8 +106,8 @@
         </div>
     </div>
     <div class="row">
-      <a class="btn btn-outline-success col-6 " href="./commodity.html">上架一般商品</a>
-      <a class="btn btn-outline-success col-6 " href="./bidding.html">上架競標商品</a>
+        <a class="btn btn-outline-success col-6 " href="./commodity.html">上架一般商品</a>
+        <a class="btn btn-outline-success col-6 " href="./bidding.html">上架競標商品</a>
     </div>
     <ul class="nav nav-tabs my-2 mx-1" id="myTab" role="tablist">
         <li class="nav-item">
@@ -126,71 +126,74 @@
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="row mx-1">
-                
-                <div class="m-2 mb-3">
-            
-            <script>
-            //架上商品
-            /*function eraseCookie() {
-              document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
-              document.location.href="./login.html";
-            }*/
-              $(document).ready(function() {
-                    $.ajax({
-                      url: 'https://ntou-store-system.herokuapp.com/personalPage',
-                      dataType: 'json',
-                      type: "POST",
-                      data:document.cookie,
-                      error:function(xhr, ajaxOptions, thrownError){
-                        alert(xhr.status+"\n"+thrownError);
-                      },
-                      success: function(response) {
-                          console.log(response[0][response[0].length-2].ProductName)
-                          for(var i=0;i<response[0].length-1;i++){
-                          $('#tableOnsale').append('<table class="table table-bordered" ><tbody><tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px ">品名：'+response[0][i].ProductName+'</div></td></tr>'+'<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="Price">直購價：'+response[0][i].Price+'</div></td></tr>'
-                             +
-                                                   '<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="LowestPrice">底價：'+response[0][i].LowestPrice+'</div></td><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="BiddingPrice">競標價：'+response[0][i].BiddingPrice+'</div></td></tr>'
-                                                  +'<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="BiddingUnitPrice">競標單位價：'+response[0][i].BiddingUnitPrice+'</div></td><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="BiddingDeadLine">結標時間：'+response[0][i].BiddingDeadLine+'</div></td></tr>'
-                +'<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px ">詳細資訊：'+response[0][i].Information+'</div></td></tr></tbody></table>'
-                                                   
-                                                    +'<button type="button" class="btn btn-outline-success mb-4" onclick="'+myFunction(i)+'">try</button></div></div>'
-                                                   
-                                                   //編輯 
-                                                 +'<button type="button" class="btn btn-outline-success mb-4" data-toggle="modal" data-target="#editInfoModal">編輯詳細資訊</button></div></div>'
-                                                   +'<button type="button" class="btn btn-outline-danger ml-3 mb-4" data-toggle="modal" data-target="">刪除</button></div></div>'
-                                                  )
-                          }
-                    }
-                  });
-              });
-                
-               
-            </script>
-                    
 
-            <script>
-            /*function myFunction(x) {
+                <div class="m-2 mb-3">
+
+                    <script>
+                        //架上商品
+                        /*function eraseCookie() {
+                          document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+                          document.location.href="./login.html";
+                        }*/
+                        $(document).ready(function() {
+                            $.ajax({
+                                url: 'https://ntou-store-system.herokuapp.com/personalPage',
+                                dataType: 'json',
+                                type: "POST",
+                                data: document.cookie,
+                                error: function(xhr, ajaxOptions, thrownError) {
+                                    alert(xhr.status + "\n" + thrownError);
+                                },
+                                success: function(response) {
+                                    console.log(response[0][response[0].length - 2].ProductName)
+                                    for (var i = 0; i < 1; i++) {
+                                        //for(var i=0;i<response[0].length-1;i++){
+                                        console.log(response[0][i].ProductID)
+                                        $('#tableOnsale').append('<table class="table table-bordered" ><tbody><tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px ">品名：' + response[0][i].ProductName + '</div></td></tr>' + '<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="Price">直購價：' + response[0][i].Price + '</div></td></tr>' +
+                                            '<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="LowestPrice">底價：' + response[0][i].LowestPrice + '</div></td><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="BiddingPrice">競標價：' + response[0][i].BiddingPrice + '</div></td></tr>' +
+                                            '<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="BiddingUnitPrice">競標單位價：' + response[0][i].BiddingUnitPrice + '</div></td><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="BiddingDeadLine">結標時間：' + response[0][i].BiddingDeadLine + '</div></td></tr>' +
+                                            '<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px ">詳細資訊：' + response[0][i].Information + '</div></td></tr></tbody></table>'
+
+                                            +
+                                            `<button type="button" class="btn btn-outline-success mb-4" >try</button></div></div>`
+                                            //+`<button type="button" class="btn btn-outline-success mb-4" onclick="${myFunction("1","try1")}">try</button></div></div>`
+
+                                            //編輯 
+                                            +
+                                            '<button type="button" class="btn btn-outline-success mb-4" data-toggle="modal" data-target="#editInfoModal">編輯詳細資訊</button></div></div>' +
+                                            '<button type="button" class="btn btn-outline-danger ml-3 mb-4" data-toggle="modal" data-target="">刪除</button></div></div>'
+                                        )
+                                    }
+                                }
+                            });
+                        });
+                    </script>
+
+
+                    <script>
+                        /* function myFunction(xID,xInformation) {
                     $.ajax({
-                      url: 'https://ntou-store-system.herokuapp.com/personalPage',
+                      url: 'https://ntou-store-system.herokuapp.com/personalPage/onSale/edit',
                       dataType: 'json',
-                      type: "POST",
-                      data:document.cookie,
+                      type: "GET",
+                      data: {ProductID:"24",
+                            Information:"t1"
+                            },
                       error:function(xhr, ajaxOptions, thrownError){
                         alert(xhr.status+"\n"+thrownError);
                       },
                       success: function(response) {
-                        response[0][x].Informaion="try"
-                      }})
-              }    */
-            
-            </script>
-                <div class="col-4">
-                    <div class="row no-gutters" id="tableOnsale">
                         
-                            
-                       
+                      }})
+              }   */
+                    </script>
+                    <div class="col-4">
+                        <div class="row no-gutters" id="tableOnsale">
+
+
+
+                        </div>
                     </div>
-                </div>
                 </div>
             </div>
         </div>
@@ -198,39 +201,48 @@
 
             <div>
                 <div class="m-3">
-                    
-            <script>
-        //交易中
-              $(document).ready(function() {
-                    $.ajax({
-                      url: 'https://ntou-store-system.herokuapp.com/personalPage/onTrade',
-                      dataType: 'json',
-                      type: "POST",
-                     data:document.cookie ,
-                      error:function(xhr, ajaxOptions, thrownError){
-                        alert(xhr.status+"\n"+thrownError);
-                      },
-                      success: function(response) {
-                          console.log(response[12].ProductName)
-                          for(var i=0;i<response.length;i++){                       
-                          $('#tableTrade').append('<table class="table table-bordered"><tbody><tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">品名：'+response[i].ProductName+'</div></td><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">交易數量：</div>'+response[i].TradeAmount+'</td></tr><tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">交易總額：</div>'+response[i].TradePrice+'</td></tr>'
-                                                 +'<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">買家：</div>'+response[i].Identity+'</td></tr></tbody></table>'
-                                                 //預約板/交易完成 
-                                                +'<div class="row no-gutters mb-4"><div class="col no-gutters"><a class="btn btn-outline-success " href="./reservation.html">前往預約板</a>'
-                                                 +'<button type="button" class="btn btn-primary ml-2" data-toggle="modal" data-target="#evaluationModal">交易完成</button></div></div>'
-                                                  )
-                          }
-                    }
-                  });
-              });
-            </script>
+
+                    <script>
+                        //交易中
+                        $(document).ready(function() {
+                            $.ajax({
+                                url: 'https://ntou-store-system.herokuapp.com/personalPage/onTrade',
+                                dataType: 'json',
+                                type: "POST",
+                                data: document.cookie,
+                                error: function(xhr, ajaxOptions, thrownError) {
+                                    alert(xhr.status + "\n" + thrownError);
+                                },
+                                success: function(response) {
+                                    console.log(response[1].ProductName)
+
+                                    $('#tableTrade').append('<div class="row no-gutters mb-4"><div class="col no-gutters"><a class="btn btn-outline-success " href="./reservation.html">前往預約板</a>')
+                                    for (var i = 0; i < response.length; i++) {
+                                        $('#tradeID1').append(
+                                            $('<option/>').attr('value',response[i].TradeID)
+                                            .append(response[i].TradeID)
+                                        )
+                                        $('#tableTrade').append('<table class="table table-bordered"><tbody><tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">品名：' + response[i].ProductName + '</div></td><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">交易數量：</div>' + response[i].TradeAmount + '</td></tr><tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">交易總額：</div>' + response[i].TradePrice + '</td></tr>' +
+                                            '<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">買家：</div>' + response[i].Identity + '</td></tr></tbody></table>'
+
+                                            //交易完成 
+                                            +
+                                            '<button type="button" class="btn btn-primary ml-2" data-toggle="modal" data-target="#evaluationModal">交易完成</button></div></div>'
+                                        )
+                                    }
+                                }
+                            });
+                        });
+                    </script>
+
+
                     <div class="row no-gutters">
                         <div class="col-3" id="tableTrade">
-                       
+
                         </div>
-                        
+
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -238,241 +250,244 @@
 
             <div class="row">
                 <div class="col-4 mb-3">
-                
-            <script>
-        //交易紀錄
-              $(document).ready(function() {
-                    $.ajax({
-                      url: 'https://ntou-store-system.herokuapp.com/personalPage/tradeRecord',
-                      dataType: 'json',
-                      type: "POST",
-                      data:document.cookie ,
-                      error:function(xhr, ajaxOptions, thrownError){
-                        alert(xhr.status+"\n"+thrownError);
-                      },
-                      success: function(response) {
-                          console.log(response.length)
-                         
-                          for(var i=0;i<response.length;i++){               
-                          $('#tradeCompleted').append('<table class="table table-bordered"><tbody><tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">品名：</div>'+response[0].ProductName+'</td>'
-                                                      +'<td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">交易數量：</div>'+response[0].TradeAmount+'</td></tr>'
-                                                      +'<tr> <td> <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">交易總額：</div>'+response[0].TradePrice+'</td>'
-                                                      +'<td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">買家：</div>'+response[0].ProductName+'</td></tr>'
-                                                      +'<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">賣家評級：</div>'+response[0].BuyerEvSeller+'</td>'
-                                                      
-                                                      +'<td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">商品評級：</div>'+response[0].BuyerEvProduct+'</td></tr>'
-                                                      +'<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">商品評價：</div>'+response[0].BuyerEvText+'</td></tr></tbody></table>'
-                                                  )
-                          }
-                    }
-                  });
-              });
-            </script>
+
+                    <script>
+                        //交易紀錄
+                        $(document).ready(function() {
+                            $.ajax({
+                                url: 'https://ntou-store-system.herokuapp.com/personalPage/tradeRecord',
+                                dataType: 'json',
+                                type: "POST",
+                                data: document.cookie,
+                                error: function(xhr, ajaxOptions, thrownError) {
+                                    alert(xhr.status + "\n" + thrownError);
+                                },
+                                success: function(response) {
+                                    console.log(response.length)
+
+                                    for (var i = 0; i < response.length; i++) {
+                                        $('#tradeCompleted').append('<table class="table table-bordered"><tbody><tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">品名：</div>' + response[0].ProductName + '</td>' +
+                                            '<td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">交易數量：</div>' + response[0].TradeAmount + '</td></tr>' +
+                                            '<tr> <td> <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">交易總額：</div>' + response[0].TradePrice + '</td>' +
+                                            '<td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">買家：</div>' + response[0].ProductName + '</td></tr>' +
+                                            '<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">賣家評級：</div>' + response[0].BuyerEvSeller + '</td>'
+
+                                            +
+                                            '<td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">商品評級：</div>' + response[0].BuyerEvProduct + '</td></tr>' +
+                                            '<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">商品評價：</div>' + response[0].BuyerEvText + '</td></tr></tbody></table>'
+                                        )
+                                    }
+                                }
+                            });
+                        });
+                    </script>
                     <div class=" no-gutters " id="tradeCompleted">
-                        
+
                     </div>
                 </div>
             </div>
         </div>
         <div class="tab-pane fade" id="browse" role="tabpanel" aria-labelledby="browse-tab">
 
-    <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-            <div class="row mx-1">
-                <div class="col-4 mb-3">
-                    
-                    
-            <script>
-        //瀏覽紀錄
-              $(document).ready(function() {
-                    $.ajax({
-                      url: 'https://ntou-store-system.herokuapp.com/personalPage/surfedRecord',
-                      dataType: 'json',
-                      type: "POST",
-                      data:document.cookie ,
-                      error:function(xhr, ajaxOptions, thrownError){
-                        alert(xhr.status+"\n"+thrownError);
-                      },
-                      success: function(response) {
-                          console.log(response.length)
-                         
-                          for(var i=0;i<response.length;i++){               
-                          $('#tableSurfedRecord').append('<table class="table table-bordered"><tbody><tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">品名：</div>'+response[0].ProductName+'</td>'                                                   +'<td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">直購價：</div>'+response[0].Price+'</td></tr>'   
-                                                      +'<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">底價：</div>'+response[0].LowestPrice+'</td>'
-                                                      +'<td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">競標價：</div>'+response[0].BiddingPrice+'</td></tr>'
-                                                      +'<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">競標單位價：</div>'+response[0].BiddingUnitPrice+'</td>'
-                                                      
-                                                    +'<td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">結標時間：</div>'+response[0].BiddingDeadline+'</td></tr>'
-                                                      
-                                                      +'<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">瀏覽日期：</div>'+response[0].SurfingDate+'</td></tr></tbody></table>'
-                                                  )
-                          }
-                    }
-                  });
-              });
-            </script>
-                    
-                    <div class="row no-gutters" id="tableSurfedRecord">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!--fade-->
-        <div class="tab-pane fade" id="transaction" role="tabpanel" aria-labelledby="transaction-tab">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="row mx-1">
+                        <div class="col-4 mb-3">
 
-            <div class="row">
-                <div class="col-3 mb-3">
-                    <div class="row no-gutters">
-                        <span class="col-12 border rounded" align="center">
-                            <img src="https://upload.cc/i1/2019/12/11/6ylCR0.jpg" class="card-img-top col-10" alt="" style="max-height: 250px;width: auto">
-                        </span>
-                    </div>
-                </div>
-                <div class="col-5 mb-3">
-                    <div class="row no-gutters">
-                        <table class="table table-bordered">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">品名：</div>皮卡丘娃娃
-                                    </td>
-                                    <td>
-                                        <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">交易數量：</div>1
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">交易總額：</div>50
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">買家：</div>阿蔡
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <a class="btn btn-outline-success col-4 mx-auto" href="./reservation.html">前往預約板</a>
-                        <button type="button" class="btn btn-primary col-4 mx-auto" data-toggle="modal" data-target="#evaluationModal">
-                            交易完成
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="tab-pane fade" id="record" role="tabpanel" aria-labelledby="record-tab">
 
-            <div class="row">
-                <div class="col-3 mb-3">
-                    <div class="row no-gutters">
-                        <span class="col-12 border rounded" align="center">
-                            <img src="https://upload.cc/i1/2019/12/11/6ylCR0.jpg" class="card-img-top col-10" alt="" style="max-height: 250px;width: auto">
-                        </span>
-                    </div>
-                </div>
-                <div class="col-5 mb-3">
-                    <div class="row no-gutters">
-                        <table class="table table-bordered">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">品名：</div>床墊
-                                    </td>
-                                    <td>
-                                        <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">交易數量：</div>1
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">交易總額：</div>850
-                                    </td>
-                                    <td>
-                                        <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">買家：</div>阿蔡
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">賣家評級：</div>★★★★✩
-                                    </td>
-                                    <td>
-                                        <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">商品評級：</div>★★★★★
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">商品評價：</div>很乾淨、好躺
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="tab-pane fade" id="browse" role="tabpanel" aria-labelledby="browse-tab">
-            <div class="card mb-3">
-                <div class="row no-gutters">
-                    <div class="col-4">
-                        <img src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" class="card-img-top" alt="">
-                    </div>
-                    <div class="card-body col-8">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">衛生紙</h5>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="card col-5">
-                                <div class="card-body">
-                                    <p class="card-text">
-                                        底價
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="card col-5">
-                                <div class="card-body">
-                                    <p class="card-text">
-                                        競標價
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="card col-4">
-                                <div class="card-body">
-                                    <p class="card-text">
-                                        單位競標價
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="card col-7">
-                                <div class="card-body">
-                                    <p class="card-text">
-                                        結束日期
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-text">直購價</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                            <script>
+                                //瀏覽紀錄
+                                $(document).ready(function() {
+                                    $.ajax({
+                                        url: 'https://ntou-store-system.herokuapp.com/personalPage/surfedRecord',
+                                        dataType: 'json',
+                                        type: "POST",
+                                        data: document.cookie,
+                                        error: function(xhr, ajaxOptions, thrownError) {
+                                            alert(xhr.status + "\n" + thrownError);
+                                        },
+                                        success: function(response) {
+                                            console.log(response.length)
 
-    </div>
+                                            for (var i = 0; i < response.length; i++) {
+                                                $('#tableSurfedRecord').append('<table class="table table-bordered"><tbody><tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">品名：</div>' + response[0].ProductName + '</td>' + '<td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">直購價：</div>' + response[0].Price + '</td></tr>' +
+                                                    '<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">底價：</div>' + response[0].LowestPrice + '</td>' +
+                                                    '<td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">競標價：</div>' + response[0].BiddingPrice + '</td></tr>' +
+                                                    '<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">競標單位價：</div>' + response[0].BiddingUnitPrice + '</td>'
+
+                                                    +
+                                                    '<td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">結標時間：</div>' + response[0].BiddingDeadline + '</td></tr>'
+
+                                                    +
+                                                    '<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">瀏覽日期：</div>' + response[0].SurfingDate + '</td></tr></tbody></table>'
+                                                )
+                                            }
+                                        }
+                                    });
+                                });
+                            </script>
+
+                            <div class="row no-gutters" id="tableSurfedRecord">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--fade-->
+                <div class="tab-pane fade" id="transaction" role="tabpanel" aria-labelledby="transaction-tab">
+
+                    <div class="row">
+                        <div class="col-3 mb-3">
+                            <div class="row no-gutters">
+                                <span class="col-12 border rounded" align="center">
+                                    <img src="https://upload.cc/i1/2019/12/11/6ylCR0.jpg" class="card-img-top col-10" alt="" style="max-height: 250px;width: auto">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-5 mb-3">
+                            <div class="row no-gutters">
+                                <table class="table table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">品名：</div>皮卡丘娃娃
+                                            </td>
+                                            <td>
+                                                <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">交易數量：</div>1
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">交易總額：</div>50
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">買家：</div>阿蔡
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <a class="btn btn-outline-success col-4 mx-auto" href="./reservation.html">前往預約板</a>
+                                <button type="button" class="btn btn-primary col-4 mx-auto" data-toggle="modal" data-target="#evaluationModal">
+                                    交易完成
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="record" role="tabpanel" aria-labelledby="record-tab">
+
+                    <div class="row">
+                        <div class="col-3 mb-3">
+                            <div class="row no-gutters">
+                                <span class="col-12 border rounded" align="center">
+                                    <img src="https://upload.cc/i1/2019/12/11/6ylCR0.jpg" class="card-img-top col-10" alt="" style="max-height: 250px;width: auto">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-5 mb-3">
+                            <div class="row no-gutters">
+                                <table class="table table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">品名：</div>床墊
+                                            </td>
+                                            <td>
+                                                <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">交易數量：</div>1
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">交易總額：</div>850
+                                            </td>
+                                            <td>
+                                                <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">買家：</div>阿蔡
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">賣家評級：</div>★★★★✩
+                                            </td>
+                                            <td>
+                                                <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">商品評級：</div>★★★★★
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">商品評價：</div>很乾淨、好躺
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="browse" role="tabpanel" aria-labelledby="browse-tab">
+                    <div class="card mb-3">
+                        <div class="row no-gutters">
+                            <div class="col-4">
+                                <img src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" class="card-img-top" alt="">
+                            </div>
+                            <div class="card-body col-8">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">衛生紙</h5>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="card col-5">
+                                        <div class="card-body">
+                                            <p class="card-text">
+                                                底價
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="card col-5">
+                                        <div class="card-body">
+                                            <p class="card-text">
+                                                競標價
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="card col-4">
+                                        <div class="card-body">
+                                            <p class="card-text">
+                                                單位競標價
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="card col-7">
+                                        <div class="card-body">
+                                            <p class="card-text">
+                                                結束日期
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-text">直購價</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
 
     </div>
     <!-- Button trigger modal -->
 
     <!--fade-->
-    
+
     <!--編輯詳細資訊 editInfoModal-->
     <div class="modal" id="editInfoModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -484,24 +499,24 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="form-group">                        
-                            <!--<div class="card-body">
+                    <form class="form-group">
+                        <!--<div class="card-body">
                                 <label>詳細資訊:</label><br>
                                 <div class="form-check form-check-inline col">
                                     <input type="text" class="form-control" name="Information" >                                   
                                 </div>    
                             </div>-->
-                            <label>詳細資訊：</label>
-                            <div class="input-group">                              
-                              <textarea class="form-control" aria-label="With textarea" name="Information"></textarea>
-                            </div>                                               
+                        <label>詳細資訊：</label>
+                        <div class="input-group">
+                            <textarea class="form-control" aria-label="With textarea" name="Information"></textarea>
+                        </div>
                         <button class="btn btn-outline-success container mt-2" type="submit">確認</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <!-- evaluationModal -->
     <div class="modal fade" id="evaluationModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -512,29 +527,35 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+                
+                
+                
                 <div class="modal-body">
-                    <form class="form-group">
+                    <form class="form-group" action="/personalPage/onTrade/tradeCompleted" method="POST" id="formEv">
                         <div class="card">
                             <div class="card-body">
-                                <label>賣家評級:</label>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" value="option1">
+                                <select class="col-3 custom-select" name="ID" id="tradeID1">
+                                    <option value=""  selected>交易序號</option>
+                                </select>
+                                <div>
+                                    <label>賣家評級:</label>
+                                    <input class="form-check-input" type="radio" name="MemberEv" value="1">
                                     <label class="form-check-label" for="inlineRadio1">1</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" value="option2">
+                                    <input class="form-check-input" type="radio" name="MemberEv" value="2">
                                     <label class="form-check-label" for="inlineRadio2">2</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" value="option3">
+                                    <input class="form-check-input" type="radio" name="MemberEv" value="3">
                                     <label class="form-check-label" for="inlineRadio3">3</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" value="option4">
+                                    <input class="form-check-input" type="radio" name="MemberEv" value="4">
                                     <label class="form-check-label" for="inlineRadio4">4</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" value="option5">
+                                    <input class="form-check-input" type="radio" name="MemberEv" value="5">
                                     <label class="form-check-label" for="inlineRadio5">5</label>
                                 </div>
                             </div>
@@ -543,23 +564,23 @@
                             <div class="card-body">
                                 <label>商品評級:</label>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions2" value="option1">
+                                    <input class="form-check-input" type="radio" name="ProductEv" value="1">
                                     <label class="form-check-label" for="inlineRadio1">1</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions2" value="option2">
+                                    <input class="form-check-input" type="radio" name="ProductEv" value="2">
                                     <label class="form-check-label" for="inlineRadio2">2</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions2" value="option3">
+                                    <input class="form-check-input" type="radio" name="ProductEv" value="3">
                                     <label class="form-check-label" for="inlineRadio3">3</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions2" value="option4">
+                                    <input class="form-check-input" type="radio" name="ProductEv" value="4">
                                     <label class="form-check-label" for="inlineRadio4">4</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions2" value="option5">
+                                    <input class="form-check-input" type="radio" name="ProductEv" value="5">
                                     <label class="form-check-label" for="inlineRadio5">5</label>
                                 </div>
                             </div>
@@ -567,17 +588,34 @@
                         <div class="card">
                             <div class="card-body">
                                 <label>商品評價:</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="EvText"></textarea>
                             </div>
                         </div>
-                        <button class="btn btn-outline-success container" type="submit">送出</button>
+                        <button class="btn btn-outline-success container" type="submit" onclick="abc()">送出</button>
                     </form>
+
+                    <script>
+                        $(document).ready(function(e) {
+
+                            $("#formEv").submit(function(e) {
+                                alert($("#formEv").serialize())
+                            });
+
+
+                        })
+                    </script>
+
+
                 </div>
             </div>
         </div>
     </div>
-    
-    
+
+    <script>
+        function abc() {
+            console.log("abc")
+        }
+    </script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
