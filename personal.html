@@ -146,22 +146,22 @@
                                 },
                                 success: function(response) {
                                     console.log(response[0][response[0].length - 2].ProductName)
-                                    for (var i = 0; i < 1; i++) {
-                                        //for(var i=0;i<response[0].length-1;i++){
-                                        console.log(response[0][i].ProductID)
-                                        $('#tableOnsale').append('<table class="table table-bordered" ><tbody><tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px ">品名：' + response[0][i].ProductName + '</div></td></tr>' + '<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="Price">直購價：' + response[0][i].Price + '</div></td></tr>' +
+                                    for (var i = 19; i < 20; i++) {
+                                    //for(var i=0;i<response[0].length-1;i++){
+                                       // console.log(response[0][i].ProductID)
+                                        $('#tableOnsale').append('<table class="table table-bordered" ><tbody><tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px ">品名：' +i+ response[0][i].ProductName + response[0][i].ProductID + '</div></td></tr>' + '<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="Price">直購價：' + response[0][i].Price + '</div></td></tr>' +
                                             '<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="LowestPrice">底價：' + response[0][i].LowestPrice + '</div></td><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="BiddingPrice">競標價：' + response[0][i].BiddingPrice + '</div></td></tr>' +
                                             '<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="BiddingUnitPrice">競標單位價：' + response[0][i].BiddingUnitPrice + '</div></td><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="BiddingDeadLine">結標時間：' + response[0][i].BiddingDeadLine + '</div></td></tr>' +
                                             '<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px ">詳細資訊：' + response[0][i].Information + '</div></td></tr></tbody></table>'
-
+                                                                 
+                                            //+ `<button type="button" class="btn btn-outline-success mb-4" >try</button></div></div>`
                                             +
-                                            `<button type="button" class="btn btn-outline-success mb-4" >try</button></div></div>`
-                                            //+`<button type="button" class="btn btn-outline-success mb-4" onclick="${myFunction("1","try1")}">try</button></div></div>`
+                                            `<button type="button" class="btn btn-outline-success mb-4" onclick="${myFunction("24","try1")}">try</button></div></div>`
 
                                             //編輯 
                                             +
-                                            '<button type="button" class="btn btn-outline-success mb-4" data-toggle="modal" data-target="#editInfoModal">編輯詳細資訊</button></div></div>' +
-                                            '<button type="button" class="btn btn-outline-danger ml-3 mb-4" data-toggle="modal" data-target="">刪除</button></div></div>'
+                                            '<button type="button" class="btn btn-outline-success mb-4" data-toggle="modal" data-target="#editInfoModal">編輯詳細資訊</button></div></div>' 
+                                            +`<button type="button" class="btn btn-outline-danger ml-3 mb-4" data-toggle="modal" onclick="${deleteFunction("47")}">刪除</button></div></div>`
                                         )
                                     }
                                 }
@@ -171,21 +171,43 @@
 
 
                     <script>
-                        /* function myFunction(xID,xInformation) {
-                    $.ajax({
-                      url: 'https://ntou-store-system.herokuapp.com/personalPage/onSale/edit',
-                      dataType: 'json',
-                      type: "GET",
-                      data: {ProductID:"24",
-                            Information:"t1"
-                            },
-                      error:function(xhr, ajaxOptions, thrownError){
-                        alert(xhr.status+"\n"+thrownError);
-                      },
-                      success: function(response) {
+                        function myFunction(xID, xInformation) {
+                            $.ajax({
+                                url: 'https://ntou-store-system.herokuapp.com/personalPage/onSale/edit',
+                                dataType: 'json',
+                                type: "POST",
+                                data: {
+                                    ID: xID,
+                                    Information: "t2"
+                                },
+                                error: function(xhr, ajaxOptions, thrownError) {
+                                    alert(xhr.status + "\n" + thrownError);
+                                },
+                                success: function(response) {
+
+                                }
+                            })
+                        }
                         
-                      }})
-              }   */
+                    </script>
+                    <script>
+                        function deleteFunction(xID) {
+                            console.log("xID:"+xID)
+                            $.ajax({
+                                url: 'https://ntou-store-system.herokuapp.com/personalPage/onSale/delete',
+                                dataType: 'json',
+                                type: "POST",
+                                data: {
+                                    ID: xID,
+                                },
+                                error: function(xhr, ajaxOptions, thrownError) {
+                                    alert(xhr.status + "123\n" + thrownError);
+                                },
+                                success: function(response) {
+
+                                }
+                            })
+                        }
                     </script>
                     <div class="col-4">
                         <div class="row no-gutters" id="tableOnsale">
@@ -219,7 +241,7 @@
                                     $('#tableTrade').append('<div class="row no-gutters mb-4"><div class="col no-gutters"><a class="btn btn-outline-success " href="./reservation.html">前往預約板</a>')
                                     for (var i = 0; i < response.length; i++) {
                                         $('#tradeID1').append(
-                                            $('<option/>').attr('value',response[i].TradeID)
+                                            $('<option/>').attr('value', response[i].TradeID)
                                             .append(response[i].TradeID)
                                         )
                                         $('#tableTrade').append('<table class="table table-bordered"><tbody><tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">品名：' + response[i].ProductName + '</div></td><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">交易數量：</div>' + response[i].TradeAmount + '</td></tr><tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">交易總額：</div>' + response[i].TradePrice + '</td></tr>' +
@@ -307,7 +329,7 @@
                                             alert(xhr.status + "\n" + thrownError);
                                         },
                                         success: function(response) {
-                                            console.log(response.length)
+                                            //console.log(response.length)
 
                                             for (var i = 0; i < response.length; i++) {
                                                 $('#tableSurfedRecord').append('<table class="table table-bordered"><tbody><tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">品名：</div>' + response[0].ProductName + '</td>' + '<td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">直購價：</div>' + response[0].Price + '</td></tr>' +
@@ -527,15 +549,15 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                
-                
-                
+
+
+
                 <div class="modal-body">
-                    <form class="form-group" action="/personalPage/onTrade/tradeCompleted" method="POST" id="formEv">
+                    <form class="form-group" action="https://ntou-store-system.herokuapp.com/personalPage/onTrade/tradeCompleted" method="POST" id="formEv">
                         <div class="card">
                             <div class="card-body">
                                 <select class="col-3 custom-select" name="ID" id="tradeID1">
-                                    <option value=""  selected>交易序號</option>
+                                    <option value="" selected>交易序號</option>
                                 </select>
                                 <div>
                                     <label>賣家評級:</label>
@@ -591,17 +613,14 @@
                                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="EvText"></textarea>
                             </div>
                         </div>
-                        <button class="btn btn-outline-success container" type="submit" onclick="abc()">送出</button>
+                        <button class="btn btn-outline-success container" type="submit">送出</button>
                     </form>
 
                     <script>
                         $(document).ready(function(e) {
-
                             $("#formEv").submit(function(e) {
                                 alert($("#formEv").serialize())
                             });
-
-
                         })
                     </script>
 
@@ -621,6 +640,4 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-</body>
-
-</html>
+</body></html>
