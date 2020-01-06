@@ -74,6 +74,11 @@ function eraseCookie() {
 					           success: function(response) {
 											 var responseLength = response.length;
 											 for(var i=0;i<responseLength;i++){
+												 $('#TradeID').append(
+													 $('<option/>')
+													 .attr('value',response[i].Reservation.TradeID + "&ProductID=" + 'response[i].Reservation.ProductID')
+													 .append(response[i].Reservation.TradeID)
+												 )
 												 $('#reservation').append(
 													 $('<div/>')
 														 .addClass('card')
@@ -86,7 +91,7 @@ function eraseCookie() {
 																 .append(
 																 $('<img/>')
 																 .addClass('img')
-																 .attr('src',response[i].ProductImg)
+																 .attr('src',response[i].Reservation.ProductImg)
 																 .attr('style','height: 100px')
 																 )
 															 )
@@ -96,7 +101,7 @@ function eraseCookie() {
 															 .append(
 																 $('<div/>')
 																 .addClass('col-10 list-group-item')
-																 .append("<h5>" + response[i].BuyerName + " 於 " +  response[i].BoughtDate + " 購買了 " + response[i].SellerName + " 的 " + response[i].ProductName + " 商品</h5>" +　"<h5>於 " + response[i].AppointDate  + "面交</h5>")
+																 .append("<h5>" + response[i].Reservation.BuyerName + " 於 " +  response[i].Reservation.BoughtDate + " 購買了 " + response[i].Reservation.SellerName + " 的 " + response[i].Reservation.ProductName + " 商品</h5>")
 															 )
 															 .append(
 																 $('<div/>')
@@ -109,7 +114,7 @@ function eraseCookie() {
 																		 .addClass('btn btn-lg')
 																		 .append(
 																			 $('<span/>')
-																			 .addClass('fas fa-comment-alt')
+																			 .append(response[i].Reservation.TradeID)
 																		 )
 																	 )
 																 )
@@ -148,7 +153,7 @@ function eraseCookie() {
 																.append(
 																	$('<img/>')
 																	.addClass('img')
-																	.attr('src',response[i].ProductImg)
+																	.attr('src',response[i].Comment[j].CommenterImageURL)
 																	.attr('style','height: 50px')
 																)
 															)
@@ -156,7 +161,7 @@ function eraseCookie() {
 																$('<div/>')
 																.addClass('col-9 list-group-item')
 																.append(
-																	response[i].Comment[j]
+																	response[i].Comment[j].CommenterName + ":" + response[i].Comment[j].CommentInfo
 																)
 															)
 														)
@@ -168,9 +173,9 @@ function eraseCookie() {
               </script>
 
 							<form class="row align-items-center form-group" id="form0">
-								<div class="col-3 list-group-item">
-									<input class="form-control input-lg" placeholder="交易序號" name="TradeID">
-								</div>
+								<select class="col-3 custom-select" name="TradeID" id="TradeID">
+									<option value="" selected>交易序號</option>
+								</select>
 								<div class="col-6 list-group-item">
 									<input class="form-control input-lg" placeholder="留言" name="Information">
 								</div>
@@ -178,15 +183,16 @@ function eraseCookie() {
 									<button class="btn btn-outline-success" type="submit">留言</button>
 								</div>
 							</form>
-							
+
 							<script>
 							    $(document).ready(function(e) {
 							        //表單發送處理
 							        $("#form0").submit(function(e) {
+												alert(document.cookie + "&" + $('#form0').serialize())
 							            $.ajax({
 							                    type: "POST",
 							                    url: 'https://ntou-store-system.herokuapp.com/personalPage/reservation/comment',
-							                    data: "TradeID=1&ProductID=34&Information=1",
+							                    data: document.cookie + $('#form0').serialize(),
 							                    dataType: "json",
 							                    success: function(response) {
 							                      if(response.state==true){
