@@ -72,13 +72,15 @@
             alert(xhr.status+"\n"+thrownError);
           },
           success: function(response) {
-            $('#ImageURL').attr('src', response[0].ImageURL)
-            $('#Category').append(response[0].Category)
-            $('#ProductName').append(response[0].ProductName)
-            $('#AvgEv').append(response[0].AvgEv)
-            $('#Price').append(response[0].Price)
-            $('#Amount').append(response[0].Amount)
-            $('#Information').append(response[0].Information)
+            $('#ImageURL').attr('src', response[0][0].ImageURL)
+            $('#Category').append(response[0][0].Category)
+            $('#ProductName').append(response[0][0].ProductName)
+            $('#AvgEv').append(response[0][0].AvgEv)
+            $('#Price').append(response[0][0].Price)
+            $('#Amount').append(response[0][0].Amount)
+            $('#Information').append(response[0][0].Information)
+            $('#SellerImageURL').attr('src', response[0][0].SellerImageURL)
+            $('#SellerNickName').append(response[0][0].SellerNickName)
           }
         });
   });
@@ -127,10 +129,10 @@
 <div class="card">
 	<div class="row">
 		<div class="col-2">
-			<img src="https://icon-library.net/images/img-icon/img-icon-14.jpg" class="img" style="height: 100px;" >
+			<img src="https://icon-library.net/images/img-icon/img-icon-14.jpg" class="img" style="height: 100px;" id="SellerImageURL">
 		</div>
 		<div class="card-body col-10">
-			<h5 class="card-title">個人資訊</h5>
+			<h5 class="card-title" id="SellerNickName">賣家：</h5>
 		</div>
 	</div>
 </div>
