@@ -152,14 +152,37 @@
                                                    '<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="LowestPrice">底價：'+response[0][i].LowestPrice+'</div></td><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="BiddingPrice">競標價：'+response[0][i].BiddingPrice+'</div></td></tr>'
                                                   +'<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="BiddingUnitPrice">競標單位價：'+response[0][i].BiddingUnitPrice+'</div></td><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="BiddingDeadLine">結標時間：'+response[0][i].BiddingDeadLine+'</div></td></tr>'
                 +'<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px ">詳細資訊：'+response[0][i].Information+'</div></td></tr></tbody></table>'
+                                                   
+                                                    +'<button type="button" class="btn btn-outline-success mb-4" onclick="'+myFunction(i)+'">try</button></div></div>'
+                                                   
                                                    //編輯 
-                                                 +'<button type="button" class="btn btn-outline-success mb-4" data-toggle="modal" data-target="#evaluationModal">編輯</button></div></div>'
-                                                   +'<button type="button" class="btn btn-outline-danger ml-3 mb-4" data-toggle="modal" data-target="#evaluationModal">刪除</button></div></div>'
+                                                 +'<button type="button" class="btn btn-outline-success mb-4" data-toggle="modal" data-target="#editInfoModal">編輯詳細資訊</button></div></div>'
+                                                   +'<button type="button" class="btn btn-outline-danger ml-3 mb-4" data-toggle="modal" data-target="">刪除</button></div></div>'
                                                   )
                           }
                     }
                   });
               });
+                
+               
+            </script>
+                    
+
+            <script>
+            /*function myFunction(x) {
+                    $.ajax({
+                      url: 'https://ntou-store-system.herokuapp.com/personalPage',
+                      dataType: 'json',
+                      type: "POST",
+                      data:document.cookie,
+                      error:function(xhr, ajaxOptions, thrownError){
+                        alert(xhr.status+"\n"+thrownError);
+                      },
+                      success: function(response) {
+                        response[0][x].Informaion="try"
+                      }})
+              }    */
+            
             </script>
                 <div class="col-4">
                     <div class="row no-gutters" id="tableOnsale">
@@ -449,6 +472,36 @@
     <!-- Button trigger modal -->
 
     <!--fade-->
+    
+    <!--編輯詳細資訊 editInfoModal-->
+    <div class="modal" id="editInfoModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">編輯詳細資訊</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-group">                        
+                            <!--<div class="card-body">
+                                <label>詳細資訊:</label><br>
+                                <div class="form-check form-check-inline col">
+                                    <input type="text" class="form-control" name="Information" >                                   
+                                </div>    
+                            </div>-->
+                            <label>詳細資訊：</label>
+                            <div class="input-group">                              
+                              <textarea class="form-control" aria-label="With textarea" name="Information"></textarea>
+                            </div>                                               
+                        <button class="btn btn-outline-success container mt-2" type="submit">確認</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <!-- evaluationModal -->
     <div class="modal fade" id="evaluationModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -523,6 +576,8 @@
             </div>
         </div>
     </div>
+    
+    
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
