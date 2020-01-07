@@ -66,8 +66,7 @@ function eraseCookie() {
 					           url: 'https://ntou-store-system.herokuapp.com/personalPage/reservation',
 					           dataType: 'json',
 					           type: "POST",
-					           //data: document.cookie,
-										 data: "ID=4",
+					           data: document.cookie,
 					           error:function(xhr, ajaxOptions, thrownError){
 					             alert(xhr.status+"\n"+thrownError);
 					           },
@@ -76,7 +75,7 @@ function eraseCookie() {
 											 for(var i=0;i<responseLength;i++){
 												 $('#TradeID').append(
 													 $('<option/>')
-													 .attr('value',response[i].Reservation.TradeID + "&ProductID=" + 'response[i].Reservation.ProductID')
+													 .attr('value',response[i].Reservation.TradeID)
 													 .append(response[i].Reservation.TradeID)
 												 )
 												 $('#reservation').append(
@@ -188,11 +187,10 @@ function eraseCookie() {
 							    $(document).ready(function(e) {
 							        //表單發送處理
 							        $("#form0").submit(function(e) {
-												alert(document.cookie + "&" + $('#form0').serialize())
 							            $.ajax({
 							                    type: "POST",
 							                    url: 'https://ntou-store-system.herokuapp.com/personalPage/reservation/comment',
-							                    data: document.cookie + $('#form0').serialize(),
+							                    data: document.cookie + "&" + $('#form0').serialize(),
 							                    dataType: "json",
 							                    success: function(response) {
 							                      if(response.state==true){
