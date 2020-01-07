@@ -55,13 +55,14 @@
             </h2>
         </div>
         <div class="col-5 container">
-            <form class="form-group row" action="https://ntou-store-system.herokuapp.com/signUp" method="GET">
+            <form class="form-group row" action="https://ntou-store-system.herokuapp.com/verification" method="POST">
                 <label class="col-5 col-form-label mb-2">請輸入信箱驗證碼：</label>
-                <div class="">
-                    <input type="text" class="form-control" name="Phone" placeholder="驗證碼">
+                <div class="col-5">
+                    <input type="text" class="form-control" name="ID" placeholder="ID">
+                    <input type="text" class="form-control" name="VerificationCode" placeholder="驗證碼">
                 </div>
-               
-                <button class="btn btn-outline-success col-2 container mt-4" type="submit">送&nbsp;&nbsp;出</button>
+                <br>
+                <button class="btn btn-outline-success col-2 container" type="submit">送&nbsp;&nbsp;出</button>
             </form>
         </div>
     </span>
