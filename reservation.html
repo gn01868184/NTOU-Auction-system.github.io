@@ -66,8 +66,7 @@ function eraseCookie() {
 					           url: 'https://ntou-store-system.herokuapp.com/personalPage/reservation',
 					           dataType: 'json',
 					           type: "POST",
-					           //data: document.cookie,
-										 data: "ID=4",
+					           data: document.cookie,
 					           error:function(xhr, ajaxOptions, thrownError){
 					             alert(xhr.status+"\n"+thrownError);
 					           },
@@ -191,7 +190,7 @@ function eraseCookie() {
 							            $.ajax({
 							                    type: "POST",
 							                    url: 'https://ntou-store-system.herokuapp.com/personalPage/reservation/comment',
-							                    data: "ID=4&" + $('#form0').serialize(),
+							                    data: document.cookie + "&" + $('#form0').serialize(),
 							                    dataType: "json",
 							                    success: function(response) {
 							                      if(response.state==true){
