@@ -70,12 +70,12 @@
                         url: 'https://ntou-store-system.herokuapp.com/personalPage',
                         dataType: 'json',
                         type: "POST",
-                        data: document.cookie,
-                        /*data: {                          
+                        //data: document.cookie,
+                        data: {                          
                               ID:6
-                          },*/
+                          },
                         error: function(xhr, ajaxOptions, thrownError) {
-                            alert(xhr.status + "\n" + thrownError);
+                            //alert(xhr.status + "\n" + thrownError);
                         },
                         success: function(response) {
                             console.log(response[1].Name)
@@ -140,9 +140,10 @@
                                 url: 'https://ntou-store-system.herokuapp.com/personalPage',
                                 dataType: 'json',
                                 type: "POST",
-                                data: document.cookie,
+                                //data: document.cookie,
+                                data: { ID:6 },
                                 error: function(xhr, ajaxOptions, thrownError) {
-                                    alert(xhr.status + "\n" + thrownError);
+                                    //alert(xhr.status + "\n" + thrownError);
                                 },
                                 success: function(response) {
                                     console.log(response[0][response[0].length - 2].ProductName)
@@ -155,8 +156,8 @@
                                             '<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px ">詳細資訊：' + response[0][i].Information + '</div></td></tr></tbody></table>'
                                                                  
                                             //+ `<button type="button" class="btn btn-outline-success mb-4" >try</button></div></div>`
-                                            +
-                                            `<button type="button" class="btn btn-outline-success mb-4" onclick="${myFunction("24","try1")}">try</button></div></div>`
+                                            
+                                            //+`<button type="button" class="btn btn-outline-success mb-4" onclick="${myFunction("24","try1")}">try</button></div></div>`
 
                                             //編輯 
                                             +
@@ -170,29 +171,10 @@
                     </script>
 
 
-                    <script>
-                        function myFunction(xID, xInformation) {
-                            $.ajax({
-                                url: 'https://ntou-store-system.herokuapp.com/personalPage/onSale/edit',
-                                dataType: 'json',
-                                type: "POST",
-                                data: {
-                                    ID: xID,
-                                    Information: "t2"
-                                },
-                                error: function(xhr, ajaxOptions, thrownError) {
-                                    alert(xhr.status + "\n" + thrownError);
-                                },
-                                success: function(response) {
-
-                                }
-                            })
-                        }
-                        
-                    </script>
+                    
                     <script>
                         function deleteFunction(xID) {
-                            console.log("xID:"+xID)
+                            //console.log("xID:"+xID)
                             $.ajax({
                                 url: 'https://ntou-store-system.herokuapp.com/personalPage/onSale/delete',
                                 dataType: 'json',
@@ -201,7 +183,7 @@
                                     ID: xID,
                                 },
                                 error: function(xhr, ajaxOptions, thrownError) {
-                                    alert(xhr.status + "123\n" + thrownError);
+                                   // alert(xhr.status + "123\n" + thrownError);
                                 },
                                 success: function(response) {
 
@@ -231,9 +213,10 @@
                                 url: 'https://ntou-store-system.herokuapp.com/personalPage/onTrade',
                                 dataType: 'json',
                                 type: "POST",
-                                data: document.cookie,
+                                //data: document.cookie,
+                                data: { ID:6 },
                                 error: function(xhr, ajaxOptions, thrownError) {
-                                    alert(xhr.status + "\n" + thrownError);
+                                    //alert(xhr.status + "\n" + thrownError);
                                 },
                                 success: function(response) {
                                     console.log(response[1].ProductName)
@@ -280,9 +263,10 @@
                                 url: 'https://ntou-store-system.herokuapp.com/personalPage/tradeRecord',
                                 dataType: 'json',
                                 type: "POST",
-                                data: document.cookie,
+                                //data: document.cookie,
+                                data: { ID:6 },
                                 error: function(xhr, ajaxOptions, thrownError) {
-                                    alert(xhr.status + "\n" + thrownError);
+                                    //alert(xhr.status + "\n" + thrownError);
                                 },
                                 success: function(response) {
                                     console.log(response.length)
@@ -324,9 +308,10 @@
                                         url: 'https://ntou-store-system.herokuapp.com/personalPage/surfedRecord',
                                         dataType: 'json',
                                         type: "POST",
-                                        data: document.cookie,
+                                        //data: document.cookie,
+                                        data: { ID:6 },
                                         error: function(xhr, ajaxOptions, thrownError) {
-                                            alert(xhr.status + "\n" + thrownError);
+                                           // alert(xhr.status + "\n" + thrownError);
                                         },
                                         success: function(response) {
                                             //console.log(response.length)
@@ -532,13 +517,34 @@
                         <div class="input-group">
                             <textarea class="form-control" aria-label="With textarea" name="Information"></textarea>
                         </div>
-                        <button class="btn btn-outline-success container mt-2" type="submit">確認</button>
+                        <button class="btn btn-outline-success container mt-2" type="submit" onclick="myFunction(24,'try5')">確認</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
+                    <script>
+                        function myFunction(xID, xInformation) {
+                            console.log("xID:"+xID)
+                            console.log("xInformation:"+xInformation)
+                            $.ajax({
+                                url: 'https://ntou-store-system.herokuapp.com/personalPage/onSale/edit',
+                                dataType: 'json',
+                                type: "POST",
+                                data: {
+                                    ID: xID,
+                                    Information: xInformation
+                                },
+                                error: function(xhr, ajaxOptions, thrownError) {
+                                    //alert(xhr.status + "\n" + thrownError);
+                                },
+                                success: function(response) {
+                                    alert("s");
+                                }
+                            })
+                        }
+                        
+                    </script>
     <!-- evaluationModal -->
     <div class="modal fade" id="evaluationModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -619,7 +625,7 @@
                     <script>
                         $(document).ready(function(e) {
                             $("#formEv").submit(function(e) {
-                                alert($("#formEv").serialize())
+                                //alert($("#formEv").serialize())
                             });
                         })
                     </script>
