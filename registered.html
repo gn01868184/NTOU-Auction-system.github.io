@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -9,10 +10,12 @@
     <!-- Bootstrap 4 Icons -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <title>海大拍賣系統</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
     <span style="font-size:14px;">
         <script src='https://www.google.com/recaptcha/api.js'></script>
     </span>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
 </head>
 
 <body>
@@ -94,9 +97,9 @@
                 <button class="btn btn-outline-success col-2 container mt-2" type="submit">提&nbsp;&nbsp;交</button>
             </form>
             <script>
-                $(document).ready(function(a) {
+                $(document).ready(function(e) {
                     //表單發送處理
-                    $("#form").submit(function(a) {
+                    $("#form").submit(function(e) {
                         $.ajax({
                             type: $(this).attr("method"),
                             url: $(this).attr("action"),
@@ -106,17 +109,17 @@
                                 if (response.state == true) {
                                     alert("請至信箱收認證信")
                                     document.cookie = "ID=" + response.ID;
-                                    window.location.href = "https://ntou-store-system.herokuapp.com/verification.html"; //指定要跳轉到的目標頁面
+                                    window.location.href = "./verification.html"; //指定要跳轉到的目標頁面
                                 } else {
                                     alert("有誤")
                                 }
                             }
                         })
-                        a.preventDefault(); //停止預設動作
+                        e.preventDefault(); //停止預設動作
                         //e.unbind(); //解除綁定。停止多個表單提交.
                     });
                 });
-                
+
             </script>
         </div>
     </span>
@@ -125,4 +128,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-</body></html>
+</body>
+
+</html>
