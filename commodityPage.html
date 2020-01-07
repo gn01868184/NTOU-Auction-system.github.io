@@ -60,8 +60,8 @@
   //購物車
   function sCart(val) {
     var productVal = val.value.split(";");
-    document.cookie = document.cookie + ";ProductID="
-    alert(document.cookie);
+    document.cookie = document.cookie + ";ProductID=" + productVal[0] + ";ProductName=" + productVal[1] + ";ProductHref=" + productVal[2];
+    alert(productVal);
   }
   $(document).ready(function() {
     //取別的網頁傳來的值
