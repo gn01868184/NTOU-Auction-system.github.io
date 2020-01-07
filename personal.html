@@ -70,10 +70,8 @@
                         url: 'https://ntou-store-system.herokuapp.com/personalPage',
                         dataType: 'json',
                         type: "POST",
-                        //data: document.cookie,
-                        data: {                          
-                              ID:6
-                          },
+                        data: document.cookie,
+                        //data: {     ID:6  },
                         error: function(xhr, ajaxOptions, thrownError) {
                             //alert(xhr.status + "\n" + thrownError);
                         },
@@ -140,8 +138,8 @@
                                 url: 'https://ntou-store-system.herokuapp.com/personalPage',
                                 dataType: 'json',
                                 type: "POST",
-                                //data: document.cookie,
-                                data: { ID:6 },
+                                data: document.cookie,
+                               // data: { ID:6 },
                                 error: function(xhr, ajaxOptions, thrownError) {
                                     //alert(xhr.status + "\n" + thrownError);
                                 },
@@ -213,8 +211,8 @@
                                 url: 'https://ntou-store-system.herokuapp.com/personalPage/onTrade',
                                 dataType: 'json',
                                 type: "POST",
-                                //data: document.cookie,
-                                data: { ID:6 },
+                                data: document.cookie,
+                                //data: { ID:6 },
                                 error: function(xhr, ajaxOptions, thrownError) {
                                     //alert(xhr.status + "\n" + thrownError);
                                 },
@@ -263,8 +261,8 @@
                                 url: 'https://ntou-store-system.herokuapp.com/personalPage/tradeRecord',
                                 dataType: 'json',
                                 type: "POST",
-                                //data: document.cookie,
-                                data: { ID:6 },
+                                data: document.cookie,
+                                //data: { ID:6 },
                                 error: function(xhr, ajaxOptions, thrownError) {
                                     //alert(xhr.status + "\n" + thrownError);
                                 },
@@ -308,8 +306,8 @@
                                         url: 'https://ntou-store-system.herokuapp.com/personalPage/surfedRecord',
                                         dataType: 'json',
                                         type: "POST",
-                                        //data: document.cookie,
-                                        data: { ID:6 },
+                                        data: document.cookie,
+                                        //data: { ID:6 },
                                         error: function(xhr, ajaxOptions, thrownError) {
                                            // alert(xhr.status + "\n" + thrownError);
                                         },

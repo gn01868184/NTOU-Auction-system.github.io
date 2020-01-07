@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- Bootstrap 4 Icons -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <title>海大拍賣系統</title>
 </head>
 
@@ -55,20 +57,68 @@
             </h2>
         </div>
         <div class="col-5 container">
-            <form class="form-group row" action="https://ntou-store-system.herokuapp.com/verification" method="POST">
+            <form id="form" class="form-group row" action="https://ntou-store-system.herokuapp.com/verification" method="POST">
                 <label class="col-5 col-form-label mb-2">請輸入信箱驗證碼：</label>
                 <div class="col-5">
-                    <input type="text" class="form-control" name="ID" placeholder="ID">
                     <input type="text" class="form-control" name="VerificationCode" placeholder="驗證碼">
                 </div>
                 <br>
                 <button class="btn btn-outline-success col-2 container" type="submit">送&nbsp;&nbsp;出</button>
             </form>
+
+            <script>
+                //表單發送處理
+
+                $("#form").submit(function(e) {
+                    console.log("s:" + $("#form").serialize())
+                    var v = "Account=" + getCookie("Account") + "&"+$("#form").serialize()
+                    //v=v+";"+$("#form").serialize()
+                    console.log("v:" + v)
+                    console.log("cookie:" + document.cookie)
+                    //alert($("#form").serialize())
+                    //alert(document.cookie)
+                    $.ajax({
+                        type: $(this).attr("method"),
+                        url: $(this).attr("action"),
+                        data: v,
+                        dataType: "json",
+
+                        success: function(response) {
+                            console.log("hee")
+                            if (response.state == true) {
+                                alert("response true");
+                                window.location.href = "./index.html";
+                            } else {
+                                alert("有誤");
+                            }
+                        },
+                        error: function(xhr, ajaxOptions, thrownError) {
+                            
+                        },
+
+                    })
+                    e.preventDefault(); //停止預設動作
+                    //e.unbind(); //解除綁定。停止多個表單提交.
+                });
+
+                function getCookie(objName) { //获取指定名称的cookie的值 
+                    var arrStr = document.cookie.split("; ");
+                    for (var i = 0; i < arrStr.length; i++) {
+                        var temp = arrStr[i].split("=");
+                        if (temp[0] == objName) {
+                            return decodeURI(temp[1]);
+                        }
+                    }
+                }
+
+            </script>
+
         </div>
     </span>
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-</body></html>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</body>
+
+</html>

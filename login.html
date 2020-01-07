@@ -52,47 +52,54 @@
         </div>
     </nav>
     <span class="border">
-    <div class="col-12 mx-auto" align="center" style="margin-top: 2% ">
-        <h2><p class="font-weight-bold text-info">登入</p></h2>
-        <form class="form-group col-12"  style="margin-top: 2% " action="https://ntou-store-system.herokuapp.com/signIn" method="POST" id="form">
-            <div class="col-4 " style="padding-right: 0px; padding-left: 0px">
-                <input name="Account" class="form-control" type="input" placeholder="帳號"></div>
-            <div class="col-4 mb-3" style="padding-right: 0px; padding-left: 0px">
-                <input  name="Password" class="form-control mt-3 mb-10" type="password" placeholder="密碼"></div>
+        <div class="col-12 mx-auto" align="center" style="margin-top: 2% ">
+            <h2>
+                <p class="font-weight-bold text-info">登入</p>
+            </h2>
+            <form class="form-group col-12" style="margin-top: 2% " action="https://ntou-store-system.herokuapp.com/signIn" method="POST" id="form">
+                <div class="col-4 " style="padding-right: 0px; padding-left: 0px">
+                    <input name="Account" class="form-control" type="input" placeholder="帳號"></div>
+                <div class="col-4 mb-3" style="padding-right: 0px; padding-left: 0px">
+                    <input name="Password" class="form-control mt-3 mb-10" type="password" placeholder="密碼"></div>
 
-            <button class="btn btn-outline-success" type="submit">&nbsp;&nbsp;登&nbsp;&nbsp;入&nbsp;&nbsp;</button>
-            <br />
-            <a class="btn btn-link mt-2 text-info" href="./registered.html">&nbsp;註&nbsp;&nbsp;冊&nbsp;</a>
-        </form>
-    </div></span>
+                <button class="btn btn-outline-success" type="submit">&nbsp;&nbsp;登&nbsp;&nbsp;入&nbsp;&nbsp;</button>
+                <br />
+                <a class="btn btn-link mt-2 text-info" href="./registered.html">&nbsp;註&nbsp;&nbsp;冊&nbsp;</a>
+            </form>
+        </div>
+    </span>
 
-<script>
-    $(document).ready(function(e) {
-        //表單發送處理
-        $("#form").submit(function(e) {
-            $.ajax({
+    <script>
+        $(document).ready(function(e) {
+            //表單發送處理
+            $("#form").submit(function(e) {
+                alert($(this).serialize() + '&time=' + $.now())
+                $.ajax({
                     type: $(this).attr("method"),
                     url: $(this).attr("action"),
+
                     data: $(this).serialize() + '&time=' + $.now(),
                     dataType: "json",
                     success: function(response) {
-                      if(response.state==true){
-                        alert("登入成功")
-                        document.cookie = "ID=" + response.ID ;
-                        window.location.href="./index.html";//指定要跳轉到的目標頁面
-                      }
-                      else {
-                        alert("帳號或密碼有誤")
-                      }
+                        if (response.state == true) {
+                            alert("登入成功")
+                            document.cookie = "ID=" + response.ID;
+                            window.location.href = "./index.html"; //指定要跳轉到的目標頁面
+                        } else {
+                            alert("帳號或密碼有誤")
+                        }
                     }
                 })
-            e.preventDefault(); //停止預設動作
-            //e.unbind(); //解除綁定。停止多個表單提交.
+                e.preventDefault(); //停止預設動作
+                //e.unbind(); //解除綁定。停止多個表單提交.
+            });
         });
-    });
-</script>
+
+    </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-</body></html>
+</body>
+
+</html>

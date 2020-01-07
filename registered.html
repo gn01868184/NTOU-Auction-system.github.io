@@ -73,7 +73,7 @@
                 </div>
                 <label class="col-2 col-form-label mb-2">暱稱</label>
                 <div class="col-10 mb-2">
-                    <input type="text" class="form-control" name="Nickname" placeholder="暱稱">
+                    <input type="text" class="form-control" name="NickName" placeholder="暱稱">
                 </div>
                 <label class="col-2 col-form-label mb-2">信箱</label>
                 <div class="col-5 mb-2">
@@ -88,42 +88,50 @@
                 </div>
                 <label class="col-2 col-form-label mb-2">密碼</label>
                 <div class="col-10 mb-2">
-                    <input type="password" class="form-control" name="Password" placeholder="密碼" value="11">
+                    <input type="password" class="form-control" name="Password" placeholder="密碼">
                 </div>
-                
-                <!--人機驗證
+
+                <!--人機驗證-->
                 <label class="col-2 col-form-label mb-4">人機驗證</label><br>
+                <!--<input type="text" class="form-control" name="g-recaptcha-response" value="1">-->
                 <div class="col-10"><span style="font-size:14px;">
                         <div class="g-recaptcha" data-sitekey="6LdhqswUAAAAANBVslRZmCXmr_NODFaJ7yQG5RRq"></div>
                     </span></div>
-                -->
+                
                 <button class="btn btn-outline-success col-2 container mt-2" type="submit">提&nbsp;&nbsp;交</button>
 
             </form>
             <script>
-                $(document).ready(function(e) {
-                    //表單發送處理
-                    $("#form").submit(function(e) {
-                        $.ajax({
-                            type: $(this).attr("method"),
-                            url: $(this).attr("action"),
-                            data: $(this).serialize(),
-                            dataType: "json",
-                            success: function(response) {
-                                if (response.state == true) {
-                                    alert("請至信箱收認證信")
-                                    document.cookie = "ID=" + response.ID;
-                                    window.location.href = "./verification.html"; //指定要跳轉到的目標頁面
-                                } else {
-                                    alert("有誤")
-                                }
-                            }
-                        })
-                        e.preventDefault(); //停止預設動作
-                        //e.unbind(); //解除綁定。停止多個表單提交.
-                    });
-                });
+                //表單發送處理
+                $("#form").submit(function(e) {
+                    alert($("#form").serialize())
+                    $.ajax({
 
+                        type: $(this).attr("method"),
+                        url: $(this).attr("action"),
+                        data: $(this).serialize(),
+                        dataType: "json",
+
+                        success: function(response) {
+                            console.log("hee:")
+                            document.cookie = ""
+                            if (response.state == true ) {
+                                alert("請至信箱收認證信");
+                                
+                                console.log("acc:" + response.Account);
+                                document.cookie = "Account=" + response.Account;
+                                window.location.href = "./verification.html"; //指定要跳轉到的目標頁面
+                            } else {
+                                alert("有誤");
+                            }
+                        },
+
+
+
+                    })
+                    e.preventDefault(); //停止預設動作
+                    //e.unbind(); //解除綁定。停止多個表單提交.
+                });
             </script>
         </div>
     </span>
@@ -131,7 +139,5 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-   
-</body>
 
-</html>
+</body></html>
