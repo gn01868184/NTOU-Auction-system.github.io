@@ -60,7 +60,7 @@
   //購物車
   function sCart(val) {
     var productVal = val.value.split(";");
-    document.cookie = document.cookie + ";ProductID=" + productVal[0] + ";ProductName=" + productVal[1] + ";ProductHref=" + productVal[2] + ";";
+    document.cookie = document.cookie + ";ProductID=" + productVal[0] + ";ProductName=" + productVal[1] + ";ProductHref=" + productVal[2];
     alert(document.cookie);
   }
   $(document).ready(function() {
