@@ -66,8 +66,7 @@
 		<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 			<!-- 購物車 -->
 			<div class="row">
-				<button class="btn btn-outline-success col-6" type="submit">選取購買</button>
-				<button class="btn btn-outline-success col-6" type="submit">選取刪除</button>
+				<button class="btn btn-outline-success col-12" type="submit">選取購買</button>
 			</div>
 		</div>
 		<script type="text/javascript">
@@ -75,11 +74,10 @@
 			document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
 			document.location.href="./login.html";
 		}
-           $(document).ready(function(){
-						 var tt = "ProductID=37,24";
-						 var num = tt.split("=");
+		$(document).ready(function(){
+						 var cookie = document.cookie.split("; ");
+						 var num = cookie[1].split("=");
 						 var number = num[1].split(",");
-						 alert(number.length);
 						 for(var i=0;i<number.length;i++){
 							 $.ajax({
 			           url: 'https://ntou-store-system.herokuapp.com/product_information?' + "ProductID=" + number[i],
@@ -88,10 +86,9 @@
 			           error:function(xhr, ajaxOptions, thrownError){
 			             alert(xhr.status+"\n"+thrownError);
 			           },
-			           success: function(response) {
-									 alert(response[0][0].ProductName + response[0][0].ImageURL + response[0][0].Information);
-									 $('#nav-home').prepend(
-			               $('<div/>')
+						success: function(response) {
+							$('#nav-home').prepend(
+			                $('<div/>')
 			                 .addClass('row')
 			                 .append(
 			                   $('<div/>')
@@ -129,7 +126,7 @@
 			<!--競標商品-->
 		</div>
 	</div>
-
+	
 	<div class="tab-pane fade" id="bid" role="tabpanel" aria-labelledby="bid-tab">
 		<!-- Optional JavaScript -->
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
