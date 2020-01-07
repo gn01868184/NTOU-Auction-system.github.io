@@ -88,12 +88,14 @@
                 </div>
                 <label class="col-2 col-form-label mb-2">密碼</label>
                 <div class="col-10 mb-2">
-                    <input type="password" class="form-control" name="Password" placeholder="密碼">
+                    <input type="password" class="form-control" name="Password" placeholder="密碼" value="11">
                 </div>
                 <label class="col-2 col-form-label mb-4">人機驗證</label><br>
-                <div class="col-10"><span style="font-size:14px;">
+                <input type="text" name="g-recaptcha-response"
+                value="03AOLTBLQCGlACgrHWpf67ObRpoQjM8-Nuul5DBhMjwUTvUQ29mYPn50PtZ2WoZTE--v8hkMAp-QA3FDEdgrsgUOvDROopuC8eKnmpSRvLC0WjRn2VwW1OyVngXEHrSR9diKELm9TLaVlgGLKvKZ2syCp0d6IxBMdxE6olR0BvggCx71Xo0AYrvcchh2B2EBrWQfT0gKdEKG2sa79T4YJWU3xMn9gOf1dF4jCiBWPGUteZisQS7PrOzoEmZreNG_qioghiM8lWPp-kfYeIlzD1ULIIaqBN7xYfcdGnIA-8QBx1xdWKbkpxAi2IQsmQWNwXqPGEXZ21UVrYwQQK3rf4OgB_20Q8dpmxep198CT2DwhS7bZaKaGhWcwAVEOC7s2UlLLEUM2RJMT-yB9mpxNTh1o7i4hLzSBh6EzFZAOHTS1vC_S5TeEgXoLYnWQBlgnrWo0WqWr4XmZu9Y0RslyPe8VLWAjCXUr2R1QPOV5II_aRCFu7bv_TNQnB2boB3WKV4wXMXmNAfq4p">
+                <!--<div class="col-10"><span style="font-size:14px;">
                         <div class="g-recaptcha" data-sitekey="6LdhqswUAAAAANBVslRZmCXmr_NODFaJ7yQG5RRq"></div>
-                    </span></div>
+                    </span></div>-->
                 <button class="btn btn-outline-success col-2 container mt-2" type="submit">提&nbsp;&nbsp;交</button>
             </form>
             <script>
@@ -103,7 +105,7 @@
                         $.ajax({
                             type: $(this).attr("method"),
                             url: $(this).attr("action"),
-                            data: $(this).serialize() + '&time=' + $.now(),
+                            data: $(this).serialize(),
                             dataType: "json",
                             success: function(response) {
                                 if (response.state == true) {
@@ -127,7 +129,7 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+   
 </body>
 
 </html>
