@@ -146,8 +146,8 @@
                                 },
                                 success: function(response) {
                                     console.log(response[0][response[0].length - 2].ProductName)
-                                    for (var i = 19; i < 20; i++) {
-                                    //for(var i=0;i<response[0].length-1;i++){
+                                    //for (var i = 19; i < 20; i++) {
+                                    for(var i=0;i<response[0].length-1;i++){
                                        // console.log(response[0][i].ProductID)
                                         $('#tableOnsale').append('<table class="table table-bordered" ><tbody><tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px ">品名：' +i+ response[0][i].ProductName + response[0][i].ProductID + '</div></td></tr>' + '<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="Price">直購價：' + response[0][i].Price + '</div></td></tr>' +
                                             '<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="LowestPrice">底價：' + response[0][i].LowestPrice + '</div></td><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="BiddingPrice">競標價：' + response[0][i].BiddingPrice + '</div></td></tr>' +
@@ -209,7 +209,7 @@
                             })
                         }
                     </script>
-                    <div class="col-4">
+                    <div class="col-5">
                         <div class="row no-gutters" id="tableOnsale">
 
 
