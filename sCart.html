@@ -75,58 +75,104 @@
 			document.location.href="./login.html";
 		}
 		$(document).ready(function(){
-						 var cookie = document.cookie.split("; ");
-						 var num = cookie[1].split("=");
-						 var number = num[1].split(",");
-						 for(var i=0;i<number.length;i++){
-							 $.ajax({
-			           url: 'https://ntou-store-system.herokuapp.com/product_information?' + "ProductID=" + number[i],
-			           dataType: 'json',
-			           type: "GET",
-			           error:function(xhr, ajaxOptions, thrownError){
-			             alert(xhr.status+"\n"+thrownError);
-			           },
-						success: function(response) {
-							$('#nav-home').prepend(
-			                $('<div/>')
-			                 .addClass('row')
-			                 .append(
-			                   $('<div/>')
-			                   .addClass('col-1 border p-2')
-			                   .append(
-			                     $('<input/>')
-			                     .attr('type','checkbox')
-			                   )
-			                 )
-			                 .append(
-			                   $('<div/>')
-			                   .addClass('col-2  border p-2')
-			                   .append(
-			                     $('<img/>')
-			                     .addClass('img')
-			                     .attr('src',response[0][0].ImageURL)
-			                     .attr('style','height: 120px')
-			                   )
-			                 )
-			                 .append(
-			                   $('<div/>')
-			                   .addClass('col-9 border p-2')
-			                   .append(
-			                     response[0][0].ProductName + " | " + response[0][0].Information
-			                   )
-			                 )
-			              )
+			var cookie = document.cookie.split("; ");
+			var num = cookie[1].split("=");
+			var number = num[1].split(",");
+			for(var i=0;i<number.length;i++){
+				$.ajax({
+					url: 'https://ntou-store-system.herokuapp.com/product_information?' + "ProductID=" + number[i],
+					dataType: 'json',
+					type: "GET",
+					error:function(xhr, ajaxOptions, thrownError){
+						alert(xhr.status+"\n"+thrownError);
+					},
+			success: function(response) {
+			 $('#nav-home').prepend(
+							 $('<div/>')
+								.addClass('row')
+								.append(
+									$('<div/>')
+									.addClass('col-1 border p-2')
+									.append(
+										$('<input/>')
+										.attr('type','checkbox')
+									)
+								)
+								.append(
+									$('<div/>')
+									.addClass('col-2  border p-2')
+									.append(
+										$('<img/>')
+										.addClass('img')
+										.attr('src',response[0][0].ImageURL)
+										.attr('style','height: 120px')
+									)
+								)
+								.append(
+									$('<div/>')
+									.addClass('col-9 border p-2')
+									.append(
+										response[0][0].ProductName + " | " + response[0][0].Information
+									)
+								)
+						 )
 
-			           }
-			         });
-						 }
-           });
+					}
+				});
+			}
+
+$.ajax({
+	url: 'https://ntou-store-system.herokuapp.com/biddingInfo',
+	dataType: 'json',
+	type: "POST",
+	data: "MemberID=20",
+	error:function(xhr, ajaxOptions, thrownError){
+		alert(xhr.status+"\n"+thrownError);
+	},
+success: function(response) {
+	var responseLength = response.length;
+	var OverBidTime = "未結標";
+	for(var i=0;i<responseLength;i++){
+		if(OverBidTime==true) OverBidTime = "已結標";
+			$('#nav-profile').prepend(
+						 $('<div/>')
+							.addClass('row')
+							.append(
+								$('<div/>')
+								.addClass('col-3  border p-2')
+								.append(
+									$('<img/>')
+									.addClass('img')
+									.attr('src',"123")
+									.attr('style','height: 120px')
+								)
+							)
+							.append(
+								$('<div/>')
+								.addClass('col-6 border p-2')
+								.append(
+									response[i].ProductName + " | " + response[i].Information
+								)
+							)
+							.append(
+								$('<div/>')
+								.addClass('col-3 border p-2')
+								.append(
+									OverBidTime
+								)
+							)
+					 )//OverBidTime
+
+		}
+	 }
+});
+});
         </script>
 		<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
 			<!--競標商品-->
 		</div>
 	</div>
-	
+
 	<div class="tab-pane fade" id="bid" role="tabpanel" aria-labelledby="bid-tab">
 		<!-- Optional JavaScript -->
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
