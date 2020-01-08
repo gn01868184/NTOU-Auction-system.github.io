@@ -1,214 +1,218 @@
 <!doctype html>
 <html lang="en">
 <head>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-<!-- Bootstrap 4 Icons -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-<!-- jQuery -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<title>海大拍賣系統</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Bootstrap 4 Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <title>海大拍賣系統</title>
 </head>
+
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light  bg-info">
-	  <a class="navbar-brand  text-light" href="./index.html"><span class="fas fa-tree"></span>&nbsp;海大拍賣</a>
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-	    <span class="navbar-toggler-icon"></span>
-	  </button>
+    <nav class="navbar navbar-expand-lg navbar-light  bg-info">
+        <a class="navbar-brand  text-light" href="./index.html"><span class="fas fa-tree"></span>&nbsp;海大拍賣</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-	  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-	    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-
-
-	      <li class="nav-item">
-	          <a href="./search.html" class="btn btn-link text-light">
-	                <span class="fas fa-search"></span>&nbsp;搜尋
-	          </a>
-	        </li>
-	      </ul>
-	      <form class="form-inline my-2 my-lg-0">
-	          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-	              <li class="nav-item">
-	                  <a href="./sCart.html" class="btn btn-link text-light">
-	                      <span class="fas fa-shopping-cart"></span>&nbsp;購物車</a>
-	              </li>
-	              <li class="nav-item active">
-	                  <a href="./personal.html" class="btn btn-link text-light">
-	                      <span class="fas fa-user"></span>&nbsp;個人中心
-	                  </a>
-	              </li>
-	              <li class="nav-item">
-									<a onclick="eraseCookie()" class="btn btn-link text-light">
-			              <span class="fas fa-sign-out-alt"></span>&nbsp;登出
-			            </a>
-	              </li>
-	          </ul>
-	      </form>
-	    </div>
-	</nav>
-<div class="text-center">
-	<li class="col-12 list-group-item ">預約板</li>
-</div>
-<div id='reservation'>
-</div>
-<script>
-//登出function
-function eraseCookie() {
-	document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
-	document.location.href="./login.html";
-}
-                 $(document).ready(function(){
-
-									 $.ajax({
-					           url: 'https://ntou-store-system.herokuapp.com/personalPage/reservation',
-					           dataType: 'json',
-					           type: "POST",
-					           data: document.cookie,
-					           error:function(xhr, ajaxOptions, thrownError){
-					             alert(xhr.status+"\n"+thrownError);
-					           },
-					           success: function(response) {
-											 var responseLength = response.length;
-											 for(var i=0;i<responseLength;i++){
-												 $('#TradeID').append(
-													 $('<option/>')
-													 .attr('value',response[i].Reservation.TradeID)
-													 .append(response[i].Reservation.TradeID)
-												 )
-												 $('#reservation').append(
-													 $('<div/>')
-														 .addClass('card')
-														 .append(
-															 $('<div/>')
-															 .addClass('row')
-															 .append(
-																 $('<div/>')
-																 .addClass('col-3 text-center')
-																 .append(
-																 $('<img/>')
-																 .addClass('img')
-																 .attr('src',response[i].Reservation.ProductImg)
-																 .attr('style','height: 100px')
-																 )
-															 )
-														 .append(
-															 $('<div/>')
-															 .addClass('row col-9')
-															 .append(
-																 $('<div/>')
-																 .addClass('col-10 list-group-item')
-																 .append("<h5>" + response[i].Reservation.BuyerName + " 於 " +  response[i].Reservation.BoughtDate + " 購買了 " + response[i].Reservation.SellerName + " 的 " + response[i].Reservation.ProductName + " 商品</h5>")
-															 )
-															 .append(
-																 $('<div/>')
-																 .addClass('col-2')
-																 .append(
-																	 $('<div/>')
-																	 .addClass('row')
-																	 .append(
-																		 $('<button/>')
-																		 .addClass('btn btn-lg')
-																		 .append(
-																			 $('<span/>')
-																			 .append(response[i].Reservation.TradeID)
-																		 )
-																	 )
-																 )
-																 .append(
-																	 $('<div/>')
-																	 .addClass('row')
-																	 .append(
-																		 $('<button/>')
-																		 .addClass('btn btn-lg')
-																		 .attr('data-toggle','collapse')
-																		 .attr('data-target','#collapse' + i)
-																		 .append(
-																			 $('<span/>')
-																			 .addClass('fas fa-angle-down')
-																		 )
-																	 )
-																 )
-															 )
-														 )
-														 )
-														 .append(
-															 $('<div/>')
-															 .addClass('collapse card')
-															 .attr('id','collapse' + i)
-															 )
-														 )
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 
 
-													for(var j=0;j<response[i].Comment.length;j++){
-														$('#collapse' + i).append(
-															$('<div/>')
-															.addClass('row')
-															.append(
-																$('<div/>')
-																.addClass('col-3 text-center')
-																.append(
-																	$('<img/>')
-																	.addClass('img')
-																	.attr('src',response[i].Comment[j].CommenterImageURL)
-																	.attr('style','height: 50px')
-																)
-															)
-															.append(
-																$('<div/>')
-																.addClass('col-9 list-group-item')
-																.append(
-																	response[i].Comment[j].CommenterName + ":" + response[i].Comment[j].CommentInfo
-																)
-															)
-														)
-													}
-										 	 }
-					         	 },
-					       	 });
-                 });
-              </script>
+                <li class="nav-item">
+                    <a href="./search.html" class="btn btn-link text-light">
+                        <span class="fas fa-search"></span>&nbsp;搜尋
+                    </a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a href="./sCart.html" class="btn btn-link text-light">
+                            <span class="fas fa-shopping-cart"></span>&nbsp;購物車</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="./personal.html" class="btn btn-link text-light">
+                            <span class="fas fa-user"></span>&nbsp;個人中心
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a onclick="eraseCookie()" class="btn btn-link text-light">
+                            <span class="fas fa-sign-out-alt"></span>&nbsp;登出
+                        </a>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </nav>
+    <div class="col-12 mx-auto my-3" align="center">
+            <h2>
+                <p class="font-weight-bold text-info 5">預約板</p>
+            </h2>
+        </div>
+    
+    <div id='reservation'>
+    </div>
+    <script>
+        //登出function
+        function eraseCookie() {
+            document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            document.location.href = "./login.html";
+        }
+        $(document).ready(function() {
 
-							<form class="row align-items-center form-group" id="form0">
-								<select class="col-3 custom-select" name="TradeID" id="TradeID">
-									<option value="" selected>交易序號</option>
-								</select>
-								<div class="col-6 list-group-item">
-									<input class="form-control input-lg" placeholder="留言" name="Information">
-								</div>
-								<div class="col-3 text-center">
-									<button class="btn btn-outline-success" type="submit">留言</button>
-								</div>
-							</form>
+            $.ajax({
+                url: 'https://ntou-store-system.herokuapp.com/personalPage/reservation',
+                dataType: 'json',
+                type: "POST",
+                data: document.cookie,
+                error: function(xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status + "\n" + thrownError);
+                },
+                success: function(response) {
+                    var responseLength = response.length;
+                    for (var i = 0; i < responseLength; i++) {
+                        $('#TradeID').append(
+                            $('<option/>')
+                            .attr('value', response[i].Reservation.TradeID)
+                            .append(response[i].Reservation.TradeID)
+                        )
+                        $('#reservation').append(
+                            $('<div/>')
+                            .addClass('card')
+                            .append(
+                                $('<div/>')
+                                .addClass('row')
+                                .append(
+                                    $('<div/>')
+                                    .addClass('col-3 text-center')
+                                    .append(
+                                        $('<img/>')
+                                        .addClass('img')
+                                        .attr('src', response[i].Reservation.ProductImg)
+                                        .attr('style', 'height: 100px')
+                                    )
+                                )
+                                .append(
+                                    $('<div/>')
+                                    .addClass('row col-9')
+                                    .append(
+                                        $('<div/>')
+                                        .addClass('col-10 list-group-item')
+                                        .append("<h5>" + response[i].Reservation.BuyerName + " 於 " + response[i].Reservation.BoughtDate + " 購買了 " + response[i].Reservation.SellerName + " 的 " + response[i].Reservation.ProductName + " 商品</h5>")
+                                    )
+                                    .append(
+                                        $('<div/>')
+                                        .addClass('col-2')
+                                        .append(
+                                            $('<div/>')
+                                            .addClass('row')
+                                            .append(
+                                                $('<button/>')
+                                                .addClass('btn btn-lg')
+                                                .append(
+                                                    $('<span/>')
+                                                    .append(response[i].Reservation.TradeID)
+                                                )
+                                            )
+                                        )
+                                        .append(
+                                            $('<div/>')
+                                            .addClass('row')
+                                            .append(
+                                                $('<button/>')
+                                                .addClass('btn btn-lg')
+                                                .attr('data-toggle', 'collapse')
+                                                .attr('data-target', '#collapse' + i)
+                                                .append(
+                                                    $('<span/>')
+                                                    .addClass('fas fa-angle-down')
+                                                )
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+                            .append(
+                                $('<div/>')
+                                .addClass('collapse card')
+                                .attr('id', 'collapse' + i)
+                            )
+                        )
 
-							<script>
-							    $(document).ready(function(e) {
-							        //表單發送處理
-							        $("#form0").submit(function(e) {
-							            $.ajax({
-							                    type: "POST",
-							                    url: 'https://ntou-store-system.herokuapp.com/personalPage/reservation/comment',
-							                    data: document.cookie.split("; ")[0] + "&" + $('#form0').serialize(),
-							                    dataType: "json",
-							                    success: function(response) {
-							                      if(response.state==true){
-							                        alert("留言成功")
-							                        window.location.href="./reservation.html";//指定要跳轉到的目標頁面
-							                      }
-							                      else {
-							                        alert("失敗")
-							                      }
-							                    }
-							                })
-							            e.preventDefault(); //停止預設動作
-							            //e.unbind(); //解除綁定。停止多個表單提交.
-							        });
-							    });
-							</script>
-<!-- Optional JavaScript --><!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-</body>
-</html>
+
+                        for (var j = 0; j < response[i].Comment.length; j++) {
+                            $('#collapse' + i).append(
+                                $('<div/>')
+                                .addClass('row')
+                                .append(
+                                    $('<div/>')
+                                    .addClass('col-3 text-center')
+                                    .append(
+                                        $('<img/>')
+                                        .addClass('img')
+                                        .attr('src', response[i].Comment[j].CommenterImageURL)
+                                        .attr('style', 'height: 50px')
+                                    )
+                                )
+                                .append(
+                                    $('<div/>')
+                                    .addClass('col-9 list-group-item')
+                                    .append(
+                                        response[i].Comment[j].CommenterName + ":" + response[i].Comment[j].CommentInfo
+                                    )
+                                )
+                            )
+                        }
+                    }
+                },
+            });
+        });
+    </script>
+
+    <form class="row align-items-center form-group mx-2" id="form0">
+        <div class="col-2 "></div>
+        <select class="col-2 custom-select mr-1" name="TradeID" id="TradeID">
+            <option value="" selected>交易序號</option>
+        </select>
+        <div class="col-5 list-group-item">
+            <input class="form-control input-lg" placeholder="留言" name="Information">
+        </div>
+        <div class="col-1 text-left">
+            <button class="btn btn-outline-success" type="submit">留言</button>
+        </div>
+    </form>
+
+    <script>
+        $(document).ready(function(e) {
+            //表單發送處理
+            $("#form0").submit(function(e) {
+                $.ajax({
+                    type: "POST",
+                    url: 'https://ntou-store-system.herokuapp.com/personalPage/reservation/comment',
+                    data: document.cookie.split("; ")[0] + "&" + $('#form0').serialize(),
+                    dataType: "json",
+                    success: function(response) {
+                        if (response.state == true) {
+                            alert("留言成功")
+                            window.location.href = "./reservation.html"; //指定要跳轉到的目標頁面
+                        } else {
+                            alert("失敗")
+                        }
+                    }
+                })
+                e.preventDefault(); //停止預設動作
+                //e.unbind(); //解除綁定。停止多個表單提交.
+            });
+        });
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</body></html>
