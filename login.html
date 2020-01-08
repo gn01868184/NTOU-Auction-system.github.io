@@ -73,7 +73,7 @@
         $(document).ready(function(e) {
             //表單發送處理
             $("#form").submit(function(e) {
-                alert($(this).serialize() + '&time=' + $.now())
+                //alert($(this).serialize() + '&time=' + $.now())
                 $.ajax({
                     type: $(this).attr("method"),
                     url: $(this).attr("action"),
