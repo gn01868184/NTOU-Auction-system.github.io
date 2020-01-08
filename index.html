@@ -2,229 +2,237 @@
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-  <!-- Bootstrap 4 Icons -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-  <!-- jQuery -->
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
-  <title>海大拍賣系統</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Bootstrap 4 Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <title>海大拍賣系統</title>
 </head>
 
-<body>
-  <nav class="navbar navbar-expand-lg navbar-light  bg-info">
-     <a class="navbar-brand  text-light" href="./index.html"><span class="fas fa-tree"></span>&nbsp;海大拍賣</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+<body >
+    <nav class="navbar navbar-expand-lg navbar-light  bg-info">
+        <a class="navbar-brand  text-light" href="./index.html"><span class="fas fa-tree"></span>&nbsp;海大拍賣</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 
 
-        <li class="nav-item">
-          <a href="./search.html" class="btn btn-link text-light">
-            <span class="fas fa-search"></span>&nbsp;搜尋
-          </a>
-        </li>
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item">
-            <a href="./sCart.html" class="btn btn-link text-light">
-              <span class="fas fa-shopping-cart"></span>&nbsp;購物車</a>
-          </li>
-          <li class="nav-item active">
-            <a href="./personal.html" class="btn btn-link text-light">
-              <span class="fas fa-user"></span>&nbsp;個人中心
-            </a>
-          </li>
-          <li class="nav-item">
-            <a onclick="eraseCookie()" class="btn btn-link text-light">
-              <span class="fas fa-sign-out-alt"></span>&nbsp;登出
-            </a>
-          </li>
-        </ul>
-      </form>
-    </div>
-  </nav>
-  <div class="row ">
-    <div class="col-2 bg-light">
-      <div class="py-4 ">
-        <h5 class="mx-3 text-secondary">類別欄</h5>
-        <a class="nav-link text-info" onclick='location.href="./searchCategory.html?Category=3C"'>3C</a>
-        <a class="nav-link text-info" onclick='location.href="./searchCategory.html?Category=homeAppliance"'>家電</a>
-        <a class="nav-link text-info" onclick='location.href="./searchCategory.html?Category=necessities"'>日用</a>
-        <a class="nav-link text-info" onclick='location.href="./searchCategory.html?Category=food"'>食品</a>
-        <a class="nav-link text-info" onclick='location.href="./searchCategory.html?Category=life"'>生活</a>
-        <a class="nav-link text-info" onclick='location.href="./searchCategory.html?Category=makeUp"'>美妝</a>
-        <a class="nav-link text-info" onclick='location.href="./searchCategory.html?Category=clothesBoy"'>衣著(男)</a>
-        <a class="nav-link text-info" onclick='location.href="./searchCategory.html?Category=clothesGirl"'>衣著(女)</a>
-        <a class="nav-link text-info" onclick='location.href="./searchCategory.html?Category=accessoriesBoy"'>鞋包配件(男)</a>
-        <a class="nav-link text-info" onclick='location.href="./searchCategory.html?Category=accessoriesGirl"'>鞋包配件(女)</a>
-      </div>
-    </div>
-    <div class="col-10">
-      <nav>
-        <div class="nav nav-tabs justify-content-center nav-fill mb-3 mt-2" id="nav-tab" role="tablist">
-          <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">商品資訊</a>
-          <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">系統公告</a>
+                <li class="nav-item">
+                    <a href="./search.html" class="btn btn-link text-light">
+                        <span class="fas fa-search"></span>&nbsp;搜尋
+                    </a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a href="./sCart.html" class="btn btn-link text-light">
+                            <span class="fas fa-shopping-cart"></span>&nbsp;購物車</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="./personal.html" class="btn btn-link text-light">
+                            <span class="fas fa-user"></span>&nbsp;個人中心
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a onclick="eraseCookie()" class="btn btn-link text-light">
+                            <span class="fas fa-sign-out-alt"></span>&nbsp;登出
+                        </a>
+                        <!--<a href="./login.html" class="btn btn-link text-light">
+                            <span class="fas fa-sign-in-alt"></span>&nbsp;登入
+                        </a>-->
+                    </li>
+                </ul>
+            </form>
         </div>
-      </nav>
-    <script>
-
-    //登出function
-    function eraseCookie() {
-      document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
-      document.location.href="./login.html";
-    }
-      $(document).ready(function() {
-            $.ajax({
-              url: 'https://ntou-store-system.herokuapp.com/index',
-              dataType: 'json',
-              type: "GET",
-              error:function(xhr, ajaxOptions, thrownError){
-                alert(xhr.status+"\n"+thrownError);
-              },
-              success: function(response) {
-                var responseLength = response[0].length;
-                for(var i=0;i<responseLength;i++){
-                  $('#ImageURL0' + i).attr('src', response[0][i].ImageURL)
-                  $('#ProductName0' + i).append(response[0][i].ProductName)
-                  $('#ProductName0' + i).attr('href', './commodityPage.html?ProductID=' + response[0][i].ProductID)
-                  $('#Price0' + i).append(response[0][i].Price)
+    </nav>
+    <div class="row " >
+        <div class="col-2 bg-light d-flex justify-content-center"  style="height: 100vh">
+            <div class="py-4">
+                <h5 class="mx-3 text-secondary">類別欄</h5>
+                <a class="nav-link text-info" onclick='location.href="./searchCategory.html?Category=3C"'>3C</a>
+                <a class="nav-link text-info" onclick='location.href="./searchCategory.html?Category=homeAppliance"'>家電</a>
+                <a class="nav-link text-info" onclick='location.href="./searchCategory.html?Category=necessities"'>日用</a>
+                <a class="nav-link text-info" onclick='location.href="./searchCategory.html?Category=food"'>食品</a>
+                <a class="nav-link text-info" onclick='location.href="./searchCategory.html?Category=life"'>生活</a>
+                <a class="nav-link text-info" onclick='location.href="./searchCategory.html?Category=makeUp"'>美妝</a>
+                <a class="nav-link mt-2">男：</a>
+                <!--男衣著-->
+                <a class="nav-link text-info" onclick='location.href="./searchCategory.html?Category=clothesBoy"'>衣著</a>
+                 <!--男鞋包配件-->
+                <a class="nav-link text-info" onclick='location.href="./searchCategory.html?Category=accessoriesBoy"'>鞋包配件</a>
+                 <a class="nav-link  mt-2">女：</a>
+                <!--女衣著-->
+                <a class="nav-link text-info" onclick='location.href="./searchCategory.html?Category=clothesGirl"'>衣著</a>
+                 <!--女鞋包配件-->
+                <a class="nav-link text-info" onclick='location.href="./searchCategory.html?Category=accessoriesGirl"'>鞋包配件</a>
+            </div>
+        </div>
+        <div class="col-10">
+            <nav>
+                <div class="nav nav-tabs justify-content-center nav-fill mb-3 mt-3" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"><h5>商品資訊</h5></a>
+                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"><h5>系統公告</h5></a>
+                </div>
+            </nav>
+            <script>
+                //登出function
+                function eraseCookie() {
+                    document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+                    document.location.href = "./login.html";
                 }
+                $(document).ready(function() {
+                    $.ajax({
+                        url: 'https://ntou-store-system.herokuapp.com/index',
+                        dataType: 'json',
+                        type: "GET",
+                        error: function(xhr, ajaxOptions, thrownError) {
+                            alert(xhr.status + "\n" + thrownError);
+                        },
+                        success: function(response) {
+                            var responseLength = response[0].length;
+                            for (var i = 0; i < responseLength; i++) {
+                                $('#ImageURL0' + i).attr('src', response[0][i].ImageURL)
+                                $('#ProductName0' + i).append('<label class="text-info">'+response[0][i].ProductName+'</label>')
+                                $('#ProductName0' + i).attr('href', './commodityPage.html?ProductID=' + response[0][i].ProductID)
+                                $('#Price0' + i).append(response[0][i].Price)
+                            }
 
-              var responseLength1 = response[1].length;
-              for(var i=0;i<responseLength1;i++){
-                $('#ImageURL1' + i).attr('src', response[1][i].ImageURL)
-                $('#ProductName1' + i).append(response[1][i].ProductName)
-                $('#ProductName1' + i).attr('href', './commodityPage.html?ProductID=' + response[1][i].ProductID)
-                $('#Price1' + i).append(response[1][i].Price)
-              }
-            }
-          });
-      });
-    </script>
+                            var responseLength1 = response[1].length;
+                            for (var i = 0; i < responseLength1; i++) {
+                                $('#ImageURL1' + i).attr('src', response[1][i].ImageURL)
+                                $('#ProductName1' + i).append('<label class="text-info">'+response[1][i].ProductName+'</label>')
+                                $('#ProductName1' + i).attr('href', './commodityPage.html?ProductID=' + response[1][i].ProductID)
+                                $('#Price1' + i).append(response[1][i].Price)
+                            }
+                        }
+                    });
+                });
+            </script>
 
-      <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-          <div class="container">
-            <div class="row my-3">
-              <div class="col-1 align-self-center" style="text-align:center">
-                  <h4>熱<br>門<br>商<br>品</h4>
-              </div>
-              <div class="col-10 card-deck">
-                <div class="card">
-                  <img class="card-img-top" src="https://icon-library.net/images/img-icon/img-icon-14.jpg" id='ImageURL00'>
-                  <div class="card-body">
-                    <a class="card-title" href="#" id='ProductName00'></a>
-                    <p class="card-text" id='Price00'>售價：</p>
-                  </div>
-                </div>
-                <div class="card">
-                  <img class="card-img-top" src="https://icon-library.net/images/img-icon/img-icon-14.jpg" id='ImageURL01'>
-                  <div class="card-body">
-                    <a class="card-title" href="#" id='ProductName01'></a>
-                    <p class="card-text" id='Price01'>售價：</p>
-                  </div>
-                </div>
-                <div class="card">
-                  <img class="card-img-top" src="https://icon-library.net/images/img-icon/img-icon-14.jpg" id='ImageURL02'>
-                  <div class="card-body">
-                    <a class="card-title" href="#" id='ProductName02'></a>
-                    <p class="card-text" id='Price02'>售價：</p>
-                  </div>
-                </div>
-                <div class="card">
-                  <img class="card-img-top" src="https://icon-library.net/images/img-icon/img-icon-14.jpg" id='ImageURL03'>
-                  <div class="card-body">
-                    <a class="card-title" href="#" id='ProductName03'></a>
-                    <p class="card-text" id='Price03'>售價：</p>
-                  </div>
-                </div><div class="card">
-                  <img class="card-img-top" src="https://icon-library.net/images/img-icon/img-icon-14.jpg" id='ImageURL04'>
-                  <div class="card-body">
-                    <a class="card-title" href="#" id='ProductName04'></a>
-                    <p class="card-text" id='Price04'>售價：</p>
-                  </div>
-                </div>
-              </div>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <div class="container">
+                        <div class="row my-3 p-2" style="height: 35vh">
+                            <div class="col-1 align-self-center" style="text-align:center">
+                                <h4>熱<br>門<br>商<br>品</h4>
+                            </div>
+                            <div class="col-10 card-deck">
+                                <div class="card">
+                                    <img class="card-img-top" src="https://icon-library.net/images/img-icon/img-icon-14.jpg" id='ImageURL00'>
+                                    <div class="card-body">
+                                        <a class="card-title" href="#" id='ProductName00'></a>
+                                        <p class="card-text" id='Price00'>售價：</p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <img class="card-img-top" src="https://icon-library.net/images/img-icon/img-icon-14.jpg" id='ImageURL01'>
+                                    <div class="card-body">
+                                        <a class="card-title" href="#" id='ProductName01'></a>
+                                        <p class="card-text" id='Price01'>售價：</p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <img class="card-img-top" src="https://icon-library.net/images/img-icon/img-icon-14.jpg" id='ImageURL02'>
+                                    <div class="card-body">
+                                        <a class="card-title" href="#" id='ProductName02'></a>
+                                        <p class="card-text" id='Price02'>售價：</p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <img class="card-img-top" src="https://icon-library.net/images/img-icon/img-icon-14.jpg" id='ImageURL03'>
+                                    <div class="card-body">
+                                        <a class="card-title" href="#" id='ProductName03'></a>
+                                        <p class="card-text" id='Price03'>售價：</p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <img class="card-img-top" src="https://icon-library.net/images/img-icon/img-icon-14.jpg" id='ImageURL04'>
+                                    <div class="card-body">
+                                        <a class="card-title" href="#" id='ProductName04'></a>
+                                        <p class="card-text" id='Price04'>售價：</p>
+                                    </div>
+                                </div>
+                            </div>
 
-              <div class="col  align-self-center">
-                <button type="button" class="btn btn-link ">
-                  <h3><span class="far fa-arrow-alt-circle-right "></span></h3>
-                </button>
-              </div>
+                            <div class="col  align-self-center">
+                                <button type="button" class="btn btn-link ">
+                                    <h3><span class="far fa-arrow-alt-circle-right "></span></h3>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <div class="row my-3  p-2" style="height: 35vh">
+                            <div class="col-1 align-self-center" style="text-align:center">
+                                <h4>最<br>新<br>商<br>品</h4>
+                            </div>
+                            <div class="col-10 card-deck ">
+                                <div class="card">
+                                    <img class="card-img-top" src="https://icon-library.net/images/img-icon/img-icon-14.jpg" id='ImageURL10'>
+                                    <div class="card-body">
+                                        <a class="card-title" href="#" id='ProductName10'></a>
+                                        <p class="card-text" id='Price10'>售價：</p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <img class="card-img-top" src="https://icon-library.net/images/img-icon/img-icon-14.jpg" id='ImageURL11'>
+                                    <div class="card-body">
+                                        <a class="card-title" href="#" id='ProductName11'></a>
+                                        <p class="card-text" id='Price11'>售價：</p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <img class="card-img-top" src="https://icon-library.net/images/img-icon/img-icon-14.jpg" id='ImageURL12'>
+                                    <div class="card-body">
+                                        <a class="card-title" href="#" id='ProductName12'></a>
+                                        <p class="card-text" id='Price12'>售價：</p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <img class="card-img-top" src="https://icon-library.net/images/img-icon/img-icon-14.jpg" id='ImageURL13'>
+                                    <div class="card-body">
+                                        <a class="card-title" href="#" id='ProductName13'></a>
+                                        <p class="card-text" id='Price13'>售價：</p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <img class="card-img-top" src="https://icon-library.net/images/img-icon/img-icon-14.jpg" id='ImageURL14'>
+                                    <div class="card-body">
+                                        <a class="card-title" href="#" id='ProductName14'></a>
+                                        <p class="card-text" id='Price14'>售價：</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-1  align-self-center">
+                                <button type="button" class="btn btn-link ">
+                                    <h3><span class="far fa-arrow-alt-circle-right "></span></h3>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    還沒有公告唷
+                </div>
             </div>
-          </div>
 
-          <div class="container">
-            <div class="row my-3">
-              <div class="col-1 align-self-center" style="text-align:center">
-                  <h4>最<br>新<br>商<br>品</h4>
-              </div>
-              <div class="col-10 card-deck ">
-                <div class="card">
-                  <img class="card-img-top" src="https://icon-library.net/images/img-icon/img-icon-14.jpg" id='ImageURL10'>
-                  <div class="card-body">
-                    <a class="card-title" href="#" id='ProductName10'></a>
-                    <p class="card-text" id='Price10'>售價：</p>
-                  </div>
-                </div>
-                <div class="card">
-                  <img class="card-img-top" src="https://icon-library.net/images/img-icon/img-icon-14.jpg" id='ImageURL11'>
-                  <div class="card-body">
-                    <a class="card-title" href="#" id='ProductName11'></a>
-                    <p class="card-text" id='Price11'>售價：</p>
-                  </div>
-                </div>
-                <div class="card">
-                  <img class="card-img-top" src="https://icon-library.net/images/img-icon/img-icon-14.jpg" id='ImageURL12'>
-                  <div class="card-body">
-                    <a class="card-title" href="#" id='ProductName12'></a>
-                    <p class="card-text" id='Price12'>售價：</p>
-                  </div>
-                </div>
-                <div class="card">
-                  <img class="card-img-top" src="https://icon-library.net/images/img-icon/img-icon-14.jpg" id='ImageURL13'>
-                  <div class="card-body">
-                    <a class="card-title" href="#" id='ProductName13'></a>
-                    <p class="card-text" id='Price13'>售價：</p>
-                  </div>
-                </div><div class="card">
-                  <img class="card-img-top" src="https://icon-library.net/images/img-icon/img-icon-14.jpg" id='ImageURL14'>
-                  <div class="card-body">
-                    <a class="card-title" href="#" id='ProductName14'></a>
-                    <p class="card-text" id='Price14'>售價：</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-1  align-self-center">
-                <button type="button" class="btn btn-link ">
-                  <h3><span class="far fa-arrow-alt-circle-right "></span></h3>
-                </button>
-              </div>
-            </div>
-          </div>
+
 
         </div>
-        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-          還沒有公告唷
-        </div>
-      </div>
-
-
-
     </div>
-  </div>
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-</body>
-
-</html>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</body></html>
