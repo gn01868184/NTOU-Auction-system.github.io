@@ -49,6 +49,14 @@
                     </li>
                 </ul>
             </form>
+
+            <script>
+                //這是登出function不要刪掉我QQ 喔抱歉！
+                function eraseCookie() {
+                    document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+                    document.location.href = "./login.html";
+                }
+            </script>
         </div>
     </nav>
     <h2>
@@ -104,8 +112,8 @@
         </div>
     </div>
     <div class="row">
-        <a class="btn btn-outline-success col-6 " href="./commodity.html">上架一般商品</a>
-        <a class="btn btn-outline-success col-6 " href="./bidding.html">上架競標商品</a>
+        <a class="btn btn-outline-success col-3 " href="./commodity.html">上架一般商品</a>
+        <a class="btn btn-outline-success col-3 " href="./bidding.html">上架競標商品</a>
     </div>
     <ul class="nav nav-tabs my-2 mx-1" id="myTab" role="tablist">
         <li class="nav-item">
@@ -127,70 +135,57 @@
 
                 <div class="m-2 mb-3">
 
-                    <script>
-                        //架上商品
-						
-						//這是登出function不要刪掉我QQ 喔抱歉！
-                        function eraseCookie() {
-                          document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
-                          document.location.href="./login.html";
-                        }
-                        $(document).ready(function() {
-                            $.ajax({
-                                url: 'https://ntou-store-system.herokuapp.com/personalPage',
-                                dataType: 'json',
-                                type: "POST",
-                                data: document.cookie.split("; ")[0],
-                               // data: { ID:6 },
-                                error: function(xhr, ajaxOptions, thrownError) {
-                                    //alert(xhr.status + "\n" + thrownError);
-                                },
-                                success: function(response) {
-                                    console.log(response[0][response[0].length - 2].ProductName)
-                                    //for (var i = 19; i < 20; i++) {
-                                    for(var i=0;i<response[0].length-1;i++){
-                                       // console.log(response[0][i].ProductID)
-                                        $('#tableOnsale').append('<table class="table table-bordered" ><tbody><tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px ">品名：' +i+ response[0][i].ProductName + response[0][i].ProductID + '</div></td></tr>' + '<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="Price">直購價：' + response[0][i].Price + '</div></td></tr>' +
-                                            '<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="LowestPrice">底價：' + response[0][i].LowestPrice + '</div></td><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="BiddingPrice">競標價：' + response[0][i].BiddingPrice + '</div></td></tr>' +
-                                            '<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="BiddingUnitPrice">競標單位價：' + response[0][i].BiddingUnitPrice + '</div></td><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="BiddingDeadLine">結標時間：' + response[0][i].BiddingDeadLine + '</div></td></tr>' +
-                                            '<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px ">詳細資訊：' + response[0][i].Information + '</div></td></tr></tbody></table>'
-                                                                 
-                                            //+ `<button type="button" class="btn btn-outline-success mb-4" >try</button></div></div>`
-                                            
-                                            //+`<button type="button" class="btn btn-outline-success mb-4" onclick="${myFunction("24","try1")}">try</button></div></div>`
+                    <!--編輯詳細資訊 editInfoModal-->
+                    <div class="modal" id="editInfoModal" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">編輯詳細資訊</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="form-group" id="formEdit" action="https://ntou-store-system.herokuapp.com/personalPage/onSale/edit" method="POST">
+                                        <!--<div class="card-body">
+                                <label>詳細資訊:</label><br>
+                                <div class="form-check form-check-inline col">
+                                    <input type="text" class="form-control" name="Information" >                                   
+                                </div>    
+                            </div>-->
+                                        <label>詳細資訊：</label>
+                                        <div class="input-group">
+                                            <!--<input name="ID" class="form-control" type="input" value="24" style="display:none">-->
+                                            <textarea class="form-control" aria-label="With textarea" name="Information"></textarea>
+                                        </div>
+                                        <button class="btn btn-outline-success container mt-2" type="submit">確認</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                                            //編輯 
-                                            +
-                                            '<button type="button" class="btn btn-outline-success mb-4" data-toggle="modal" data-target="#editInfoModal">編輯詳細資訊</button></div></div>' 
-                                            +`<button type="button" class="btn btn-outline-danger ml-3 mb-4" data-toggle="modal" onclick="${deleteFunction("47")}">刪除</button></div></div>`
-                                        )
+                    <script>
+                        $(function() {
+                            $("#login").on('funcEditId', function(event) {
+                                $.ajax({
+                                    type: "POST",
+                                    url: "{:url('admin/login/check')}",
+                                    data: $("form").serialize(),
+                                    dataType: 'json',
+                                    success: function(data) {
+                                        if (data.status == 1) {
+                                            window.location.href = "{:url('index/index')}";
+                                        } else {
+                                            alert(data.message);
+                                        }
                                     }
-                                }
-                            });
-                        });
-                    </script>
-
-
-                    
-                    <script>
-                        function deleteFunction(xID) {
-                            //console.log("xID:"+xID)
-                            $.ajax({
-                                url: 'https://ntou-store-system.herokuapp.com/personalPage/onSale/delete',
-                                dataType: 'json',
-                                type: "POST",
-                                data: {
-                                    ID: xID,
-                                },
-                                error: function(xhr, ajaxOptions, thrownError) {
-                                   // alert(xhr.status + "123\n" + thrownError);
-                                },
-                                success: function(response) {
-
-                                }
+                                });
                             })
-                        }
+                        })
                     </script>
+
+
                     <div class="col-5">
                         <div class="row no-gutters" id="tableOnsale">
 
@@ -206,39 +201,6 @@
             <div>
                 <div class="m-3">
 
-                    <script>
-                        //交易中
-                        $(document).ready(function() {
-                            $.ajax({
-                                url: 'https://ntou-store-system.herokuapp.com/personalPage/onTrade',
-                                dataType: 'json',
-                                type: "POST",
-                                data: document.cookie,
-                                //data: { ID:6 },
-                                error: function(xhr, ajaxOptions, thrownError) {
-                                    //alert(xhr.status + "\n" + thrownError);
-                                },
-                                success: function(response) {
-                                    console.log(response[1].ProductName)
-
-                                    $('#tableTrade').append('<div class="row no-gutters mb-4"><div class="col no-gutters"><a class="btn btn-outline-success " href="./reservation.html">前往預約板</a>')
-                                    for (var i = 0; i < response.length; i++) {
-                                        $('#tradeID1').append(
-                                            $('<option/>').attr('value', response[i].TradeID)
-                                            .append(response[i].TradeID)
-                                        )
-                                        $('#tableTrade').append('<table class="table table-bordered"><tbody><tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">品名：' + response[i].ProductName + '</div></td><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">交易數量：</div>' + response[i].TradeAmount + '</td></tr><tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">交易總額：</div>' + response[i].TradePrice + '</td></tr>' +
-                                            '<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">買家：</div>' + response[i].Identity + '</td></tr></tbody></table>'
-
-                                            //交易完成 
-                                            +
-                                            '<button type="button" class="btn btn-primary ml-2" data-toggle="modal" data-target="#evaluationModal">交易完成</button></div></div>'
-                                        )
-                                    }
-                                }
-                            });
-                        });
-                    </script>
 
 
                     <div class="row no-gutters">
@@ -495,56 +457,7 @@
 
     <!--fade-->
 
-    <!--編輯詳細資訊 editInfoModal-->
-    <div class="modal" id="editInfoModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">編輯詳細資訊</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form class="form-group">
-                        <!--<div class="card-body">
-                                <label>詳細資訊:</label><br>
-                                <div class="form-check form-check-inline col">
-                                    <input type="text" class="form-control" name="Information" >                                   
-                                </div>    
-                            </div>-->
-                        <label>詳細資訊：</label>
-                        <div class="input-group">
-                            <textarea class="form-control" aria-label="With textarea" name="Information"></textarea>
-                        </div>
-                        <button class="btn btn-outline-success container mt-2" type="submit" onclick="myFunction(24,'try5')">確認</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-                    <script>
-                        function myFunction(xID, xInformation) {
-                            console.log("xID:"+xID)
-                            console.log("xInformation:"+xInformation)
-                            $.ajax({
-                                url: 'https://ntou-store-system.herokuapp.com/personalPage/onSale/edit',
-                                dataType: 'json',
-                                type: "POST",
-                                data: {
-                                    ID: xID,
-                                    Information: xInformation
-                                },
-                                error: function(xhr, ajaxOptions, thrownError) {
-                                    //alert(xhr.status + "\n" + thrownError);
-                                },
-                                success: function(response) {
-                                    alert("s");
-                                }
-                            })
-                        }
-                        
-                    </script>
+
     <!-- evaluationModal -->
     <div class="modal fade" id="evaluationModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -556,15 +469,13 @@
                     </button>
                 </div>
 
-
-
                 <div class="modal-body">
-                    <form class="form-group" action="https://ntou-store-system.herokuapp.com/personalPage/onTrade/tradeCompleted" method="POST" id="formEv">
+                    <form id="formEv" class="form-group" action="https://ntou-store-system.herokuapp.com/personalPage/onTrade/tradeCompleted" method="POST" >
                         <div class="card">
                             <div class="card-body">
-                                <select class="col-3 custom-select" name="ID" id="tradeID1">
+                                <!--<select class="col-3 custom-select" name="ID" id="tradeID1">
                                     <option value="" selected>交易序號</option>
-                                </select>
+                                </select>-->
                                 <div>
                                     <label>賣家評級:</label>
                                     <input class="form-check-input" type="radio" name="MemberEv" value="1">
@@ -623,19 +534,160 @@
                     </form>
 
                     <script>
+                        //交易中
+
+                        var VonTrade = 0;
+
+                        //顯示交易中物品
+                        $(document).ready(function() {
+                            $.ajax({
+                                url: 'https://ntou-store-system.herokuapp.com/personalPage/onTrade',
+                                dataType: 'json',
+                                type: "POST",
+                                data: document.cookie,
+                                //data: { ID:6 },
+                                error: function(xhr, ajaxOptions, thrownError) {
+                                    //alert(xhr.status + "\n" + thrownError);
+                                },
+                                success: function(response) {
+                                    console.log(response[1].ProductName)
+
+                                    $('#tableTrade').append('<div class="row no-gutters mb-4"><div class="col no-gutters"><a class="btn btn-outline-success " href="./reservation.html">前往預約板</a>')
+                                    for (var i = 0; i < response.length; i++) {
+                                        /*$('#tradeID1').append(
+                                            $('<option/>').attr('value', response[i].TradeID)
+                                            .append(response[i].TradeID)
+                                        )*/
+                                        $('#tableTrade').append('<table class="table table-bordered"><tbody><tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">品名：' + response[i].ProductName + response[i].TradeID + '</div></td><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">交易數量：</div>' + response[i].TradeAmount + '</td></tr><tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">交易總額：</div>' + response[i].TradePrice + '</td></tr>' +
+                                            '<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">買家：</div>' + response[i].Identity + '</td></tr></tbody></table>'
+
+                                            //交易完成 
+                                            +
+                                            '<button type="button" class="btn btn-outline-info mb-4" data-toggle="modal" data-target="#evaluationModal" onclick="tradeCompleteFunc(' + response[i].TradeID + ')">交易完成</button></div></div>'
+                                        )
+                                    }
+                                }
+                            });
+                        });
+
                         $(document).ready(function(e) {
                             $("#formEv").submit(function(e) {
-                                //alert($("#formEv").serialize())
+                                var vTradeComple = $("#formEv").serialize() + "&ID=" + VonTrade
+                                alert(vTradeComple)
+                                $.ajax({
+                                    type: $(this).attr("method"),
+                                    url: $(this).attr("action"),
+                                    data: vTradeComple,
+                                    dataType: "json",
+                                    success: function(response) {
+                                        alert("TradeComple")
+                                       javascript: location.reload()
+                                    },
+                                    error: function(xhr, ajaxOptions, thrownError) {
+                                        alert("formEv error")
+                                    },
+                                })
+
                             });
                         })
+
+                        function tradeCompleteFunc(x) {
+                            VonTrade = x
+                        }
                     </script>
-
-
                 </div>
             </div>
         </div>
     </div>
 
+    <script>
+        //架上商品
+        var editId = 1;
+        $(document).ready(function() {
+            $.ajax({
+                url: 'https://ntou-store-system.herokuapp.com/personalPage',
+                dataType: 'json',
+                type: "POST",
+                data: document.cookie.split("; ")[0],
+                // data: { ID:6 },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    //alert(xhr.status + "\n" + thrownError);
+                },
+                success: function(response) {
+                    console.log(response[0][response[0].length - 2].ProductName)
+                    //for (var i = 19; i < 20; i++) {
+                    for (var i = 0; i < response[0].length - 1; i++) {
+                        // console.log(response[0][i].ProductID)
+                        $('#tableOnsale').append('<table class="table table-bordered" ><tbody><tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px ">品名：' + response[0][i].ProductName + '</div></td></tr>' + '<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="Price">直購價：' + response[0][i].Price + '</div></td></tr>' +
+                            '<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="LowestPrice">底價：' + response[0][i].LowestPrice + '</div></td><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="BiddingPrice">競標價：' + response[0][i].BiddingPrice + '</div></td></tr>' +
+                            '<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="BiddingUnitPrice">競標單位價：' + response[0][i].BiddingUnitPrice + '</div></td><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="BiddingDeadLine">結標時間：' + response[0][i].BiddingDeadLine + '</div></td></tr>' +
+                            '<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px ">詳細資訊：' + response[0][i].Information + '</div></td></tr></tbody></table>'
+
+                            //+ `<button type="button" class="btn btn-outline-success mb-4" >try</button></div></div>`
+
+                            //+`<button type="button" class="btn btn-outline-success mb-4" onclick="${myFunction("24","try1")}">try</button></div></div>`
+
+                            //編輯 
+                            +
+                            '<button onclick="editIdFunc(' + response[0][i].ProductID + ')" type="button" class="btn btn-outline-success mb-4" data-toggle="modal" data-target="#editInfoModal">編輯詳細資訊</button></div></div>' +
+                            '<button type="button" class="btn btn-outline-danger ml-3 mb-4" data-toggle="modal" onclick="deleteFunc(' + response[0][i].ProductID + ')">刪除</button></div></div>'
+                        )
+                    }
+
+                }
+            });
+
+        });
+
+        //編輯 //done
+        $("#formEdit").submit(function(e) {
+            var vEdit = $("#formEdit").serialize() + "&ID=" + editId
+            //alert($("#formEdit").serialize())
+            //alert("vEdit=" + vEdit)
+            $.ajax({
+                type: $(this).attr("method"),
+                url: $(this).attr("action"),
+                data: vEdit,
+                dataType: "json",
+                success: function(response) {
+                    //console.log("formEdit success")
+                    if (response.state == true) {
+                        window.location.href = "./personal.html";
+                    } else {
+                        alert("edit response false");
+                    }
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    alert("ederror")
+                },
+            })
+            e.preventDefault(); //停止預設動作
+            //e.unbind(); //解除綁定。停止多個表單提交.
+        });
+
+        function editIdFunc(i) {
+            //console.log("x="+i)
+            editId = i
+        }
+
+        function deleteFunc(x) {
+            //console.log("deleteFunction")
+            $.ajax({
+                url: 'https://ntou-store-system.herokuapp.com/personalPage/onSale/delete',
+                dataType: 'json',
+                type: "POST",
+                data: {
+                    ID: x,
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status + "123\n" + thrownError);
+                },
+                success: function(response) {
+                    javascript: location.reload()
+                }
+            })
+        }
+    </script>
     <script>
         function abc() {
             console.log("abc")
