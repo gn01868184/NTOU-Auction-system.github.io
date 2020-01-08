@@ -55,12 +55,12 @@
 <form action="https://ntou-store-system.herokuapp.com/personalPage/onSale/sale" method="POST" id="form">
 <div class="row form-group">
 	<div class="col-4">
-		<img src="https://icon-library.net/images/img-icon/img-icon-14.jpg" class="img" style="height: 100px;">
+		<img src="https://icon-library.net/images/img-icon/img-icon-14.jpg" class="img" style="height: 100px;" id="Image">
     <input name="Bidding" value="0" type="hidden"></input>
 		<div class="custom-file">
-			<input type="file" class="custom-file-input" id="File" accept="image/*" name="ImageURL" >
+			<input type="file" class="custom-file-input" id="ImageURL" accept="image/*" name="ImageURL" >
 			<!-- name="File" -->
-			<label class="custom-file-label" for="File">上傳圖片</label>
+			<label class="custom-file-label" for="ImageURL">上傳圖片</label>
 		</div>
 	</div>
 	<div class="col-8">
@@ -111,13 +111,32 @@
 
 </form>
 
-<!--check input value-->
+
 <script type="text/javascript">
 //登出function
 function eraseCookie() {
 	document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
 	document.location.href="./login.html";
 }
+
+//預覽上傳圖片
+$("#ImageURL").change(function() {
+	  readURL(this);		//this代表<input type="file">
+});
+
+function readURL(input) {
+	  if (input.files && input.files[0]) {
+		var reader = new FileReader();
+
+	reader.onload = function(e) {
+		 $('#Image').attr('src', e.target.result);
+	}
+
+	reader.readAsDataURL(input.files[0]);
+	}
+}
+
+//check input value
 	/*$(document).ready(function(){
 		$("#success").click(function(){
 			var	ProductName = document.getElementById("ProductName").value;
