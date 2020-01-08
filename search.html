@@ -2,101 +2,107 @@
 <html lang="en">
 
 <head>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-<!-- Bootstrap 4 Icons -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-<!--datetimepicker-->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Bootstrap 4 Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <!--datetimepicker-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
     <title>海大拍賣</title>
 </head>
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-light  bg-info">
-	  <a class="navbar-brand  text-light" href="./index.html"><span class="fas fa-tree"></span>&nbsp;海大拍賣</a>
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-	    <span class="navbar-toggler-icon"></span>
-	  </button>
+    <nav class="navbar navbar-expand-lg navbar-light  bg-info">
+        <a class="navbar-brand  text-light" href="./index.html"><span class="fas fa-tree"></span>&nbsp;海大拍賣</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-	  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-	    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 
+                <li class="nav-item">
+                    <a href="./search.html" class="btn btn-link text-light">
+                        <span class="fas fa-search"></span>&nbsp;搜尋
+                    </a>
 
-	      <li class="nav-item">
-	          <a href="./search.html" class="btn btn-link text-light">
-	                <span class="fas fa-search"></span>&nbsp;搜尋
-	          </a>
-	        </li>
-	      </ul>
-	      <form class="form-inline my-2 my-lg-0">
-	          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-	              <li class="nav-item">
-	                  <a href="./sCart.html" class="btn btn-link text-light">
-	                      <span class="fas fa-shopping-cart"></span>&nbsp;購物車</a>
-	              </li>
-	              <li class="nav-item active">
-	                  <a href="./personal.html" class="btn btn-link text-light">
-	                      <span class="fas fa-user"></span>&nbsp;個人中心
-	                  </a>
-	              </li>
-	              <li class="nav-item">
-                  <a onclick="eraseCookie()" class="btn btn-link text-light">
-                    <span class="fas fa-sign-out-alt"></span>&nbsp;登出
-                  </a>
-	              </li>
-	          </ul>
-	      </form>
-	    </div>
-	</nav>
-  <script type="text/javascript">
-	//登出function
-	function eraseCookie() {
-		document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
-		document.location.href="./login.html";
-	}
-  </script>
-<h1 class="col-12 text-center mt-3">搜尋</h1></br>
-<div class="col-8 container">
-	<form class="form-group row" action="./searchResult.html">
-			<label class="col-2 col-form-label mb-2">商品名稱</label>
-			<div class="col-10 mb-2">
-				<input type="text" class="form-control" name="Name" placeholder="商品名稱">
-			</div>
-			<label class="col-2 col-form-label mb-2">商品售價</label>
-			<div class="col-5 mb-2">
-				<input type="text" class="form-control" name="FirstPrice" placeholder="最低價">
-			</div>
-			<div class="col-5 mb-2">
-				<input type="text" class="form-control" name="LastPrice" placeholder="最高價">
-			</div>
-			<label class="col-2 col-form-label mb-2">商品星級</label>
-				<select class="col-10 custom-select" name="AvgEv">
-					<option value="" selected>商品星級</option>
-					<option value="one">★</option>
-					<option value="two">★★</option>
-					<option value="three">★★★</option>
-					<option value="four">★★★★</option>
-					<option value="five">★★★★★</option>
-				</select>
-			<button class="btn btn-outline-success col-2 container" type="submit">提&nbsp;&nbsp;交</button>
-	</form>
-</div>
-
-
-        <div class="tab-pane fade" id="bid" role="tabpanel" aria-labelledby="bid-tab">
-            <!-- Optional JavaScript -->
-            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a href="./sCart.html" class="btn btn-link text-light">
+                            <span class="fas fa-shopping-cart"></span>&nbsp;購物車</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="./personal.html" class="btn btn-link text-light">
+                            <span class="fas fa-user"></span>&nbsp;個人中心
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a onclick="eraseCookie()" class="btn btn-link text-light">
+                            <span class="fas fa-sign-out-alt"></span>&nbsp;登出
+                        </a>
+                    </li>
+                </ul>
+            </form>
         </div>
+    </nav>
+    <script type="text/javascript">
+        //登出function
+        function eraseCookie() {
+            document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            document.location.href = "./login.html";
+        }
+
+    </script>
+    <div class="col-12 mx-auto my-4" align="center">
+        <h2>
+            <p class="font-weight-bold text-info 5">搜尋</p>
+        </h2>
+    </div>
+    <div class="col-8 container">
+        <form class="form-group row" action="./searchResult.html">
+            <label class="col-2 col-form-label mb-2 text-right">商品名稱</label>
+            <div class="col-10 mb-2">
+                <input type="text" class="form-control" name="Name" placeholder="商品名稱">
+            </div>
+            <label class="col-2 col-form-label mb-2 mt-2 text-right">商品售價</label>
+            <div class="col-5 mb-2">
+                <input type="text" class="form-control mt-2" name="FirstPrice" placeholder="最低價">
+            </div>
+            <div class="col-5 mb-2 ">
+                <input type="text" class="form-control mt-2" name="LastPrice" placeholder="最高價">
+            </div>
+            <label class="col-2 col-form-label mb-2 mt-2 text-right">商品星級</label>
+            <select class="col-9 custom-select mt-2 ml-3" name="AvgEv">
+                <option value="" selected>商品星級</option>
+                <option value="one">★</option>
+                <option value="two">★★</option>
+                <option value="three">★★★</option>
+                <option value="four">★★★★</option>
+                <option value="five">★★★★★</option>
+            </select>
+            <button class="btn btn-outline-success col-2 container mt-4" type="submit">提&nbsp;&nbsp;交</button>
+        </form>
+    </div>
+
+
+    <div class="tab-pane fade" id="bid" role="tabpanel" aria-labelledby="bid-tab">
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    </div>
     </div>
 </body>
+
 </html>
