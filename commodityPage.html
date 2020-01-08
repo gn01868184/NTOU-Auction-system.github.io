@@ -59,8 +59,13 @@
   }
   //購物車
   function sCart(val) {
-    var productVal = val.value.split(";");
-    document.cookie = document.cookie + ";ProductIMG=" + productVal[0] + ";ProductName=" + productVal[1] + ";ProductHref=" + productVal[2] + ";" + location.href.split("?");
+  var cookie = document.cookie.split("; ");
+  if(cookie[1]==undefined){
+	document.cookie = `ProductID=${val.value.split("=")[1]}`;
+  }
+  else{
+	document.cookie = `ProductID=${cookie[1].split("=")[1]},${val.value.split("=")[1]}`;
+  }
     alert(document.cookie);
   }
   $(document).ready(function() {
@@ -87,7 +92,7 @@
             $('#Information').append(response[0][0].Information)
             $('#SellerImageURL').attr('src', response[0][0].SellerImageURL)
             $('#SellerNickName').append(response[0][0].SellerNickName)
-            $('#sCarBtn').attr('value', response[0][0].ImageURL + ";" + response[0][0].ProductName + ";" + location.href)
+            $('#sCarBtn').attr('value', temp[1])
           }
         });
   });
