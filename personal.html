@@ -506,7 +506,7 @@
                                     <option value="" selected>交易序號</option>
                                 </select>-->
                                 <div>
-                                    <label>賣家評級:</label>
+                                    <label>賣家評級:</label><br>
                                     <input class="form-check-input" type="radio" name="MemberEv" value="1">
                                     <label class="form-check-label" for="inlineRadio1">1</label>
                                 </div>
@@ -530,7 +530,7 @@
                         </div>
                         <div class="card">
                             <div class="card-body">
-                                <label>商品評級:</label>
+                                <label>商品評級:</label><br>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="ProductEv" value="1">
                                     <label class="form-check-label" for="inlineRadio1">1</label>
@@ -609,7 +609,7 @@
                                     dataType: "json",
                                     success: function(response) {
                                         //alert("TradeComple")
-                                        //javascript: location.reload()
+                                        javascript: location.reload()
                                     },
                                     error: function(xhr, ajaxOptions, thrownError) {
                                         alert("formEv error")
