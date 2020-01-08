@@ -599,7 +599,6 @@
                             });
                         });
 
-                        $(document).ready(function(e) {
                             $("#formEv").submit(function(e) {
                                 var vTradeComple = $("#formEv").serialize() + "&ID=" + completeTradeId
                                 //alert(vTradeComple)
@@ -617,8 +616,7 @@
                                     },
                                 })
                             });
-                        })
-
+                
 
                         function tradeCompleteFunc(x) {
                             completeTradeId = x
