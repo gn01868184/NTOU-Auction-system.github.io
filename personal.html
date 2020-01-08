@@ -65,7 +65,7 @@
     <div class="card">
         <div class=" row no-gutters mx-3 my-2 ">
             <div class="col-3 mb-3  align-self-center">
-                <div class="row no-gutters" >
+                <div class="row no-gutters">
                     <span class="col-12 border rounded align-self-center" align="center">
                         <img src="http://member.businessweekly.com.tw/theme/v1/i/icon-member-m.gif" class="card-img-top col-10" style="height: 200px;width: 200px" id="ImageURL">
                     </span>
@@ -84,7 +84,7 @@
                             //alert(xhr.status + "\n" + thrownError);
                         },
                         success: function(response) {
-                            if(response[1].ImageURL != null)
+                            if (response[1].ImageURL != null)
                                 $('#ImageURL').attr('src', response[1].ImageURL)
                             //console.log(response[1].Name)
                             $('#Name').append(response[1].Name)
@@ -234,18 +234,20 @@
                                 },
                                 success: function(response) {
                                     console.log(response.length)
-                                    var vIden=""
+                                    var vIden = ""
                                     for (var i = 0; i < response.length; i++) {
-                                        vIden=response[i].Identity
-                                        if (vIden==0)
-                                            vIden="賣家"
+                                        vIden = response[i].Identity
+                                        if (vIden == 0)
+                                            vIden = "賣家"
                                         else
-                                            vIden="買家"
+                                            vIden = "買家"
                                         $('#tradeCompleted').append('<table class="table table-bordered"><tbody>'
-                                                                    
-                                                                    +'<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">身份：</div>' + vIden + '</td></tr>'
-                                                                    
-                                                                   +' <tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">品名：</div>' + response[i].ProductName+ '</td>' +
+
+                                            +
+                                            '<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">身份：</div>' + vIden + '</td></tr>'
+
+                                            +
+                                            ' <tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">品名：</div>' + response[i].ProductName + '</td>' +
                                             '<td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">交易數量：</div>' + response[i].TradeAmount + '</td></tr>' +
                                             '<tr> <td> <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">交易總額：</div>' + response[i].TradePrice + '</td>' +
                                             '<td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">買家：</div>' + response[i].ProductName + '</td></tr>' +
@@ -289,14 +291,30 @@
                                         success: function(response) {
                                             //console.log(response.length)
 
+                                            var v1Low1, v2Bid1, v3BidU1,v4BidD1 = ""
+
+
                                             for (var i = 0; i < response.length; i++) {
+                                                v1Low1 = response[i].LowestPrice
+                                                v2Bid1 = response[i].BiddingPrice
+                                                v3BidU1 = response[i].BiddingUnitPrice
+                                                v4BidD1  = response[i].BiddingDeadline
+
+                                                if (v1Low1 == null)
+                                                    v1Low1 = "X"
+                                                if (v2Bid1 == null)
+                                                    v2Bid1 = "X"
+                                                if (v3BidU1 == null)
+                                                    v3BidU1 = "X"
+                                                if (v4BidD1 == null)
+                                                    v4BidD1 = "X"
                                                 $('#tableSurfedRecord').append('<table class="table table-bordered"><tbody><tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">品名：</div>' + response[i].ProductName + '</td>' + '<td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">直購價：</div>' + response[0].Price + '</td></tr>' +
-                                                    '<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">底價：</div>' + response[i].LowestPrice + '</td>' +
-                                                    '<td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">競標價：</div>' + response[i].BiddingPrice + '</td></tr>' +
-                                                    '<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">競標單位價：</div>' + response[i].BiddingUnitPrice + '</td>'
+                                                    '<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">底價：</div>' + v1Low1 + '</td>' +
+                                                    '<td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">競標價：</div>' + v2Bid1 + '</td></tr>' +
+                                                    '<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">競標單位價：</div>' + v3BidU1 + '</td>'
 
                                                     +
-                                                    '<td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">結標時間：</div>' + response[i].BiddingDeadline + '</td></tr>'
+                                                    '<td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">結標時間：</div>' + v4BidD1 + '</td></tr>'
 
                                                     +
                                                     '<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">瀏覽日期：</div>' + response[i].SurfingDate + '</td></tr></tbody></table>'
@@ -481,7 +499,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form id="formEv" class="form-group" action="https://ntou-store-system.herokuapp.com/personalPage/onTrade/tradeCompleted" method="POST" >
+                    <form id="formEv" class="form-group" action="https://ntou-store-system.herokuapp.com/personalPage/onTrade/tradeCompleted" method="POST">
                         <div class="card">
                             <div class="card-body">
                                 <!--<select class="col-3 custom-select" name="ID" id="tradeID1">
@@ -585,8 +603,8 @@
                                 var vTradeComple = $("#formEv").serialize() + "&ID=" + completeTradeId
                                 //alert(vTradeComple)
                                 $.ajax({
-                                    type:"POST" ,
-                                    url:'https://ntou-store-system.herokuapp.com/personalPage/onTrade/tradeCompleted',
+                                    type: "POST",
+                                    url: 'https://ntou-store-system.herokuapp.com/personalPage/onTrade/tradeCompleted',
                                     data: vTradeComple,
                                     dataType: "json",
                                     success: function(response) {
@@ -599,7 +617,7 @@
                                 })
                             });
                         })
-                       
+
 
                         function tradeCompleteFunc(x) {
                             completeTradeId = x
@@ -625,27 +643,27 @@
                 },
                 success: function(response) {
                     //for (var i = 19; i < 20; i++) {
-                    var v1Low,v2Bid,v3BidU,v4BidD,v5Inf=""
-                    for (var i = 0; i < response[0].length ; i++) {
+                    var v1Low, v2Bid, v3BidU, v4BidD, v5Inf = ""
+                    for (var i = 0; i < response[0].length; i++) {
                         // console.log(response[0][i].ProductID)
-                        v1Low=response[0][i].LowestPrice
-                        v2Bid=response[0][i].BiddingPrice
-                        v3BidU=response[0][i].BiddingUnitPrice
-                        v4BidD=response[0][i].BiddingDeadLine
-                        v5Inf=response[0][i].Information
+                        v1Low = response[0][i].LowestPrice
+                        v2Bid = response[0][i].BiddingPrice
+                        v3BidU = response[0][i].BiddingUnitPrice
+                        v4BidD = response[0][i].BiddingDeadLine
+                        v5Inf = response[0][i].Information
                         //console.log(v1Low+v2Bid+v3BidU+v4BidD+v5Inf)
-                        if(v1Low==null)
-                            v1Low="X"
-                         if(v2Bid==null)
-                            v2Bid="X"
-                        if(v3BidU==null)
-                            v3BidU="X"
-                        if(v4BidD==null)
-                            v4BidD="X"
-                        if(v5Inf==null)
-                            v5Inf="暫無"
-                        $('#tableOnsale').append('<table class="table table-bordered" ><tbody><tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px ">品名：' + response[0][i].ProductName  +'</div></td></tr>' + '<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="Price">直購價：' + response[0][i].Price + '</div></td></tr>' +
-                            '<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="LowestPrice">底價：' +v1Low + '</div></td><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="BiddingPrice">競標價：' + v2Bid + '</div></td></tr>' +
+                        if (v1Low == null)
+                            v1Low = "X"
+                        if (v2Bid == null)
+                            v2Bid = "X"
+                        if (v3BidU == null)
+                            v3BidU = "X"
+                        if (v4BidD == null)
+                            v4BidD = "X"
+                        if (v5Inf == null)
+                            v5Inf = "暫無"
+                        $('#tableOnsale').append('<table class="table table-bordered" ><tbody><tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px ">品名：' + response[0][i].ProductName + '</div></td></tr>' + '<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="Price">直購價：' + response[0][i].Price + '</div></td></tr>' +
+                            '<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="LowestPrice">底價：' + v1Low + '</div></td><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="BiddingPrice">競標價：' + v2Bid + '</div></td></tr>' +
                             '<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="BiddingUnitPrice">競標單位價：' + v3BidU + '</div></td><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="BiddingDeadLine">結標時間：' + v4BidD + '</div></td></tr>' +
                             '<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px ">詳細資訊：' + v5Inf + '</div></td></tr></tbody></table>'
 
@@ -692,7 +710,7 @@
         });
 
         function editIdFunc(i) {
-            console.log("x="+i)
+            console.log("x=" + i)
             editId = i
         }
 
