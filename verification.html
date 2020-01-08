@@ -58,12 +58,19 @@
         </div>
         <div class="col-5 container">
             <form id="form" class="form-group row" action="https://ntou-store-system.herokuapp.com/verification" method="POST">
-                <label class="col-5 col-form-label mb-2">請輸入信箱驗證碼：</label>
-                <div class="col-5">
-                    <input type="text" class="form-control" name="VerificationCode" placeholder="驗證碼">
+                <div class="container">
+                    <div class="row">
+                        <label class="col-auto col-form-label px-0 " >
+                            請輸入驗證碼：
+                        </label>
+                        <div class="col">
+                            <input type="text" class="form-control" name="VerificationCode" placeholder="驗證碼">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <button class="btn btn-outline-success col-2 container mt-5" type="submit">送&nbsp;&nbsp;出</button>
+                    </div>
                 </div>
-                <br>
-                <button class="btn btn-outline-success col-2 container" type="submit">送&nbsp;&nbsp;出</button>
             </form>
 
             <script>
@@ -71,7 +78,7 @@
 
                 $("#form").submit(function(e) {
                     console.log("s:" + $("#form").serialize())
-                    var v = "Account=" + getCookie("Account") + "&"+$("#form").serialize()
+                    var v = "Account=" + getCookie("Account") + "&" + $("#form").serialize()
                     //v=v+";"+$("#form").serialize()
                     console.log("v:" + v)
                     console.log("cookie:" + document.cookie)
@@ -93,7 +100,7 @@
                             }
                         },
                         error: function(xhr, ajaxOptions, thrownError) {
-                            
+
                         },
 
                     })
@@ -110,7 +117,6 @@
                         }
                     }
                 }
-
             </script>
 
         </div>
@@ -119,6 +125,4 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-</body>
-
-</html>
+</body></html>
