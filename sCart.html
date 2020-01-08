@@ -65,9 +65,11 @@
 	<div class="tab-content" id="nav-tabContent">
 		<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 			<!-- 購物車 -->
-			<div class="row">
-				<button class="btn btn-outline-success col-12" type="submit">選取購買</button>
-			</div>
+			<form id="form">
+				<div class="row">
+					<button class="btn btn-outline-success col-12" type="submit">選取購買</button>
+				</div>
+			</form>
 		</div>
 		<script type="text/javascript">
 		function eraseCookie() {
@@ -87,7 +89,8 @@
 						alert(xhr.status+"\n"+thrownError);
 					},
 			success: function(response) {
-			 $('#nav-home').prepend(
+			var amount = response[0][0].Amount;
+			 $('#form').prepend(
 							 $('<div/>')
 								.addClass('row')
 								.append(
@@ -96,6 +99,8 @@
 									.append(
 										$('<input/>')
 										.attr('type','checkbox')
+										.attr("name", "ProductID")
+										.attr('value',response[0][0].ProductID)
 									)
 								)
 								.append(
@@ -110,13 +115,42 @@
 								)
 								.append(
 									$('<div/>')
-									.addClass('col-9 border p-2')
+									.addClass('col-5 border p-2')
 									.append(
 										response[0][0].ProductName + " | " + response[0][0].Information
 									)
 								)
+								.append(
+									$('<div/>')
+									.addClass('col-2 border p-2')
+									.append("售價:")
+									.append(
+										$('<input/>')
+										.addClass('input')
+										.attr("readonly", "readonly")
+										.attr("name", "Price")
+										.attr("value", response[0][0].Price)
+									)
+								)
+								.append(
+									$('<select/>')
+									.addClass('col-2 border p-2 custom-select')
+									.attr("id", "Amount")
+									.attr("name", "Amount")
+									.append(
+										$('<option/>')
+										.attr('value',"")
+										.append("選擇數量")
+									)
+								)
 						 )
-
+				for(var j=0;j<amount;j++){
+					$('#Amount').append(
+						$('<option/>')
+						.attr('value', j+1)
+						.append(j+1)
+					)
+				}
 					}
 				});
 			}
@@ -161,11 +195,37 @@ success: function(response) {
 									OverBidTime
 								)
 							)
-					 )//OverBidTime
+					 )
 
 		}
 	 }
 });
+
+$("#form").submit(function(e) {
+	var formtext = "";
+	for(var k=0;k<$(this).serializeArray().length;k++){
+	if($(this).serializeArray()[k]['name']=="ProductID"&&$(this).serializeArray()[k+2]['value']!="")
+		formtext = formtext + "ProductID=" + $(this).serializeArray()[k]['value'] + "&Price=" + $(this).serializeArray()[k+1]['value'] + "&Amount=" + $(this).serializeArray()[k+2]['value'] + "&"
+
+	}
+	formtext = formtext + "MemberID=" + document.cookie.split("; ")[0].split("=")[1];
+	$.ajax({
+        url: 'https://ntou-store-system.herokuapp.com/CheckOutPage',
+        dataType: 'json',
+        type: "POST",
+        data: formtext,
+        error:function(xhr, ajaxOptions, thrownError){
+            alert(xhr.status+"\n"+thrownError);
+        },
+        success: function(response) {
+            alert("購買成功")
+        },
+    });
+	alert("購買成功")
+	document.location.href="./personal.html";
+})
+
+
 });
         </script>
 		<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
