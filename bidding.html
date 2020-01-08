@@ -54,7 +54,7 @@
 	    </div>
 	</nav>
 
-<form action="https://ntou-store-system.herokuapp.com/personalPage/onSale/sale" method="POST">
+<form class="m-3" action="https://ntou-store-system.herokuapp.com/personalPage/onSale/sale" method="POST">
 <div class="row form-group">
 	<input name="SellerID" value="6" type="hidden"></input>
 	<input name="Bidding" value="1" type="hidden"></input>
@@ -67,7 +67,7 @@
 	</div>
 	<div class="col-8">
 		<div class="row">
-			<div class="col-4">
+			<div class="col-4 m-1">
 				<select class="custom-select" id="Category" name="Category">
 					<option selected>選擇標籤</option>
 					<option value="3C">3C</option>
@@ -82,23 +82,23 @@
 					<option value="accessoriesGirl">鞋包配件(女)</option>
 				</select>
 			</div>
-			<div class="col-8">
+			<div class="col-7 m-1">
 				<input class="form-control input-lg" type="input" id="ProductName" name="ProductName" placeholder="輸入商品名稱">
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-4">
+			<div class="col-4 m-1">
 				<input class="form-control input-lg" type="input" id="LowestPrice" name="LowestPrice" placeholder="輸入底價">
 			</div>
-			<div class="col-8">
+			<div class="col-7 m-1">
 				<input class="form-control input-lg" type="input" id="BiddingPrice" name="BiddingPrice" placeholder="輸入競標價">
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-4">
+			<div class="col-4 m-1">
 				<input class="form-control input-lg" type="input" id="BiddingUnitPrice" name="BiddingUnitPrice" placeholder="設定單位競標">
 			</div>
-			<div class="col-8">
+			<div class="col-7 m-1">
 				<div class="input-group date" id="datetimepicker1" data-target-input="nearest">
 						<input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1" id="BiddingDeadline" name="BiddingDeadline" placeholder="設定結標日期"/>
 						<div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
@@ -108,25 +108,25 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-4">
+			<div class="col-4 m-1">
 				<input class="form-control input-lg" type="input" id="Amount" name="Amount" placeholder="設定商品件數">
 			</div>
-			<div class="col-8">
+			<div class="col-7 m-1">
 				<input class="form-control input-lg" type="input" id="Price" name="Price" placeholder="輸入直購價">
 			</div>
 		</div>
 	</div>
 </div>
 <div class="row">
-	<div class="col-12">
+	<div class="col-12 pr-5">
 		<textarea class="form-control" rows="5" id="Information" name="Information" placeholder="商品資訊"></textarea>
 	</div>
 </div>
-<div class="row">
-	<div class="col-6 text-center">
+<div class="row mt-3 ">
+	<div class="col-6 pr-5 text-right">
 		<a class="btn btn-outline-success" href="./registered.html">取消</a>
 	</div>
-	<div class="col-6 text-center">
+	<div class="col-6 pl-5 text-left">
 		<button class="btn btn-outline-success" type="submit" id="success">確定</button>
 	</div>
 </div>
