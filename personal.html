@@ -130,7 +130,7 @@
                     <script>
                         //架上商品
 						
-						//這是登出function不要刪掉我QQ
+						//這是登出function不要刪掉我QQ 喔抱歉！
                         function eraseCookie() {
                           document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
                           document.location.href="./login.html";
@@ -311,22 +311,22 @@
                                         data: document.cookie,
                                         //data: { ID:6 },
                                         error: function(xhr, ajaxOptions, thrownError) {
-                                           // alert(xhr.status + "\n" + thrownError);
+                                            alert(xhr.status + "\n瀏覽紀錄" + thrownError);
                                         },
                                         success: function(response) {
                                             //console.log(response.length)
 
                                             for (var i = 0; i < response.length; i++) {
-                                                $('#tableSurfedRecord').append('<table class="table table-bordered"><tbody><tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">品名：</div>' + response[0].ProductName + '</td>' + '<td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">直購價：</div>' + response[0].Price + '</td></tr>' +
-                                                    '<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">底價：</div>' + response[0].LowestPrice + '</td>' +
-                                                    '<td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">競標價：</div>' + response[0].BiddingPrice + '</td></tr>' +
-                                                    '<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">競標單位價：</div>' + response[0].BiddingUnitPrice + '</td>'
+                                                $('#tableSurfedRecord').append('<table class="table table-bordered"><tbody><tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">品名：</div>' + response[i].ProductName + '</td>' + '<td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">直購價：</div>' + response[0].Price + '</td></tr>' +
+                                                    '<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">底價：</div>' + response[i].LowestPrice + '</td>' +
+                                                    '<td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">競標價：</div>' + response[i].BiddingPrice + '</td></tr>' +
+                                                    '<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">競標單位價：</div>' + response[i].BiddingUnitPrice + '</td>'
 
                                                     +
-                                                    '<td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">結標時間：</div>' + response[0].BiddingDeadline + '</td></tr>'
+                                                    '<td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">結標時間：</div>' + response[i].BiddingDeadline + '</td></tr>'
 
                                                     +
-                                                    '<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">瀏覽日期：</div>' + response[0].SurfingDate + '</td></tr></tbody></table>'
+                                                    '<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">瀏覽日期：</div>' + response[i].SurfingDate + '</td></tr></tbody></table>'
                                                 )
                                             }
                                         }
