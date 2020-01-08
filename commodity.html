@@ -1,220 +1,223 @@
 <!doctype html>
 <html lang="en">
 <head>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-<!-- Bootstrap 4 Icons -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-<!-- jQuery -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Bootstrap 4 Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
-<title>海大拍賣系統</title>
+    <title>海大拍賣系統</title>
 </head>
+
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light  bg-info">
-	  <a class="navbar-brand  text-light" href="./index.html"><span class="fas fa-tree"></span>&nbsp;海大拍賣</a>
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-	    <span class="navbar-toggler-icon"></span>
-	  </button>
+    <nav class="navbar navbar-expand-lg navbar-light  bg-info">
+        <a class="navbar-brand  text-light" href="./index.html"><span class="fas fa-tree"></span>&nbsp;海大拍賣</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-	  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-	    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-
-
-	      <li class="nav-item">
-	          <a href="./search.html" class="btn btn-link text-light">
-	                <span class="fas fa-search"></span>&nbsp;搜尋
-	          </a>
-	        </li>
-	      </ul>
-	      <form class="form-inline my-2 my-lg-0">
-	          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-	              <li class="nav-item">
-	                  <a href="./sCart.html" class="btn btn-link text-light">
-	                      <span class="fas fa-shopping-cart"></span>&nbsp;購物車</a>
-	              </li>
-	              <li class="nav-item active">
-	                  <a href="./personal.html" class="btn btn-link text-light">
-	                      <span class="fas fa-user"></span>&nbsp;個人中心
-	                  </a>
-	              </li>
-	              <li class="nav-item">
-                  <a onclick="eraseCookie()" class="btn btn-link text-light">
-                    <span class="fas fa-sign-out-alt"></span>&nbsp;登出
-                  </a>
-	              </li>
-	          </ul>
-	      </form>
-	    </div>
-	</nav>
-
-<form action="https://ntou-store-system.herokuapp.com/personalPage/onSale/sale" method="POST" id="form">
-<div class="row form-group">
-	<div class="col-4">
-		<img src="https://icon-library.net/images/img-icon/img-icon-14.jpg" class="img" style="height: 100px;" id="Image">
-    <input name="Bidding" value="0" type="hidden"></input>
-		<div class="custom-file">
-			<input type="file" class="custom-file-input" id="ImageURL" accept="image/*" name="ImageURL" >
-			<!-- name="File" -->
-			<label class="custom-file-label" for="ImageURL">上傳圖片</label>
-		</div>
-	</div>
-	<div class="col-8">
-		<div class="row-2">
-			<div class="col-6">
-				<select class="custom-select" id="Category" name="Category">
-					<option value="" selected>選擇標籤</option>
-					<option value="3C">3C</option>
-					<option value="homeAppliance">家電</option>
-					<option value="necessities">日用</option>
-					<option value="food">食品</option>
-					<option value="life">生活</option>
-					<option value="makeUp">美妝</option>
-					<option value="clothesBoy">衣著(男)</option>
-					<option value="clothesGirl">衣著(女)</option>
-					<option value="accessoriesBoy">鞋包配件(男)</option>
-					<option value="accessoriesGirl">鞋包配件(女)</option>
-				</select>
-
-			</div>
-			<div class="col-6">
-				<input class="form-control input-lg" type="input" id="ProductName" name="ProductName" placeholder="輸入商品名稱">
-			</div>
-		</div>
-		<div class="row-2">
-			<div class="col-6">
-				<input class="form-control input-lg" type="input" id="Amount" name="Amount" placeholder="設定商品件數">
-			</div>
-			<div class="col-6">
-				<input class="form-control input-lg" type="input" id="Price" name="Price" placeholder="輸入直購價">
-			</div>
-		</div>
-	</div>
-</div>
-<div class="row">
-	<div class="col-12">
-		<textarea class="form-control" rows="5" id="Information" name="Information"placeholder="商品資訊"></textarea>
-	</div>
-</div>
-<div class="row">
-	<div class="col-6 text-center">
-		<a class="btn btn-outline-success" href="./personal.html">取消</a>
-	</div>
-	<div class="col-6 text-center">
-		<button class="btn btn-outline-success" type="submit" id="success">確定</button>
-	</div>
-</div>
-
-</form>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 
 
-<script type="text/javascript">
-//登出function
-function eraseCookie() {
-	document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
-	document.location.href="./login.html";
-}
+                <li class="nav-item">
+                    <a href="./search.html" class="btn btn-link text-light">
+                        <span class="fas fa-search"></span>&nbsp;搜尋
+                    </a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a href="./sCart.html" class="btn btn-link text-light">
+                            <span class="fas fa-shopping-cart"></span>&nbsp;購物車</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="./personal.html" class="btn btn-link text-light">
+                            <span class="fas fa-user"></span>&nbsp;個人中心
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a onclick="eraseCookie()" class="btn btn-link text-light">
+                            <span class="fas fa-sign-out-alt"></span>&nbsp;登出
+                        </a>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </nav>
 
-//預覽上傳圖片
-$("#ImageURL").change(function() {
-	  readURL(this);		//this代表<input type="file">
-});
+    <form class="m-2" action="https://ntou-store-system.herokuapp.com/personalPage/onSale/sale" method="POST" id="form">
+        <div class="row form-group">
+            <div class="col-4">
+                <img src="https://icon-library.net/images/img-icon/img-icon-14.jpg" class="img mb-2" style="height: 130px;" id="Image">
+                <input name="Bidding" value="0" type="hidden">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="ImageURL" accept="image/*" name="ImageURL">
+                    <!-- name="File" -->
+                    <label class="custom-file-label" for="ImageURL">上傳圖片</label>
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="row-2">
+                    <div class="col-6 mb-2">
+                        <select class="custom-select" id="Category" name="Category">
+                            <option class="my-2" value="" selected>選擇標籤</option>
+                            <option value="3C">3C</option>
+                            <option value="homeAppliance">家電</option>
+                            <option value="necessities">日用</option>
+                            <option value="food">食品</option>
+                            <option value="life">生活</option>
+                            <option value="makeUp">美妝</option>
+                            <option value="clothesBoy">衣著(男)</option>
+                            <option value="clothesGirl">衣著(女)</option>
+                            <option value="accessoriesBoy">鞋包配件(男)</option>
+                            <option value="accessoriesGirl">鞋包配件(女)</option>
+                        </select>
 
-function readURL(input) {
-	  if (input.files && input.files[0]) {
-		var reader = new FileReader();
+                    </div>
+                    <div class="col-6 mb-2">
+                        <input class="form-control input-lg" type="input" id="ProductName" name="ProductName" placeholder="輸入商品名稱">
+                    </div>
+                </div>
+                <div class="row-2">
+                    <div class="col-6 mb-2">
+                        <input class="form-control input-lg" type="input" id="Amount" name="Amount" placeholder="設定商品件數">
+                    </div>
+                    <div class="col-6">
+                        <input class="form-control input-lg" type="input" id="Price" name="Price" placeholder="輸入直購價">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-11">
+                <textarea class="form-control" rows="5" id="Information" name="Information" placeholder="商品資訊"></textarea>
+            </div>
+        </div>
+        </div>
+        
+        <div class="row mt-3 ">
+            <div class="col-6 pr-5 text-right">
+                <a class="btn btn-outline-success" href="./personal.html">取消</a>
+            </div>
+            <div class="col-6 pl-5 text-left">
+                <button class="btn btn-outline-success" type="submit" id="success">確定</button>
+            </div>
+        </div>
 
-	reader.onload = function(e) {
-		 $('#Image').attr('src', e.target.result);
-	}
+    </form>
 
-	reader.readAsDataURL(input.files[0]);
-	}
-}
 
-//check input value
-	/*$(document).ready(function(){
-		$("#success").click(function(){
-			var	ProductName = document.getElementById("ProductName").value;
-			var	Amount = document.getElementById("Amount").value
-			var	Price = document.getElementById("Price").value;
-			var	Information = document.getElementById("Information").value;
-			var	Select = document.getElementById("Category").value;
-			console.log(Select);
-			if((ProductName == "") || (Amount == "") || (Price == "") || (Information == "") || (Select == "選擇標籤") ){
-				//document.getElementById("test").innerHTML = "必須輸入文字";
-				window.alert("請不要留空！");
-			}
-			else if((isNaN(Amount) == true ) || (isNaN(Price) == true) ){
-				window.alert("請不要亂輸入！");
-			}
-		});
-	});*/
-	$(document).ready(function(e) {
-        //表單發送處理
-         $("#form").submit(function(e) {
-           alert($(this).serialize())
-             $.ajax({
-                type: "POST",
-                url: "https://ntou-store-system.herokuapp.com/personalPage/onSale/sale",
-                data: "SellerID=" + document.cookie.split("; ")[0].split("=")[1] + "&" + $(this).serialize() + "&ImageURL=1",
-                dataType: "json",
+    <script type="text/javascript">
+        //登出function
+        function eraseCookie() {
+            document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            document.location.href = "./login.html";
+        }
+
+        //預覽上傳圖片
+        $("#ImageURL").change(function() {
+            readURL(this); //this代表<input type="file">
+        });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#Image').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        //check input value
+        /*$(document).ready(function(){
+        	$("#success").click(function(){
+        		var	ProductName = document.getElementById("ProductName").value;
+        		var	Amount = document.getElementById("Amount").value
+        		var	Price = document.getElementById("Price").value;
+        		var	Information = document.getElementById("Information").value;
+        		var	Select = document.getElementById("Category").value;
+        		console.log(Select);
+        		if((ProductName == "") || (Amount == "") || (Price == "") || (Information == "") || (Select == "選擇標籤") ){
+        			//document.getElementById("test").innerHTML = "必須輸入文字";
+        			window.alert("請不要留空！");
+        		}
+        		else if((isNaN(Amount) == true ) || (isNaN(Price) == true) ){
+        			window.alert("請不要亂輸入！");
+        		}
+        	});
+        });*/
+        $(document).ready(function(e) {
+            //表單發送處理
+            $("#form").submit(function(e) {
+                alert($(this).serialize())
+                $.ajax({
+                    type: "POST",
+                    url: "https://ntou-store-system.herokuapp.com/personalPage/onSale/sale",
+                    data: "SellerID=" + document.cookie.split("; ")[0].split("=")[1] + "&" + $(this).serialize() + "&ImageURL=1",
+                    dataType: "json",
                     success: function(response) {
                         if (response.state == true) {
                             alert("上架成功")
                             //document.cookie = "ID=" + response.ID;
                             window.location.href = "./personal.html"; //指定要跳轉到的目標頁面
                         } else {
-                            	alert("有誤")
-                            }
+                            alert("有誤")
+                        }
                     }
                 })
                 e.preventDefault(); //停止預設動作
                 //e.unbind(); //解除綁定。停止多個表單提交.
+            });
         });
-	});
 
-//連接imgur
-const id = 'ab56b39d28859a1'; // 填入 App 的 Client ID
-const token = '1776be6a4c6ddd4636a12806043c6db3832fb474'; // 填入 token
+        //連接imgur
+        const id = 'ab56b39d28859a1'; // 填入 App 的 Client ID
+        const token = '1776be6a4c6ddd4636a12806043c6db3832fb474'; // 填入 token
 
-// jquery
-$("document").ready(function() {
+        // jquery
+        $("document").ready(function() {
 
-    $("#success").click(function() {
-        
-        var files = $("#ImageURL").get(0).files;
-        
-        var form = new FormData();
-        form.append("image", files[0]);
-        form.append("type", "file");
+            $("#success").click(function() {
 
-        var settings = {
-        "async": true,
-        "crossDomain": true,
-        "url": "https://api.imgur.com/3/image",
-        "method": "POST",
-        "headers": {
-            "authorization": "Bearer " + token,
-        },
-        "processData": false,
-        "contentType": false,
-        "mimeType": "multipart/form-data",
-        "data": form
-        }
+                var files = $("#ImageURL").get(0).files;
 
-        $.ajax(settings).done(function (response) {
-            console.log(response);  
+                var form = new FormData();
+                form.append("image", files[0]);
+                form.append("type", "file");
+
+                var settings = {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": "https://api.imgur.com/3/image",
+                    "method": "POST",
+                    "headers": {
+                        "authorization": "Bearer " + token,
+                    },
+                    "processData": false,
+                    "contentType": false,
+                    "mimeType": "multipart/form-data",
+                    "data": form
+                }
+
+                $.ajax(settings).done(function(response) {
+                    console.log(response);
+                });
+            });
         });
-    });
-});
-</script>
-<!-- Optional JavaScript --><!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-</body>
-</html>
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</body></html>
