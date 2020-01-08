@@ -125,7 +125,7 @@ $.ajax({
 	url: 'https://ntou-store-system.herokuapp.com/biddingInfo',
 	dataType: 'json',
 	type: "POST",
-	data: "MemberID=20",
+	data: "MemberID=" + document.cookie.split("; ")[0].split("=")[1],
 	error:function(xhr, ajaxOptions, thrownError){
 		alert(xhr.status+"\n"+thrownError);
 	},
