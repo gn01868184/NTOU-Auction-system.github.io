@@ -1,4 +1,5 @@
 # 海大拍賣系統
+新的網站在這裡唷(๑´ㅂ`๑)[ノ](http://140.121.197.131/NTOU-Auction/index.html) 
 > - [ ] [首頁](https://gn01868184.github.io/NTOU-Auction-system.github.io/index.html) 
 >> - [x] 頁面
 >> - [x] 美化
