@@ -54,7 +54,7 @@
 	    </div>
 	</nav>
 
-<form action="https://ntou-store-system.herokuapp.com/personalPage/onSale/sale" method="POST">
+<form action="https://ntou-store-system.herokuapp.com/personalPage/onSale/sale" method="POST" id="form">
 <div class="row form-group">
 	<div class="col-4">
 		<img src="https://icon-library.net/images/img-icon/img-icon-14.jpg" class="img" style="height: 100px;">
@@ -126,7 +126,7 @@ function eraseCookie() {
 	document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
 	document.location.href="./login.html";
 }
-	$(document).ready(function(){
+	/*$(document).ready(function(){
 		$("#success").click(function(){
 			var	ProductName = document.getElementById("ProductName").value;
 			var	Amount = document.getElementById("Amount").value
@@ -142,8 +142,29 @@ function eraseCookie() {
 				window.alert("請不要亂輸入！");
 			}
 		});
-	});
-
+	});*/
+	$(document).ready(function(e) {
+        //表單發送處理
+         $("#form").submit(function(e) {
+             $.ajax({
+                type: "post",
+                url: "https://ntou-store-system.herokuapp.com/personalPage/onSale/sale",
+                //data: $(this).serialize(),
+                dataType: "json",
+                    success: function(response) {
+                        if (response.state == true) {
+                            alert("上架成功")
+                            //document.cookie = "ID=" + response.ID;
+                            window.location.href = "./personal.html"; //指定要跳轉到的目標頁面
+                        } else {
+                            	alert("有誤")
+                            }
+                    }
+                })
+                e.preventDefault(); //停止預設動作
+                //e.unbind(); //解除綁定。停止多個表單提交.
+        });
+    });
 </script>
 <!-- Optional JavaScript --><!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
