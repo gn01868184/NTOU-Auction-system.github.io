@@ -112,8 +112,8 @@
         </div>
     </div>
     <div class="row">
-        <a class="btn btn-outline-success col-3 " href="./commodity.html">上架一般商品</a>
-        <a class="btn btn-outline-success col-3 " href="./bidding.html">上架競標商品</a>
+        <a class="btn btn-outline-success col-2 m-2 ml-4" href="./commodity.html">上架一般商品</a>
+        <a class="btn btn-outline-success col-2 m-2" href="./bidding.html">上架競標商品</a>
     </div>
     <ul class="nav nav-tabs my-2 mx-1" id="myTab" role="tablist">
         <li class="nav-item">
@@ -221,6 +221,7 @@
                     <script>
                         //交易紀錄
                         $(document).ready(function() {
+                            //alert("交易紀錄ID"+document.cookie)
                             $.ajax({
                                 url: 'https://ntou-store-system.herokuapp.com/personalPage/tradeRecord',
                                 dataType: 'json',
@@ -232,17 +233,21 @@
                                 },
                                 success: function(response) {
                                     console.log(response.length)
-
                                     for (var i = 0; i < response.length; i++) {
-                                        $('#tradeCompleted').append('<table class="table table-bordered"><tbody><tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">品名：</div>' + response[0].ProductName + '</td>' +
-                                            '<td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">交易數量：</div>' + response[0].TradeAmount + '</td></tr>' +
-                                            '<tr> <td> <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">交易總額：</div>' + response[0].TradePrice + '</td>' +
-                                            '<td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">買家：</div>' + response[0].ProductName + '</td></tr>' +
-                                            '<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">賣家評級：</div>' + response[0].BuyerEvSeller + '</td>'
+                                        $('#tradeCompleted').append('<table class="table table-bordered"><tbody>'
+                                                                    
+                                                                    +'<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">Identity：</div>' + response[i].Identity+ '</td>' +
+                                            '<td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">：</div>'+  '</td></tr>'
+                                                                    
+                                                                   +' <tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">品名：</div>' + response[i].ProductName+ '</td>' +
+                                            '<td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">交易數量：</div>' + response[i].TradeAmount + '</td></tr>' +
+                                            '<tr> <td> <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">交易總額：</div>' + response[i].TradePrice + '</td>' +
+                                            '<td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">買家：</div>' + response[i].ProductName + '</td></tr>' +
+                                            '<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">賣家評級：</div>' + response[i].BuyerEvSeller + '</td>'
 
                                             +
-                                            '<td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">商品評級：</div>' + response[0].BuyerEvProduct + '</td></tr>' +
-                                            '<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">商品評價：</div>' + response[0].BuyerEvText + '</td></tr></tbody></table>'
+                                            '<td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">商品評級：</div>' + response[i].BuyerEvProduct + '</td></tr>' +
+                                            '<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">商品評價：</div>' + response[i].BuyerEvText + '</td></tr></tbody></table>'
                                         )
                                     }
                                 }
@@ -458,7 +463,7 @@
     <!--fade-->
 
 
-    <!-- evaluationModal -->
+    <!--交易完成後評價 evaluationModal -->
     <div class="modal fade" id="evaluationModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -535,8 +540,7 @@
 
                     <script>
                         //交易中
-
-                        var VonTrade = 0;
+                        var completeTradeId = 0;
 
                         //顯示交易中物品
                         $(document).ready(function() {
@@ -572,27 +576,27 @@
 
                         $(document).ready(function(e) {
                             $("#formEv").submit(function(e) {
-                                var vTradeComple = $("#formEv").serialize() + "&ID=" + VonTrade
-                                alert(vTradeComple)
+                                var vTradeComple = $("#formEv").serialize() + "&ID=" + completeTradeId
+                                //alert(vTradeComple)
                                 $.ajax({
-                                    type: $(this).attr("method"),
-                                    url: $(this).attr("action"),
+                                    type:"POST" ,
+                                    url:'https://ntou-store-system.herokuapp.com/personalPage/onTrade/tradeCompleted',
                                     data: vTradeComple,
                                     dataType: "json",
                                     success: function(response) {
-                                        alert("TradeComple")
-                                       javascript: location.reload()
+                                        //alert("TradeComple")
+                                        javascript: location.reload()
                                     },
                                     error: function(xhr, ajaxOptions, thrownError) {
                                         alert("formEv error")
                                     },
                                 })
-
                             });
                         })
+                       
 
                         function tradeCompleteFunc(x) {
-                            VonTrade = x
+                            completeTradeId = x
                         }
                     </script>
                 </div>
