@@ -70,7 +70,7 @@
                         url: 'https://ntou-store-system.herokuapp.com/personalPage',
                         dataType: 'json',
                         type: "POST",
-                        data: document.cookie,
+                        data: document.cookie.split("; ")[0],
                         //data: {     ID:6  },
                         error: function(xhr, ajaxOptions, thrownError) {
                             //alert(xhr.status + "\n" + thrownError);
@@ -129,16 +129,18 @@
 
                     <script>
                         //架上商品
-                        /*function eraseCookie() {
+						
+						//這是登出function不要刪掉我QQ
+                        function eraseCookie() {
                           document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
                           document.location.href="./login.html";
-                        }*/
+                        }
                         $(document).ready(function() {
                             $.ajax({
                                 url: 'https://ntou-store-system.herokuapp.com/personalPage',
                                 dataType: 'json',
                                 type: "POST",
-                                data: document.cookie,
+                                data: document.cookie.split("; ")[0],
                                // data: { ID:6 },
                                 error: function(xhr, ajaxOptions, thrownError) {
                                     //alert(xhr.status + "\n" + thrownError);
