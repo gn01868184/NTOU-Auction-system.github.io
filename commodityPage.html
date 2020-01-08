@@ -66,7 +66,6 @@
   else{
 	document.cookie = `ProductID=${cookie[1].split("=")[1]},${val.value.split("=")[1]}`;
   }
-    alert(document.cookie);
   }
   $(document).ready(function() {
     //取別的網頁傳來的值
@@ -93,6 +92,17 @@
             $('#SellerImageURL').attr('src', response[0][0].SellerImageURL)
             $('#SellerNickName').append(response[0][0].SellerNickName)
             $('#sCarBtn').attr('value', temp[1])
+          }
+        });
+		$.ajax({
+          url: 'https://ntou-store-system.herokuapp.com/product_surfing_record',
+          dataType: 'text',
+		  data: "UserID=" + document.cookie.split("; ")[0].split("=")[1] + "&" + temp[1],
+          type: "POST",
+          error:function(xhr, ajaxOptions, thrownError){
+            alert(xhr.status+"\n"+thrownError);
+          },
+          success: function(response) {
           }
         });
   });
