@@ -176,7 +176,42 @@ function readURL(input) {
                 e.preventDefault(); //停止預設動作
                 //e.unbind(); //解除綁定。停止多個表單提交.
         });
+	});
+
+//連接imgur
+const id = 'ab56b39d28859a1'; // 填入 App 的 Client ID
+const token = '1776be6a4c6ddd4636a12806043c6db3832fb474'; // 填入 token
+
+// jquery
+$("document").ready(function() {
+
+    $("#success").click(function() {
+        
+        var files = $("#ImageURL").get(0).files;
+        
+        var form = new FormData();
+        form.append("image", files[0]);
+        form.append("type", "file");
+
+        var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://api.imgur.com/3/image",
+        "method": "POST",
+        "headers": {
+            "authorization": "Bearer " + token,
+        },
+        "processData": false,
+        "contentType": false,
+        "mimeType": "multipart/form-data",
+        "data": form
+        }
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);  
+        });
     });
+});
 </script>
 <!-- Optional JavaScript --><!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
