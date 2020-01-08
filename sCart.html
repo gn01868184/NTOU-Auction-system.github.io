@@ -128,8 +128,8 @@
 										$('<input/>')
 										.addClass('input')
 										.attr("readonly", "readonly")
-										.attr("name", "Price")
-										.attr("value", response[0][0].Price)
+										.attr("name", "Price")		
+										.attr("value", response[0][0].Price)											
 									)
 								)
 								.append(
@@ -206,7 +206,7 @@ $("#form").submit(function(e) {
 	for(var k=0;k<$(this).serializeArray().length;k++){
 	if($(this).serializeArray()[k]['name']=="ProductID"&&$(this).serializeArray()[k+2]['value']!="")
 		formtext = formtext + "ProductID=" + $(this).serializeArray()[k]['value'] + "&Price=" + $(this).serializeArray()[k+1]['value'] + "&Amount=" + $(this).serializeArray()[k+2]['value'] + "&"
-
+		
 	}
 	formtext = formtext + "MemberID=" + document.cookie.split("; ")[0].split("=")[1];
 	$.ajax({
