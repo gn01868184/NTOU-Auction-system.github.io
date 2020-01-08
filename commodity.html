@@ -8,11 +8,9 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <!-- Bootstrap 4 Icons -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-<!--datetimepicker-->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
+<!-- jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
 <title>海大拍賣系統</title>
 </head>
@@ -58,7 +56,6 @@
 <div class="row form-group">
 	<div class="col-4">
 		<img src="https://icon-library.net/images/img-icon/img-icon-14.jpg" class="img" style="height: 100px;">
-    <input name="SellerID" value="6" type="hidden"></input>
     <input name="Bidding" value="0" type="hidden"></input>
 		<div class="custom-file">
 			<input type="file" class="custom-file-input" id="File" accept="image/*" name="ImageURL" >
@@ -113,12 +110,7 @@
 </div>
 
 </form>
-<!--datetimepicker-->
-<script type="text/javascript">
-		$(function () {
-				$('#datetimepicker1').datetimepicker();
-		});
-</script>
+
 <!--check input value-->
 <script type="text/javascript">
 //登出function
@@ -146,10 +138,11 @@ function eraseCookie() {
 	$(document).ready(function(e) {
         //表單發送處理
          $("#form").submit(function(e) {
+           alert($(this).serialize())
              $.ajax({
-                type: "post",
+                type: "POST",
                 url: "https://ntou-store-system.herokuapp.com/personalPage/onSale/sale",
-                //data: $(this).serialize(),
+                data: "SellerID=" + document.cookie.split("; ")[0].split("=")[1] + "&" + $(this).serialize() + "&ImageURL=1",
                 dataType: "json",
                     success: function(response) {
                         if (response.state == true) {
@@ -167,7 +160,6 @@ function eraseCookie() {
     });
 </script>
 <!-- Optional JavaScript --><!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 </body>
