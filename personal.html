@@ -641,8 +641,10 @@
                     //alert(xhr.status + "\n" + thrownError);
                 },
                 success: function(response) {
+                    //alert(response[0].length)
                     //for (var i = 19; i < 20; i++) {
                     var v1Low, v2Bid, v3BidU, v4BidD, v5Inf = ""
+                    if(response[0][0].ProductName){
                     for (var i = 0; i < response[0].length; i++) {
                         // console.log(response[0][i].ProductID)
                         v1Low = response[0][i].LowestPrice
@@ -676,7 +678,11 @@
                             '<button type="button" class="btn btn-outline-danger ml-3 mb-4" data-toggle="modal" onclick="deleteFunc(' + response[0][i].ProductID + ')">刪除</button></div></div>'
                         )
                     }
-
+                        }
+                    else{
+                        $('#tableOnsale').append('<div>無架上商品</div>')
+                        
+                    }
                 }
             });
 
