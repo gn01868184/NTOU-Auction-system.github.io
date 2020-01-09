@@ -70,7 +70,7 @@
           url: 'https://ntou-store-system.herokuapp.com/CheckOutPage',
           dataType: 'json',
           type: "POST",
-          data: temp[1],
+          data: "MemberID=" + document.cookie.split("; ")[0].split("=")[1] + "&" + temp[1],
           error:function(xhr, ajaxOptions, thrownError){
             alert(xhr.status+"\n"+thrownError);
           },
