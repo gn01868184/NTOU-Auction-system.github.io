@@ -53,7 +53,7 @@
 
 <div class="row text-center">
 	<div class="col-4">
-		<img src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" class="img" style="height: 200px;" id="ImageURL">
+		<img src="https://icon-library.net/images/img-icon/img-icon-14.jpg" class="img" style="height: 200px;" id="ImageURL">
 	</div>
 	<div class="col-8">
 		<ul class="list-group">
@@ -74,12 +74,10 @@
 		<ul class="list-group">
 			<div class="row">
 				<li class="list-group-item col-4" id="BiddingUnitPrice">單位競標價: </li>
-				<!--<form class="form-group col-8">-->
-				<!--	<div class="row">-->
+				<form class="form-group col-8">
 						<input class="col-4" type="text" style="text-align: center;" placeholder="競標價">
 						<button class="btn btn-outline-success col-4" type="submit">下標</button>
-				<!--	</div>-->
-				<!--</form>-->
+				</form>
 			</div>
 		</ul>
 		<ul class="list-group">
@@ -94,53 +92,142 @@
 <div class="card">
 	<div class="row">
 		<div class="col-2">
-			<img src="http://s2.mycomic.cc/uploads/f4/d/450076/15135831021858.jpg" class="img" style="height: 100px;" alt="">
+			<img src="https://icon-library.net/images/img-icon/img-icon-14.jpg" class="img" style="height: 100px;" id="SellerImageURL">
 		</div>
 		<div class="card-body col-10">
-			<h5 class="card-title">個人資訊</h5>
+			<h5 class="card-title" id="SellerNickName">賣家：</h5>
 		</div>
 	</div>
 </div>
 <div class="card">
-	<div class="card-body" id="Information">
-		商品資訊
-	</div>
+  <div class="row">
+    <li class="list-group-item col-2">商品資訊</li>
+    <li class="list-group-item col-10" id="Information"></li>
+  </div>
 </div>
 <div class="card">
-	<div class="card-body">
-		留言板
+  <h5 class="card-header">留言板</h5>
+	<div class="card-body" id="Comment">
 	</div>
 </div>
+
+<form id="CommentForm">
+  <div class="col-12">
+      <textarea class="form-control" rows="5" name="Information" placeholder="我要留言"></textarea>
+  </div>
+  <div class="col-12 text-center">
+      <button class="btn btn-outline-success" type="submit" id="success">留言</button>
+  </div>
+</form>
 <!-- 取別的網頁傳來的值 -->
 <script type="text/javascript">
-	
-	$(document).ready(function(){
 
- 
-	$.ajax({
-    	url: 'https://ntou-store-system.herokuapp.com/product_information?ProductID=57' ,
-   	 	type: 'GET',
-   	 	dataType: 'json',
-		error:function(xhr, ajaxOptions, thrownError){
-			alert(xhr.status+"\n"+thrownError);
-   		},
-    	success:function(response){
-			//alert("success");
-			$('#ImageURL').attr('src', response[0].ImageURL)
-            $('#Category').append(response[0].Category)
-            $('#ProductName').append(response[0].ProductName)
-            $('#AvgEv').append(response[0].AvgEv)
-			$('#LowestPrice').append(response[0].LowestPrice)
-			$('#BiddingPrice').append(response[0].BiddingPrice)
-			$('#BiddingDeadline').append(response[0].BiddingDeadline)
-			$('#BiddingUnitPrice').append(response[0].BiddingUnitPrice)
-            $('#Price').append(response[0].Price)
-            $('#Amount').append(response[0].Amount)
-			$('#Information').append(response[0].Information)
-		}   
-	});
+$(document).ready(function() {
+  //取別的網頁傳來的值
+  //URL
+  var url = location.href;
+  //取得問號之後的值
+  var temp = url.split("?");
+
+      $.ajax({
+        url: 'https://ntou-store-system.herokuapp.com/product_information?' + temp[1],
+        dataType: 'json',
+        type: "GET",
+        error:function(xhr, ajaxOptions, thrownError){
+          alert(xhr.status+"\n"+thrownError);
+        },
+        success: function(response) {
+
+            $('#BiddingTopUserID').append(response[0][0].BiddingTopUserID)
+            $('#LowestPrice').append(response[0][0].LowestPrice)
+            $('#BiddingPrice').append(response[0][0].BiddingPrice)
+            $('#BiddingDeadline').append(response[0][0].BiddingDeadline)
+            $('#BiddingUnitPrice').append(response[0][0].BiddingUnitPrice)
+
+            //$('#inputProductID').attr('value', response[0][0].ProductID)
+            //$('#inputPrice').attr('value', response[0][0].Price)
+            $('#ImageURL').attr('src', response[0][0].ImageURL)
+            $('#Category').append(response[0][0].Category)
+            $('#ProductName').append(response[0][0].ProductName)
+            $('#AvgEv').append(response[0][0].AvgEv)
+            $('#Price').append(response[0][0].Price)
+            $('#Amount').append(response[0][0].Amount)
+            $('#Information').append(response[0][0].Information)
+            $('#SellerImageURL').attr('src', response[0][0].SellerImageURL)
+            $('#SellerNickName').append(response[0][0].SellerNickName)
+            $('#sCarBtn').attr('value', temp[1])
+            $('#CommentForm').append(
+                  $('<input/>')
+                  .attr("name", "ProductID")
+                  .attr("value", response[0][0].ProductID)
+                  .attr("type", "hidden")
+            )
+      if(response[1][0].state!=false){
+        for(var i=0;i<response[1].length;i++){
+          $('#Comment').append(
+          $('<div/>')
+                .addClass('row')
+                .append(
+                  $('<div/>')
+                  .addClass('col-2')
+                  .append(
+                    $('<img/>')
+                    .addClass('img')
+                    .attr('src', response[1][i].ImageURL)
+                    .attr('style','height: 100px')
+                  )
+                )
+          .append(
+            $('<div/>')
+            .addClass('col-10 p-2')
+            .append(
+            $('<h5/>')
+            .addClass('card-text')
+            .append(response[1][i].NickName + "：" + response[1][i].Information)
+            )
+          )
+          )
+        }
+      }
+
+
+
+        }
+      });
+  $.ajax({
+        url: 'https://ntou-store-system.herokuapp.com/product_surfing_record',
+        dataType: 'text',
+    data: "UserID=" + document.cookie.split("; ")[0].split("=")[1] + "&" + temp[1],
+        type: "POST",
+        error:function(xhr, ajaxOptions, thrownError){
+          alert(xhr.status+"\n"+thrownError);
+        },
+        success: function(response) {
+        }
+      });
+
+$("#CommentForm").submit(function(e) {
+//formtext = formtext + "MemberID=" + document.cookie.split("; ")[0].split("=")[1];
+$.ajax({
+      url: 'https://ntou-store-system.herokuapp.com/product_comment',
+      dataType: 'json',
+      type: "POST",
+      data: "UserID=" + document.cookie.split("; ")[0].split("=")[1] + "&" + $(this).serialize(),
+      error:function(xhr, ajaxOptions, thrownError){
+          alert(xhr.status+"\n"+thrownError);
+      },
+      success: function(response) {
+          alert("留言成功")
+          window.location.reload()
+      },
+  });
+  e.preventDefault();
+})
+
 });
-   
+
+
+
 </script>
 
 <!-- Optional JavaScript --><!-- jQuery first, then Popper.js, then Bootstrap JS -->
