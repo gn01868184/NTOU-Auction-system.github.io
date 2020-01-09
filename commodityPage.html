@@ -83,6 +83,8 @@
             alert(xhr.status+"\n"+thrownError);
           },
           success: function(response) {
+			$('#inputProductID').attr('value', response[0][0].ProductID)
+			$('#inputPrice').attr('value', response[0][0].Price)
             $('#ImageURL').attr('src', response[0][0].ImageURL)
             $('#Category').append(response[0][0].Category)
             $('#ProductName').append(response[0][0].ProductName)
@@ -143,7 +145,6 @@
         });
 
 $("#CommentForm").submit(function(e) {
-alert("UserID=" + document.cookie.split("; ")[0].split("=")[1] + "&" + $(this).serialize())
 	//formtext = formtext + "MemberID=" + document.cookie.split("; ")[0].split("=")[1];
 	$.ajax({
         url: 'https://ntou-store-system.herokuapp.com/product_comment',
@@ -187,9 +188,8 @@ alert("UserID=" + document.cookie.split("; ")[0].split("=")[1] + "&" + $(this).s
 			<div class="row">
 				<li class="list-group-item col-3">商品售價</li>
         <form action="./buy.html">
-        <input name="MemberID" value="4" type="hidden"></input>
-        <input name="ProductID" value="34" type="hidden"></input>
-        <input name="Price" value="100" type="hidden"></input>
+        <input id="inputProductID" name="ProductID" hidden="hidden"></input>
+        <input id="inputPrice" name="Price" hidden="hidden"></input>
 				<input class="col-3" type="text" name="Amount" placeholder="購買數量">
 				<button class="btn btn-outline-success col-3" type="submit">購買</button>
 				<button class="btn btn-outline-success col-3" type="button" onclick="sCart(this)" value="" id="sCarBtn">購物車</button>
