@@ -83,52 +83,54 @@
             alert(xhr.status+"\n"+thrownError);
           },
           success: function(response) {
-			$('#inputProductID').attr('value', response[0][0].ProductID)
-			$('#inputPrice').attr('value', response[0][0].Price)
-            $('#ImageURL').attr('src', response[0][0].ImageURL)
-            $('#Category').append(response[0][0].Category)
-            $('#ProductName').append(response[0][0].ProductName)
-            $('#AvgEv').append(response[0][0].AvgEv)
-            $('#Price').append(response[0][0].Price)
-            $('#Amount').append(response[0][0].Amount)
-            $('#Information').append(response[0][0].Information)
-            $('#SellerImageURL').attr('src', response[0][0].SellerImageURL)
-            $('#SellerNickName').append(response[0][0].SellerNickName)
-            $('#sCarBtn').attr('value', temp[1])
-			$('#CommentForm').append(
-					  $('<input/>')
-					  .attr("name", "ProductID")
-					  .attr("value", response[0][0].ProductID)
-					  .attr("type", "hidden")
+            if(response[0][0].BiddingPrice!=null) document.location.href="./biddingPage.html?" + temp[1];
+              $('#inputProductID').attr('value', response[0][0].ProductID)
+              $('#inputPrice').attr('value', response[0][0].Price)
+              $('#ImageURL').attr('src', response[0][0].ImageURL)
+              $('#Category').append(response[0][0].Category)
+              $('#ProductName').append(response[0][0].ProductName)
+              $('#AvgEv').append(response[0][0].AvgEv)
+              $('#Price').append(response[0][0].Price)
+              $('#Amount').append(response[0][0].Amount)
+              $('#Information').append(response[0][0].Information)
+              $('#SellerImageURL').attr('src', response[0][0].SellerImageURL)
+              $('#SellerNickName').append(response[0][0].SellerNickName)
+              $('#sCarBtn').attr('value', temp[1])
+              $('#CommentForm').append(
+                    $('<input/>')
+                    .attr("name", "ProductID")
+                    .attr("value", response[0][0].ProductID)
+                    .attr("type", "hidden")
+              )
+        if(response[1][0].state!=false){
+          for(var i=0;i<response[1].length;i++){
+            $('#Comment').append(
+            $('<div/>')
+                  .addClass('row')
+                  .append(
+                    $('<div/>')
+                    .addClass('col-2')
+                    .append(
+                      $('<img/>')
+                      .addClass('img')
+                      .attr('src', response[1][i].ImageURL)
+                      .attr('style','height: 100px')
+                    )
+                  )
+            .append(
+              $('<div/>')
+              .addClass('col-10 p-2')
+              .append(
+              $('<h5/>')
+              .addClass('card-text')
+              .append(response[1][i].NickName + "：" + response[1][i].Information)
+              )
+            )
+            )
+          }
+        }
 
-					)
-			if(response[1][0].state!=false){
-				for(var i=0;i<response[1].length;i++){
-				  $('#Comment').append(
-					$('<div/>')
-								.addClass('row')
-								.append(
-									$('<div/>')
-									.addClass('col-2')
-									.append(
-										$('<img/>')
-										.addClass('img')
-										.attr('src', response[1][i].ImageURL)
-										.attr('style','height: 100px')
-									)
-								)
-					.append(
-					  $('<div/>')
-					  .addClass('col-10 p-2')
-					  .append(
-						$('<h5/>')
-						.addClass('card-text')
-						.append(response[1][i].NickName + "：" + response[1][i].Information)
-					  )
-					)
-				  )
-				}
-			}
+
 
           }
         });
