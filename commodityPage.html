@@ -59,13 +59,14 @@
   }
   //購物車
   function sCart(val) {
-  var cookie = document.cookie.split("; ");
-  if(cookie[1]==undefined){
-	document.cookie = `ProductID=${val.value.split("=")[1]}`;
-  }
-  else{
-	document.cookie = `ProductID=${cookie[1].split("=")[1]},${val.value.split("=")[1]}`;
-  }
+    var cookie = document.cookie.split("; ");
+    if(cookie[1]==undefined){
+  	document.cookie = `ProductID=${val.value.split("=")[1]}`;
+    }
+    else{
+  	document.cookie = `ProductID=${cookie[1].split("=")[1]},${val.value.split("=")[1]}`;
+    }
+    alert("成功加入購物車");
   }
   $(document).ready(function() {
     //取別的網頁傳來的值
@@ -92,6 +93,39 @@
             $('#SellerImageURL').attr('src', response[0][0].SellerImageURL)
             $('#SellerNickName').append(response[0][0].SellerNickName)
             $('#sCarBtn').attr('value', temp[1])
+
+            for(var i=0;i<response[1].length;i++){
+              $('#Comment').append(
+                $('<div/>')
+   							.addClass('row')
+   							.append(
+   								$('<div/>')
+   								.addClass('col-2')
+   								.append(
+   									$('<img/>')
+   									.addClass('img')
+   									.attr('src', response[1][i].ImageURL)
+   									.attr('style','height: 100px')
+   								)
+   							)
+                .append(
+                  $('<div/>')
+                  .addClass('col-10 p-2')
+                  .append(
+                    $('<h5/>')
+                    .addClass('card-text')
+                    .append(response[1][i].NickName + "：" + response[1][i].Information)
+                  )
+                )
+                .append(
+                  $('<input/>')
+                  .attr("name", "ProductID")
+                  .attr("value", response[0][0].ProductID)
+                  .attr("type", "hidden")
+
+                )
+              )
+            }
           }
         });
 		$.ajax({
@@ -105,6 +139,25 @@
           success: function(response) {
           }
         });
+
+$("#CommentForm").submit(function(e) {
+	//formtext = formtext + "MemberID=" + document.cookie.split("; ")[0].split("=")[1];
+	$.ajax({
+        url: 'https://ntou-store-system.herokuapp.com/product_comment',
+        dataType: 'json',
+        type: "POST",
+        data: "UserID=" + document.cookie.split("; ")[0].split("=")[1] + "&" + $(this).serialize(),
+        error:function(xhr, ajaxOptions, thrownError){
+            alert(xhr.status+"\n"+thrownError);
+        },
+        success: function(response) {
+            alert("留言成功")
+            window.location.reload()
+        },
+    });
+    e.preventDefault();
+})
+
   });
 </script>
 <div id="123"></div>
@@ -165,12 +218,19 @@
   </div>
 </div>
 <div class="card">
-	<div class="card-body">
-		留言板
+  <h5 class="card-header">留言板</h5>
+	<div class="card-body" id="Comment">
 	</div>
 </div>
 
-
+<form id="CommentForm">
+  <div class="col-12">
+      <textarea class="form-control" rows="5" name="Information" placeholder="我要留言"></textarea>
+  </div>
+  <div class="col-12 text-center">
+      <button class="btn btn-outline-success" type="submit" id="success">留言</button>
+  </div>
+</form>
 
 
 <!-- Optional JavaScript --><!-- jQuery first, then Popper.js, then Bootstrap JS -->
