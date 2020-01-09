@@ -74,8 +74,9 @@
 		<ul class="list-group">
 			<div class="row">
 				<li class="list-group-item col-4" id="BiddingUnitPrice">單位競標價: </li>
-				<form class="form-group col-8">
-						<input class="col-4" type="text" style="text-align: center;" placeholder="競標價">
+				<form class="form-group col-8" id="biddingDown">
+            <input id="inputAmount" name="Amount" hidden="hidden"></input>
+						<input class="col-4" type="text" style="text-align: center;" name="Price" placeholder="競標價">
 						<button class="btn btn-outline-success col-4" type="submit">下標</button>
 				</form>
 			</div>
@@ -145,7 +146,7 @@ $(document).ready(function() {
             $('#BiddingUnitPrice').append(response[0][0].BiddingUnitPrice)
 
             //$('#inputProductID').attr('value', response[0][0].ProductID)
-            //$('#inputPrice').attr('value', response[0][0].Price)
+            $('#inputAmount').attr('value', response[0][0].Amount)
             $('#ImageURL').attr('src', response[0][0].ImageURL)
             $('#Category').append(response[0][0].Category)
             $('#ProductName').append(response[0][0].ProductName)
@@ -197,7 +198,7 @@ $(document).ready(function() {
   $.ajax({
         url: 'https://ntou-store-system.herokuapp.com/product_surfing_record',
         dataType: 'text',
-    data: "UserID=" + document.cookie.split("; ")[0].split("=")[1] + "&" + temp[1],
+        data: "UserID=" + document.cookie.split("; ")[0].split("=")[1] + "&" + temp[1],
         type: "POST",
         error:function(xhr, ajaxOptions, thrownError){
           alert(xhr.status+"\n"+thrownError);
@@ -224,8 +225,26 @@ $.ajax({
   e.preventDefault();
 })
 
-});
+$("#biddingDown").submit(function(e) {
+  //alert("UserID=" + document.cookie.split("; ")[0].split("=")[1] + "&" + temp[1] + "&" +  $(this).serialize())
+$.ajax({
+          url: 'https://ntou-store-system.herokuapp.com/biddingDownPage',
+          dataType: 'json',
+		      data: "UserID=" + document.cookie.split("; ")[0].split("=")[1] + "&" + temp[1] + "&" +  $(this).serialize(),
+          type: "POST",
+          error:function(xhr, ajaxOptions, thrownError){
+            alert(xhr.status+"\n"+thrownError);
+          },
+          success: function(response) {
+            alert("下標成功");
+            window.location.reload()
+          }
+       
+        }); 
+       e.preventDefault();
+  });
 
+});
 
 
 </script>
