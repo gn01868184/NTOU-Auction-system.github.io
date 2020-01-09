@@ -75,7 +75,7 @@
 
             <script>
                 //表單發送處理
-
+                //alert(document.cookie)
                 $("#form").submit(function(e) {
                     console.log("s:" + $("#form").serialize())
                     var v = "Account=" + getCookie("Account") + "&" + $("#form").serialize()
