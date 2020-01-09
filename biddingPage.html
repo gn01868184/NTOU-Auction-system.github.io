@@ -230,7 +230,7 @@ $("#biddingDown").submit(function(e) {
 $.ajax({
           url: 'https://ntou-store-system.herokuapp.com/biddingDownPage',
           dataType: 'json',
-		      data: "UserID=" + document.cookie.split("; ")[0].split("=")[1] + "&" + temp[1] + "&" +  $(this).serialize(),
+		      data: "MemberID=" + document.cookie.split("; ")[0].split("=")[1] + "&" + temp[1] + "&" +  $(this).serialize(),
           type: "POST",
           error:function(xhr, ajaxOptions, thrownError){
             alert(xhr.status+"\n"+thrownError);
