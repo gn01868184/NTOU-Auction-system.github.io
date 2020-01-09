@@ -143,7 +143,7 @@
               type: "POST",
               url: "https://ntou-store-system.herokuapp.com/personalPage/onSale/sale",
               //data: "SellerID=" + document.cookie.split("; ")[0].split("=")[1] + "&" + $(this).serialize() + "&ImageURL=",
-              data: "SellerID=4" + "&" + res2 + "&ImageURL=" + res['data']['link'],
+              data: "SellerID=" + document.cookie.split("; ")[0].split("=")[1] + "&" + res2 + "&ImageURL=" + res['data']['link'],
               dataType: "json",
               success: function(response) {
                   if (response.state == true) {
