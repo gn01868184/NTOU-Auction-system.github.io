@@ -90,7 +90,11 @@
                 <div class="col-10 mb-2">
                     <input type="password" class="form-control" name="Password" placeholder="密碼">
                 </div>
-
+                
+                <div class="col-10 mb-2" style="display:none ">
+                    <input type="text" class="form-control" name="ImageURL" value="http://member.businessweekly.com.tw/theme/v1/i/icon-member-m.gif">
+                </div>
+                
                 <!--人機驗證-->
                 <label class="col-2 col-form-label mb-4">人機驗證</label><br>
                 <!--<input type="text" class="form-control" name="g-recaptcha-response" value="1">-->
@@ -104,7 +108,7 @@
             <script>
                 //表單發送處理
                 $("#form").submit(function(e) {
-                    alert($("#form").serialize())
+                    console.log($("#form").serialize())
                     $.ajax({
 
                         type: $(this).attr("method"),
