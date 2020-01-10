@@ -606,7 +606,7 @@
 
                         $("#formEv").submit(function(e) {
                             var vTradeComple = $("#formEv").serialize() + "&ID=" + completeTradeId
-                            alert(vTradeComple)
+                            //alert(vTradeComple)
                             $.ajax({
                                 type: "POST",
                                 url: 'https://ntou-store-system.herokuapp.com/personalPage/onTrade/tradeCompleted',
