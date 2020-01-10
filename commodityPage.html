@@ -102,6 +102,13 @@
                     .attr("value", response[0][0].ProductID)
                     .attr("type", "hidden")
               )
+              for(var j=0;j<response[0][0].Amount;j++){
+                $('#AmountBuy').append(
+                  $('<option/>')
+                  .attr('value', j+1)
+                  .append(j+1)
+                )
+              }
         if(response[1][0].state!=false){
           for(var i=0;i<response[1].length;i++){
             $('#Comment').append(
@@ -189,12 +196,14 @@ $("#CommentForm").submit(function(e) {
 		<ul class="list-group">
 			<div class="row">
 				<li class="list-group-item col-3">商品售價</li>
-        <form action="./buy.html">
+        <form action="./buy.html" class="col-9">
         <input id="inputProductID" name="ProductID" hidden="hidden"></input>
         <input id="inputPrice" name="Price" hidden="hidden"></input>
-				<input class="col-3" type="text" name="Amount" placeholder="購買數量">
-				<button class="btn btn-outline-success col-3" type="submit">購買</button>
-				<button class="btn btn-outline-success col-3" type="button" onclick="sCart(this)" value="" id="sCarBtn">購物車</button>
+        <select class="col-3 custom-select" id="AmountBuy" name="Amount">
+            <option class="my-2" value="" selected>選擇數量</option>
+        </select>
+				<button class="btn btn-outline-success col-4" type="submit">購買</button>
+				<button class="btn btn-outline-success col-4" type="button" onclick="sCart(this)" value="" id="sCarBtn">購物車</button>
       </form>
 			</div>
 		</ul>
