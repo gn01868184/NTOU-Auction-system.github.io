@@ -20,7 +20,14 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
+        <script>
+                //登出function
+                function eraseCookie() {
+                    document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+                    
+                    document.location.href = "./login.html";
+                }
+        </script>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 
@@ -43,12 +50,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a onclick="eraseCookie()" class="btn btn-link text-light">
+                        <a onclick="eraseCookie()" class="btn btn-link text-light" style="display: ">
                             <span class="fas fa-sign-out-alt"></span>&nbsp;登出
                         </a>
-                        <!--<a href="./login.html" class="btn btn-link text-light">
-                            <span class="fas fa-sign-in-alt"></span>&nbsp;登入
-                        </a>-->
                     </li>
                 </ul>
             </form>
@@ -84,11 +88,6 @@
                 </div>
             </nav>
             <script>
-                //登出function
-                function eraseCookie() {
-                    document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
-                    document.location.href = "./login.html";
-                }
                 $(document).ready(function() {
                     $.ajax({
                         url: 'https://ntou-store-system.herokuapp.com/index',
@@ -163,7 +162,7 @@
                                 </div>
                             </div>
 
-                            <div class="col  align-self-center">
+                            <div class="col  align-self-center" style="display: none">
                                 <button type="button" class="btn btn-link ">
                                     <h3><span class="far fa-arrow-alt-circle-right "></span></h3>
                                 </button>
@@ -213,7 +212,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-1  align-self-center">
+                            <div class="col-1  align-self-center"  style="display: none">
                                 <button type="button" class="btn btn-link ">
                                     <h3><span class="far fa-arrow-alt-circle-right "></span></h3>
                                 </button>

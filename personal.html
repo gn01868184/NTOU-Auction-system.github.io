@@ -21,6 +21,15 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
+        <script>
+            //這是登出function不要刪掉我QQ 喔抱歉！
+            function eraseCookie() {
+                document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+                $('#ImageURL').attr('src', response[1].ImageURL)
+                document.location.href = "./login.html";
+            }
+        </script>
+        
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 
@@ -50,13 +59,7 @@
                 </ul>
             </form>
 
-            <script>
-                //這是登出function不要刪掉我QQ 喔抱歉！
-                function eraseCookie() {
-                    document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
-                    document.location.href = "./login.html";
-                }
-            </script>
+
         </div>
     </nav>
     <h2>
@@ -116,7 +119,7 @@
         <a class="btn btn-outline-success col-2 m-2 ml-4" href="./commodity.html">上架一般商品</a>
         <a class="btn btn-outline-success col-2 m-2" href="./bidding.html">上架競標商品</a>
     </div>
-    
+
     <ul class="nav nav-tabs my-2 mx-1" id="myTab" role="tablist">
         <li class="nav-item">
             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">架上商品</a>
@@ -292,14 +295,14 @@
                                         success: function(response) {
                                             //console.log(response.length)
 
-                                            var v1Low1, v2Bid1, v3BidU1,v4BidD1 = ""
+                                            var v1Low1, v2Bid1, v3BidU1, v4BidD1 = ""
 
 
                                             for (var i = 0; i < response.length; i++) {
                                                 v1Low1 = response[i].LowestPrice
                                                 v2Bid1 = response[i].BiddingPrice
                                                 v3BidU1 = response[i].BiddingUnitPrice
-                                                v4BidD1  = response[i].BiddingDeadline
+                                                v4BidD1 = response[i].BiddingDeadline
 
                                                 if (v1Low1 == null)
                                                     v1Low1 = "X"
@@ -506,7 +509,7 @@
                                 <!--<select class="col-3 custom-select" name="ID" id="tradeID1">
                                     <option value="" selected>交易序號</option>
                                 </select>-->
-                                
+
                                 <label>賣家評級:</label><br>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="MemberEv" value="1">
@@ -577,13 +580,14 @@
                                 data: document.cookie,
                                 //data: { ID:6 },
                                 error: function(xhr, ajaxOptions, thrownError) {
-                                    //alert(xhr.status + "\n" + thrownError);
+                                    alert(xhr.status + "\n" + thrownError);
                                 },
                                 success: function(response) {
-                                    //console.log(response[1].ProductName)
+
 
                                     $('#tableTrade').append('<div class="row no-gutters mb-4"><div class="col no-gutters"><a class="btn btn-outline-success " href="./reservation.html">前往預約板</a>')
                                     for (var i = 0; i < response.length; i++) {
+                                        console.log("tradeID:" + response[i].TradeID)
                                         /*$('#tradeID1').append(
                                             $('<option/>').attr('value', response[i].TradeID)
                                             .append(response[i].TradeID)
@@ -600,24 +604,24 @@
                             });
                         });
 
-                            $("#formEv").submit(function(e) {
-                                var vTradeComple = $("#formEv").serialize() + "&ID=" + completeTradeId
-                                //alert(vTradeComple)
-                                $.ajax({
-                                    type: "POST",
-                                    url: 'https://ntou-store-system.herokuapp.com/personalPage/onTrade/tradeCompleted',
-                                    data: vTradeComple,
-                                    dataType: 'json',
-                                    success: function(response) {
-                                        //alert("TradeComple")
-                                        javascript: location.reload()
-                                    },
-                                    error: function(xhr, ajaxOptions, thrownError) {
-                                        alert("formEv error")
-                                    },
-                                })
-                            });
-                
+                        $("#formEv").submit(function(e) {
+                            var vTradeComple = $("#formEv").serialize() + "&ID=" + completeTradeId
+                            alert(vTradeComple)
+                            $.ajax({
+                                type: "POST",
+                                url: 'https://ntou-store-system.herokuapp.com/personalPage/onTrade/tradeCompleted',
+                                data: vTradeComple,
+                                dataType: 'json',
+                                success: function(response) {
+                                    alert("TradeComple")
+                                    javascript: location.reload()
+                                },
+                                error: function(xhr, ajaxOptions, thrownError) {
+                                    alert("formEv error")
+                                },
+                            })
+                        });
+
 
                         function tradeCompleteFunc(x) {
                             completeTradeId = x
@@ -645,44 +649,43 @@
                     //alert(response[0].length)
                     //for (var i = 19; i < 20; i++) {
                     var v1Low, v2Bid, v3BidU, v4BidD, v5Inf = ""
-                    if(response[0][0].ProductName){
-                    for (var i = 0; i < response[0].length; i++) {
-                        // console.log(response[0][i].ProductID)
-                        v1Low = response[0][i].LowestPrice
-                        v2Bid = response[0][i].BiddingPrice
-                        v3BidU = response[0][i].BiddingUnitPrice
-                        v4BidD = response[0][i].BiddingDeadLine
-                        v5Inf = response[0][i].Information
-                        //console.log(v1Low+v2Bid+v3BidU+v4BidD+v5Inf)
-                        if (v1Low == null)
-                            v1Low = "X"
-                        if (v2Bid == null)
-                            v2Bid = "X"
-                        if (v3BidU == null)
-                            v3BidU = "X"
-                        if (v4BidD == null)
-                            v4BidD = "X"
-                        if (v5Inf == null)
-                            v5Inf = "暫無"
-                        $('#tableOnsale').append('<table class="table table-bordered" ><tbody><tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px ">品名：' + response[0][i].ProductName + '</div></td></tr>' + '<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="Price">直購價：' + response[0][i].Price + '</div></td></tr>' +
-                            '<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="LowestPrice">底價：' + v1Low + '</div></td><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="BiddingPrice">競標價：' + v2Bid + '</div></td></tr>' +
-                            '<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="BiddingUnitPrice">競標單位價：' + v3BidU + '</div></td><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="BiddingDeadLine">結標時間：' + v4BidD + '</div></td></tr>' +
-                            '<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px ">詳細資訊：' + v5Inf + '</div></td></tr></tbody></table>'
+                    if (response[0][0].ProductName) {
+                        for (var i = 0; i < response[0].length; i++) {
+                            // console.log(response[0][i].ProductID)
+                            v1Low = response[0][i].LowestPrice
+                            v2Bid = response[0][i].BiddingPrice
+                            v3BidU = response[0][i].BiddingUnitPrice
+                            v4BidD = response[0][i].BiddingDeadLine
+                            v5Inf = response[0][i].Information
+                            //console.log(v1Low+v2Bid+v3BidU+v4BidD+v5Inf)
+                            if (v1Low == null)
+                                v1Low = "X"
+                            if (v2Bid == null)
+                                v2Bid = "X"
+                            if (v3BidU == null)
+                                v3BidU = "X"
+                            if (v4BidD == null)
+                                v4BidD = "X"
+                            if (v5Inf == null)
+                                v5Inf = "暫無"
+                            $('#tableOnsale').append('<table class="table table-bordered" ><tbody><tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px ">品名：' + response[0][i].ProductName + '</div></td></tr>' + '<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="Price">直購價：' + response[0][i].Price + '</div></td></tr>' +
+                                '<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="LowestPrice">底價：' + v1Low + '</div></td><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="BiddingPrice">競標價：' + v2Bid + '</div></td></tr>' +
+                                '<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="BiddingUnitPrice">競標單位價：' + v3BidU + '</div></td><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px" id="BiddingDeadLine">結標時間：' + v4BidD + '</div></td></tr>' +
+                                '<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px ">詳細資訊：' + v5Inf + '</div></td></tr></tbody></table>'
 
-                            //+ `<button type="button" class="btn btn-outline-success mb-4" >try</button></div></div>`
+                                //+ `<button type="button" class="btn btn-outline-success mb-4" >try</button></div></div>`
 
-                            //+`<button type="button" class="btn btn-outline-success mb-4" onclick="${myFunction("24","try1")}">try</button></div></div>`
+                                //+`<button type="button" class="btn btn-outline-success mb-4" onclick="${myFunction("24","try1")}">try</button></div></div>`
 
-                            //編輯 
-                            +
-                            '<button onclick="editIdFunc(' + response[0][i].ProductID + ')" type="button" class="btn btn-outline-success mb-4" data-toggle="modal" data-target="#editInfoModal">編輯詳細資訊</button></div></div>' +
-                            '<button type="button" class="btn btn-outline-danger ml-3 mb-4" data-toggle="modal" onclick="deleteFunc(' + response[0][i].ProductID + ')">刪除</button></div></div>'
-                        )
-                    }
+                                //編輯 
+                                +
+                                '<button onclick="editIdFunc(' + response[0][i].ProductID + ')" type="button" class="btn btn-outline-success mb-4" data-toggle="modal" data-target="#editInfoModal">編輯詳細資訊</button></div></div>' +
+                                '<button type="button" class="btn btn-outline-danger ml-3 mb-4" data-toggle="modal" onclick="deleteFunc(' + response[0][i].ProductID + ')">刪除</button></div></div>'
+                            )
                         }
-                    else{
+                    } else {
                         $('#tableOnsale').append('<div>無架上商品</div>')
-                        
+
                     }
                 }
             });
