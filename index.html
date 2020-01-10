@@ -14,20 +14,13 @@
     <title>海大拍賣系統</title>
 </head>
 
-<body >
+<body>
     <nav class="navbar navbar-expand-lg navbar-light  bg-info">
         <a class="navbar-brand  text-light" href="./index.html"><span class="fas fa-tree"></span>&nbsp;海大拍賣</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <script>
-                //登出function
-                function eraseCookie() {
-                    document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
-                    
-                    document.location.href = "./login.html";
-                }
-        </script>
+
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 
@@ -41,25 +34,25 @@
             <form class="form-inline my-2 my-lg-0">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item">
-                        <a href="./sCart.html" class="btn btn-link text-light">
+                        <a id="idScart" href="./sCart.html" class="btn btn-link text-light" onclick="clkScartOrPerson()">
                             <span class="fas fa-shopping-cart"></span>&nbsp;購物車</a>
                     </li>
                     <li class="nav-item active">
-                        <a href="./personal.html" class="btn btn-link text-light">
+                        <a id="idPerson" href="./personal.html" class="btn btn-link text-light"  onclick="clkPerson()">
                             <span class="fas fa-user"></span>&nbsp;個人中心
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a onclick="eraseCookie()" class="btn btn-link text-light" style="display: ">
-                            <span class="fas fa-sign-out-alt"></span>&nbsp;登出
+                        <a id="idSign" onclick="eraseCookie()" href="./login.html" class="btn btn-link text-light">
+                            <span id="idSignIcon" class="fas fa-sign-out-alt"></span>&nbsp;
                         </a>
                     </li>
                 </ul>
             </form>
         </div>
     </nav>
-    <div class="row " >
-        <div class="col-2 bg-light d-flex justify-content-center"  style="height: 100vh">
+    <div class="row ">
+        <div class="col-2 bg-light d-flex justify-content-center" style="height: 100vh">
             <div class="py-4">
                 <h5 class="mx-3 text-secondary">類別欄</h5>
                 <a class="nav-link text-info" onclick='location.href="./searchCategory.html?Category=3C"'>3C</a>
@@ -71,20 +64,24 @@
                 <a class="nav-link mt-2">男：</a>
                 <!--男衣著-->
                 <a class="nav-link text-info" onclick='location.href="./searchCategory.html?Category=clothesBoy"'>衣著</a>
-                 <!--男鞋包配件-->
+                <!--男鞋包配件-->
                 <a class="nav-link text-info" onclick='location.href="./searchCategory.html?Category=accessoriesBoy"'>鞋包配件</a>
-                 <a class="nav-link  mt-2">女：</a>
+                <a class="nav-link  mt-2">女：</a>
                 <!--女衣著-->
                 <a class="nav-link text-info" onclick='location.href="./searchCategory.html?Category=clothesGirl"'>衣著</a>
-                 <!--女鞋包配件-->
+                <!--女鞋包配件-->
                 <a class="nav-link text-info" onclick='location.href="./searchCategory.html?Category=accessoriesGirl"'>鞋包配件</a>
             </div>
         </div>
         <div class="col-10">
             <nav>
                 <div class="nav nav-tabs justify-content-center nav-fill mb-3 mt-3" id="nav-tab" role="tablist">
-                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"><h5>商品資訊</h5></a>
-                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"><h5>系統公告</h5></a>
+                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">
+                        <h5>商品資訊</h5>
+                    </a>
+                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">
+                        <h5>系統公告</h5>
+                    </a>
                 </div>
             </nav>
             <script>
@@ -100,7 +97,7 @@
                             var responseLength = response[0].length;
                             for (var i = 0; i < responseLength; i++) {
                                 $('#ImageURL0' + i).attr('src', response[0][i].ImageURL)
-                                $('#ProductName0' + i).append('<label class="text-info">'+response[0][i].ProductName+'</label>')
+                                $('#ProductName0' + i).append('<label class="text-info">' + response[0][i].ProductName + '</label>')
                                 $('#ProductName0' + i).attr('href', './commodityPage.html?ProductID=' + response[0][i].ProductID)
                                 $('#Price0' + i).append(response[0][i].Price)
                             }
@@ -108,7 +105,7 @@
                             var responseLength1 = response[1].length;
                             for (var i = 0; i < responseLength1; i++) {
                                 $('#ImageURL1' + i).attr('src', response[1][i].ImageURL)
-                                $('#ProductName1' + i).append('<label class="text-info">'+response[1][i].ProductName+'</label>')
+                                $('#ProductName1' + i).append('<label class="text-info">' + response[1][i].ProductName + '</label>')
                                 $('#ProductName1' + i).attr('href', './commodityPage.html?ProductID=' + response[1][i].ProductID)
                                 $('#Price1' + i).append(response[1][i].Price)
                             }
@@ -133,21 +130,21 @@
                                     </div>
                                 </div>
                                 <div class="card">
-                                    <img class="card-img-top" src="https://icon-library.net/images/img-icon/img-icon-14.jpg" id='ImageURL01'  style="max-height: 150px">
+                                    <img class="card-img-top" src="https://icon-library.net/images/img-icon/img-icon-14.jpg" id='ImageURL01' style="max-height: 150px">
                                     <div class="card-body">
-                                        <a class="card-title" href="#" id='ProductName01' ></a>
+                                        <a class="card-title" href="#" id='ProductName01'></a>
                                         <p class="card-text" id='Price01'>售價：</p>
                                     </div>
                                 </div>
                                 <div class="card">
-                                    <img class="card-img-top" src="https://icon-library.net/images/img-icon/img-icon-14.jpg" id='ImageURL02'  style="max-height: 150px">
+                                    <img class="card-img-top" src="https://icon-library.net/images/img-icon/img-icon-14.jpg" id='ImageURL02' style="max-height: 150px">
                                     <div class="card-body">
                                         <a class="card-title" href="#" id='ProductName02'></a>
                                         <p class="card-text" id='Price02'>售價：</p>
                                     </div>
                                 </div>
                                 <div class="card">
-                                    <img class="card-img-top" src="https://icon-library.net/images/img-icon/img-icon-14.jpg" id='ImageURL03'  style="max-height: 150px">
+                                    <img class="card-img-top" src="https://icon-library.net/images/img-icon/img-icon-14.jpg" id='ImageURL03' style="max-height: 150px">
                                     <div class="card-body">
                                         <a class="card-title" href="#" id='ProductName03'></a>
                                         <p class="card-text" id='Price03'>售價：</p>
@@ -212,7 +209,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-1  align-self-center"  style="display: none">
+                            <div class="col-1  align-self-center" style="display: none">
                                 <button type="button" class="btn btn-link ">
                                     <h3><span class="far fa-arrow-alt-circle-right "></span></h3>
                                 </button>
@@ -226,7 +223,40 @@
                 </div>
             </div>
 
+        <script>
+            //登出function
+            if (document.cookie == "") {
+                $('#idSign').append('登入')
+                $('#idSign').attr('onclick', '')
+                $('#idSign').attr('href', './login.html')
+                $('#idSignIcon').attr('class', 'fas fa-sign-in-alt')
+                $('#idScart').attr('href', '')
+                $('#idScart').attr('onclick', 'clkScartOrPerson()')
+                $('#idPerson').attr('href', '')
+                $('#idPerson').attr('onclick', 'clkScartOrPerson()')
+                
+                
+            }
+            else{
+                $('#idSign').append('登出')
+                $('#idSign').attr('onclick', 'eraseCookie()')
+                $('#idSign').attr('href', '')
+                $('#idSignIcon').attr('class', 'fas fa-sign-out-alt')
+                $('#idScart').attr('href', './sCart.html')
+                $('#idScart').attr('onclick', '')
+                $('#idPerson').attr('href', './personal.html')
+                $('#idPerson').attr('onclick', '')
+            }
 
+            function eraseCookie() {
+                document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+                document.location.href = "./login.html";
+            }
+            function clkScartOrPerson() {
+                alert("請先登入")
+            }
+            
+        </script>
 
         </div>
     </div>
