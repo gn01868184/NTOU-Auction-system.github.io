@@ -54,7 +54,7 @@
 
 
     <script>
-        if (document.cookie == "") {
+        if (document.cookie == "") {//現在沒有登入！
             $('#idSign').append('登入')
             $('#idSign').attr('onclick', '')
             $('#idSign').attr('href', './login.html')
@@ -66,7 +66,7 @@
 
 
         } else {
-            $('#idSign').append('登出')
+            $('#idSign').append('登出')//現在有登入！
             $('#idSign').attr('onclick', 'eraseCookie()')
             $('#idSign').attr('href', '')
             $('#idSignIcon').attr('class', 'fas fa-sign-out-alt')
@@ -75,6 +75,7 @@
             $('#idPerson').attr('href', './personal.html')
             $('#idPerson').attr('onclick', '')
         }
+
 
         //登出function
         function eraseCookie() {

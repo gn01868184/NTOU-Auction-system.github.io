@@ -38,7 +38,7 @@
                             <span class="fas fa-shopping-cart"></span>&nbsp;購物車</a>
                     </li>
                     <li class="nav-item active">
-                        <a id="idPerson" href="./personal.html" class="btn btn-link text-light"  onclick="clkPerson()">
+                        <a id="idPerson" href="./personal.html" class="btn btn-link text-light" onclick="clkPerson()">
                             <span class="fas fa-user"></span>&nbsp;個人中心
                         </a>
                     </li>
@@ -112,6 +112,7 @@
                         }
                     });
                 });
+
             </script>
 
             <div class="tab-content" id="nav-tabContent">
@@ -223,40 +224,41 @@
                 </div>
             </div>
 
-        <script>
-            if (document.cookie == "") {
-                $('#idSign').append('登入')
-                $('#idSign').attr('onclick', '')
-                $('#idSign').attr('href', './login.html')
-                $('#idSignIcon').attr('class', 'fas fa-sign-in-alt')
-                $('#idScart').attr('href', '')
-                $('#idScart').attr('onclick', 'clkScartOrPerson()')
-                $('#idPerson').attr('href', '')
-                $('#idPerson').attr('onclick', 'clkScartOrPerson()')
-                
-                
-            }
-            else{
-                $('#idSign').append('登出')
-                $('#idSign').attr('onclick', 'eraseCookie()')
-                $('#idSign').attr('href', '')
-                $('#idSignIcon').attr('class', 'fas fa-sign-out-alt')
-                $('#idScart').attr('href', './sCart.html')
-                $('#idScart').attr('onclick', '')
-                $('#idPerson').attr('href', './personal.html')
-                $('#idPerson').attr('onclick', '')
-            }
+            <script>
+                if (document.cookie == "") { //現在沒有登入！
+                    $('#idSign').append('登入')
+                    $('#idSign').attr('onclick', '')
+                    $('#idSign').attr('href', './login.html')
+                    $('#idSignIcon').attr('class', 'fas fa-sign-in-alt')
+                    $('#idScart').attr('href', '')
+                    $('#idScart').attr('onclick', 'clkScartOrPerson()')
+                    $('#idPerson').attr('href', '')
+                    $('#idPerson').attr('onclick', 'clkScartOrPerson()')
 
-            //登出function
-            function eraseCookie() {
-                document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
-                document.location.href = "./login.html";
-            }
-            function clkScartOrPerson() {
-                alert("請先登入")
-            }
-            
-        </script>
+
+                } else {
+                    $('#idSign').append('登出') //現在有登入！
+                    $('#idSign').attr('onclick', 'eraseCookie()')
+                    $('#idSign').attr('href', '')
+                    $('#idSignIcon').attr('class', 'fas fa-sign-out-alt')
+                    $('#idScart').attr('href', './sCart.html')
+                    $('#idScart').attr('onclick', '')
+                    $('#idPerson').attr('href', './personal.html')
+                    $('#idPerson').attr('onclick', '')
+                }
+
+
+                //登出function
+                function eraseCookie() {
+                    document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+                    document.location.href = "./login.html";
+                }
+
+                function clkScartOrPerson() {
+                    alert("請先登入")
+                }
+
+            </script>
 
         </div>
     </div>
@@ -264,4 +266,6 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-</body></html>
+</body>
+
+</html>
