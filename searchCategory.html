@@ -37,31 +37,63 @@
 	      <form class="form-inline my-2 my-lg-0">
 	          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 	              <li class="nav-item">
-	                  <a href="./sCart.html" class="btn btn-link text-light">
-	                      <span class="fas fa-shopping-cart"></span>&nbsp;購物車</a>
-	              </li>
-	              <li class="nav-item active">
-	                  <a href="./personal.html" class="btn btn-link text-light">
-	                      <span class="fas fa-user"></span>&nbsp;個人中心
-	                  </a>
-	              </li>
-	              <li class="nav-item">
-									<a onclick="eraseCookie()" class="btn btn-link text-light">
-			              <span class="fas fa-sign-out-alt"></span>&nbsp;登出
-			            </a>
-	              </li>
+                        <a id="idScart" href="./sCart.html" class="btn btn-link text-light" onclick="clkScartOrPerson()">
+                            <span class="fas fa-shopping-cart"></span>&nbsp;購物車</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a id="idPerson" href="./personal.html" class="btn btn-link text-light"  onclick="clkPerson()">
+                            <span class="fas fa-user"></span>&nbsp;個人中心
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="idSign" onclick="eraseCookie()" href="./login.html" class="btn btn-link text-light">
+                            <span id="idSignIcon" class="fas fa-sign-out-alt"></span>&nbsp;
+                        </a>
+                    </li>
 	          </ul>
 	      </form>
 	    </div>
 	</nav>
 
+    
+    <script type="text/javascript">
+            if (document.cookie == "") {
+                $('#idSign').append('登入')
+                $('#idSign').attr('onclick', '')
+                $('#idSign').attr('href', './login.html')
+                $('#idSignIcon').attr('class', 'fas fa-sign-in-alt')
+                $('#idScart').attr('href', '')
+                $('#idScart').attr('onclick', 'clkScartOrPerson()')
+                $('#idPerson').attr('href', '')
+                $('#idPerson').attr('onclick', 'clkScartOrPerson()')
+                
+                
+            }
+            else{
+                $('#idSign').append('登出')
+                $('#idSign').attr('onclick', 'eraseCookie()')
+                $('#idSign').attr('href', '')
+                $('#idSignIcon').attr('class', 'fas fa-sign-out-alt')
+                $('#idScart').attr('href', './sCart.html')
+                $('#idScart').attr('onclick', '')
+                $('#idPerson').attr('href', './personal.html')
+                $('#idPerson').attr('onclick', '')
+            }
+
+            //登出function
+            function eraseCookie() {
+                document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+                document.location.href = "./login.html";
+            }
+            function clkScartOrPerson() {
+                alert("請先登入")
+            }
+            
+        </script>
 <!-- 取別的網頁傳來的值 -->
 	<script type="text/javascript">
 	//登出function
-	function eraseCookie() {
-		document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
-		document.location.href="./login.html";
-	}
+	
 		$(document).ready(function() {
 	    //取別的網頁傳來的值
 	    //URL

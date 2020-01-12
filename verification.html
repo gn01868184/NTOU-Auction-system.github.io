@@ -33,11 +33,11 @@
             <form class="form-inline my-2 my-lg-0">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item">
-                        <a href="./sCart.html" class="btn btn-link text-light">
+                        <a id="idbu1" href="" class="btn btn-link text-light" onclick="clkScartOrPerson()">
                             <span class="fas fa-shopping-cart"></span>&nbsp;購物車</a>
                     </li>
                     <li class="nav-item active">
-                        <a href="./personal.html" class="btn btn-link text-light">
+                        <a id="idbu2" href="" class="btn btn-link text-light" onclick="clkScartOrPerson()">
                             <span class="fas fa-user"></span>&nbsp;個人中心
                         </a>
                     </li>
@@ -50,6 +50,11 @@
             </form>
         </div>
     </nav>
+    <script>
+        function clkScartOrPerson() {
+            alert("請先登入")
+        }
+    </script>
     <span class="border">
         <div class="col-12 mx-auto" align="center" style="margin-top: 2% ">
             <h2>
@@ -60,7 +65,7 @@
             <form id="form" class="form-group row" action="https://ntou-store-system.herokuapp.com/verification" method="POST">
                 <div class="container">
                     <div class="row">
-                        <label class="col-auto col-form-label px-0 " >
+                        <label class="col-auto col-form-label px-0 ">
                             請輸入驗證碼：
                         </label>
                         <div class="col">
@@ -72,7 +77,11 @@
                     </div>
                 </div>
             </form>
-
+            <script>
+                function eraseCookie() {
+                    document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+                }
+            </script>
             <script>
                 //表單發送處理
                 //alert(document.cookie)
@@ -93,8 +102,10 @@
                         success: function(response) {
                             console.log("hee")
                             if (response.state == true) {
-                                alert("response true");
+                                //alert("response true");
+                                eraseCookie();
                                 window.location.href = "./index.html";
+
                             } else {
                                 alert("有誤");
                             }

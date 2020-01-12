@@ -29,13 +29,13 @@
                 document.location.href = "./login.html";
             }
         </script>
-        
+
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 
 
                 <li class="nav-item">
-                    <a href="./seaarch.html" class="btn btn-link text-light">
+                    <a href="./search.html" class="btn btn-link text-light">
                         <span class="fas fa-search"></span>&nbsp;搜尋
                     </a>
                 </li>
@@ -238,13 +238,41 @@
                                 },
                                 success: function(response) {
                                     console.log(response.length)
+                                    var s
                                     var vIden = ""
+                                    var starSeller = ""
+                                    var starProduct = ""
                                     for (var i = 0; i < response.length; i++) {
                                         vIden = response[i].Identity
                                         if (vIden == 0)
                                             vIden = "賣家"
                                         else
                                             vIden = "買家"
+                                        
+                                        s=response[i].BuyerEvSeller
+                                        if (s == 1) 
+                                            starSeller="★✩✩✩✩"
+                                        else if(s == 2) 
+                                            starSeller="★★✩✩✩"
+                                        else if(s == 3) 
+                                            starSeller="★★★✩✩"
+                                        else if(s == 4) 
+                                            starSeller="★★★★✩"
+                                        else
+                                            starSeller="★★★★★"
+                                        
+                                        s=response[i].BuyerEvProduct
+                                        if (s == 1) 
+                                            starProduct="★✩✩✩✩"
+                                        else if(s == 2) 
+                                            starProduct="★★✩✩✩"
+                                        else if(s == 3) 
+                                            starProduct="★★★✩✩"
+                                        else if(s == 4) 
+                                            starProduct="★★★★✩"
+                                        else
+                                            starProduct="★★★★★"
+                                        
                                         $('#tradeCompleted').append('<table class="table table-bordered"><tbody>'
 
                                             +
@@ -255,10 +283,10 @@
                                             '<td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">交易數量：</div>' + response[i].TradeAmount + '</td></tr>' +
                                             '<tr> <td> <div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">交易總額：</div>' + response[i].TradePrice + '</td>' +
                                             '<td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">買家：</div>' + response[i].ProductName + '</td></tr>' +
-                                            '<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">賣家評級：</div>' + response[i].BuyerEvSeller + '</td>'
+                                            '<tr><td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">賣家評級：</div>' + starSeller + '</td>'
 
                                             +
-                                            '<td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">商品評級：</div>' + response[i].BuyerEvProduct + '</td></tr>' +
+                                            '<td><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">商品評級：</div>' + starProduct + '</td></tr>' +
                                             '<tr><td colspan="2"><div class="text-secondary " style="display:inline ;LINE-HEIGHT:25px">商品評價：</div>' + response[i].BuyerEvText + '</td></tr></tbody></table>'
                                         )
                                     }
@@ -513,23 +541,23 @@
                                 <label>賣家評級:</label><br>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="MemberEv" value="1">
-                                    <label class="form-check-label" for="inlineRadio1">1</label>
+                                    <label class="form-check-label" for="inlineRadio1">1</label>星
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="MemberEv" value="2">
-                                    <label class="form-check-label" for="inlineRadio2">2</label>
+                                    <label class="form-check-label" for="inlineRadio2">2</label>星
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="MemberEv" value="3">
-                                    <label class="form-check-label" for="inlineRadio3">3</label>
+                                    <label class="form-check-label" for="inlineRadio3">3</label>星
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="MemberEv" value="4">
-                                    <label class="form-check-label" for="inlineRadio4">4</label>
+                                    <label class="form-check-label" for="inlineRadio4">4</label>星
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="MemberEv" value="5">
-                                    <label class="form-check-label" for="inlineRadio5">5</label>
+                                    <label class="form-check-label" for="inlineRadio5">5</label>星
                                 </div>
                             </div>
                         </div>
@@ -538,23 +566,23 @@
                                 <label>商品評級:</label><br>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="ProductEv" value="1">
-                                    <label class="form-check-label" for="inlineRadio1">1</label>
+                                    <label class="form-check-label" for="inlineRadio1">1</label>星
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="ProductEv" value="2">
-                                    <label class="form-check-label" for="inlineRadio2">2</label>
+                                    <label class="form-check-label" for="inlineRadio2">2</label>星
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="ProductEv" value="3">
-                                    <label class="form-check-label" for="inlineRadio3">3</label>
+                                    <label class="form-check-label" for="inlineRadio3">3</label>星
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="ProductEv" value="4">
-                                    <label class="form-check-label" for="inlineRadio4">4</label>
+                                    <label class="form-check-label" for="inlineRadio4">4</label>星
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="ProductEv" value="5">
-                                    <label class="form-check-label" for="inlineRadio5">5</label>
+                                    <label class="form-check-label" for="inlineRadio5">5</label>星
                                 </div>
                             </div>
                         </div>

@@ -224,7 +224,6 @@
             </div>
 
         <script>
-            //登出function
             if (document.cookie == "") {
                 $('#idSign').append('登入')
                 $('#idSign').attr('onclick', '')
@@ -248,6 +247,7 @@
                 $('#idPerson').attr('onclick', '')
             }
 
+            //登出function
             function eraseCookie() {
                 document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
                 document.location.href = "./login.html";

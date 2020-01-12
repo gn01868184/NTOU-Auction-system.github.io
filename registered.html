@@ -38,11 +38,11 @@
             <form class="form-inline my-2 my-lg-0">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item">
-                        <a href="./sCart.html" class="btn btn-link text-light">
+                        <a id="idbu1" href="" class="btn btn-link text-light" onclick="clkScartOrPerson()">
                             <span class="fas fa-shopping-cart"></span>&nbsp;購物車</a>
                     </li>
                     <li class="nav-item active">
-                        <a href="./personal.html" class="btn btn-link text-light">
+                        <a id="idbu2" href="" class="btn btn-link text-light" onclick="clkScartOrPerson()">
                             <span class="fas fa-user"></span>&nbsp;個人中心
                         </a>
                     </li>
@@ -55,6 +55,11 @@
             </form>
         </div>
     </nav>
+    <script>
+        function clkScartOrPerson() {
+            alert("請先登入")
+        }
+    </script>
     <span class="border">
         <div class="col-12 mx-auto" align="center" style="margin-top: 2% ">
             <h2>
@@ -90,18 +95,18 @@
                 <div class="col-10 mb-2">
                     <input type="password" class="form-control" name="Password" placeholder="密碼">
                 </div>
-                
+
                 <div class="col-10 mb-2" style="display:none ">
                     <input type="text" class="form-control" name="ImageURL" value="http://member.businessweekly.com.tw/theme/v1/i/icon-member-m.gif">
                 </div>
-                
+
                 <!--人機驗證-->
                 <label class="col-2 col-form-label mb-4">人機驗證</label><br>
                 <!--<input type="text" class="form-control" name="g-recaptcha-response" value="1">-->
                 <div class="col-10"><span style="font-size:14px;">
                         <div class="g-recaptcha" data-sitekey="6LdhqswUAAAAANBVslRZmCXmr_NODFaJ7yQG5RRq"></div>
                     </span></div>
-                
+
                 <button class="btn btn-outline-success col-2 container mt-2" type="submit">提&nbsp;&nbsp;交</button>
 
             </form>
@@ -119,9 +124,9 @@
                         success: function(response) {
                             console.log("hee:")
                             document.cookie = ""
-                            if (response.state == true ) {
+                            if (response.state == true) {
                                 alert("請至信箱收認證信");
-                                
+
                                 console.log("acc:" + response.Account);
                                 document.cookie = "Account=" + response.Account;
                                 window.location.href = "./verification.html"; //指定要跳轉到的目標頁面

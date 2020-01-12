@@ -1,256 +1,291 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-<!-- Bootstrap 4 Icons -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-<!-- jQuery -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<title>海大拍賣系統</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Bootstrap 4 Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <title>海大拍賣系統</title>
 </head>
+
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light  bg-info">
-	  <a class="navbar-brand  text-light" href="./index.html"><span class="fas fa-tree"></span>&nbsp;海大拍賣</a>
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-	    <span class="navbar-toggler-icon"></span>
-	  </button>
+    <nav class="navbar navbar-expand-lg navbar-light  bg-info">
+        <a class="navbar-brand  text-light" href="./index.html"><span class="fas fa-tree"></span>&nbsp;海大拍賣</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-	  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-	    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 
 
-	      <li class="nav-item">
-	          <a href="./search.html" class="btn btn-link text-light">
-	                <span class="fas fa-search"></span>&nbsp;搜尋
-	          </a>
-	        </li>
-	      </ul>
-	      <form class="form-inline my-2 my-lg-0">
-	          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-	              <li class="nav-item">
-	                  <a href="./sCart.html" class="btn btn-link text-light">
-	                      <span class="fas fa-shopping-cart"></span>&nbsp;購物車</a>
-	              </li>
-	              <li class="nav-item active">
-	                  <a href="./personal.html" class="btn btn-link text-light">
-	                      <span class="fas fa-user"></span>&nbsp;個人中心
-	                  </a>
-	              </li>
-	              <li class="nav-item">
-	                  <a href="./login.html" class="btn btn-link text-light">
-	                      <span class="fas fa-sign-out-alt"></span>&nbsp;登出
-	                  </a>
-	              </li>
-	          </ul>
-	      </form>
-	    </div>
-	</nav>
+                <li class="nav-item">
+                    <a href="./search.html" class="btn btn-link text-light">
+                        <span class="fas fa-search"></span>&nbsp;搜尋
+                    </a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a id="idScart" href="./sCart.html" class="btn btn-link text-light" onclick="clkScartOrPerson()">
+                            <span class="fas fa-shopping-cart"></span>&nbsp;購物車</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a id="idPerson" href="./personal.html" class="btn btn-link text-light" onclick="clkPerson()">
+                            <span class="fas fa-user"></span>&nbsp;個人中心
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="idSign" onclick="eraseCookie()" href="./login.html" class="btn btn-link text-light">
+                            <span id="idSignIcon" class="fas fa-sign-out-alt"></span>&nbsp;
+                        </a>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </nav>
 
-<div class="row text-center">
-	<div class="col-4">
-		<img src="https://icon-library.net/images/img-icon/img-icon-14.jpg" class="img" style="height: 200px;" id="ImageURL">
-	</div>
-	<div class="col-8">
-		<ul class="list-group">
-			<div class="row">
-		  <li class="list-group-item col-4" id="Category">標籤: </li>
-		  <li class="list-group-item col-4" id="ProductName">商品名稱: </li>
-		  <li class="list-group-item col-4" id="AvgEv">商品品級: </li>
-			</div>
-		</ul>
-		<ul class="list-group">
-			<div class="row">
-			<li class="list-group-item col-3" id="BiddingTopUserID">當前頂標者: </li>
-			<li class="list-group-item col-3" id="LowestPrice">底價: </li>
-			<li class="list-group-item col-3" id="BiddingPrice">競標價: </li>
-			<li class="list-group-item col-3" id="BiddingDeadline">節標時間: </li>
-			</div>
-		</ul>
-		<ul class="list-group">
-			<div class="row">
-				<li class="list-group-item col-4" id="BiddingUnitPrice">單位競標價: </li>
-				<form class="form-group col-8" id="biddingDown">
-            <input id="inputAmount" name="Amount" hidden="hidden"></input>
-						<input class="col-4" type="text" style="text-align: center;" name="Price" placeholder="競標價">
-						<button class="btn btn-outline-success col-4" type="submit">下標</button>
-				</form>
-			</div>
-		</ul>
-		<ul class="list-group">
-			<div class="row">
-				<li class="list-group-item col-3" id="Amount">數量: </li>
-				<li class="list-group-item col-5" id="Price">直購價: </li>
-				<button class="btn btn-outline-success col-4" type="submit">直接購買</button>
-			</div>
-		</ul>
-	</div>
-</div>
-<div class="card">
-	<div class="row">
-		<div class="col-2">
-			<img src="https://icon-library.net/images/img-icon/img-icon-14.jpg" class="img" style="height: 100px;" id="SellerImageURL">
-		</div>
-		<div class="card-body col-10">
-			<h5 class="card-title" id="SellerNickName">賣家：</h5>
-		</div>
-	</div>
-</div>
-<div class="card">
-  <div class="row">
-    <li class="list-group-item col-2">商品資訊</li>
-    <li class="list-group-item col-10" id="Information"></li>
-  </div>
-</div>
-<div class="card">
-  <h5 class="card-header">留言板</h5>
-	<div class="card-body" id="Comment">
-	</div>
-</div>
+    <div class="row text-center">
+        <div class="col-4">
+            <img src="https://icon-library.net/images/img-icon/img-icon-14.jpg" class="img" style="height: 200px;" id="ImageURL">
+        </div>
+        <div class="col-8">
+            <ul class="list-group">
+                <div class="row">
+                    <li class="list-group-item col-4" id="Category">標籤: </li>
+                    <li class="list-group-item col-4" id="ProductName">商品名稱: </li>
+                    <li class="list-group-item col-4" id="AvgEv">商品品級: </li>
+                </div>
+            </ul>
+            <ul class="list-group">
+                <div class="row">
+                    <li class="list-group-item col-3" id="BiddingTopUserID">當前頂標者: </li>
+                    <li class="list-group-item col-3" id="LowestPrice">底價: </li>
+                    <li class="list-group-item col-3" id="BiddingPrice">競標價: </li>
+                    <li class="list-group-item col-3" id="BiddingDeadline">節標時間: </li>
+                </div>
+            </ul>
+            <ul class="list-group">
+                <div class="row">
+                    <li class="list-group-item col-4" id="BiddingUnitPrice">單位競標價: </li>
+                    <form class="form-group col-8" id="biddingDown">
+                        <input id="inputAmount" name="Amount" hidden="hidden">
+                        <input class="col-4" type="text" style="text-align: center;" name="Price" placeholder="競標價">
+                        <button class="btn btn-outline-success col-4" type="submit">下標</button>
+                    </form>
+                </div>
+            </ul>
+            <ul class="list-group">
+                <div class="row">
+                    <li class="list-group-item col-3" id="Amount">數量: </li>
+                    <li class="list-group-item col-5" id="Price">直購價: </li>
+                    <button class="btn btn-outline-success col-4" type="submit">直接購買</button>
+                </div>
+            </ul>
+        </div>
+    </div>
+    <div class="card">
+        <div class="row">
+            <div class="col-2">
+                <img src="https://icon-library.net/images/img-icon/img-icon-14.jpg" class="img" style="height: 100px;" id="SellerImageURL">
+            </div>
+            <div class="card-body col-10">
+                <h5 class="card-title" id="SellerNickName">賣家：</h5>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="row">
+            <li class="list-group-item col-2">商品資訊</li>
+            <li class="list-group-item col-10" id="Information"></li>
+        </div>
+    </div>
+    <div class="card">
+        <h5 class="card-header">留言板</h5>
+        <div class="card-body" id="Comment">
+        </div>
+    </div>
 
-<form id="CommentForm">
-  <div class="col-12">
-      <textarea class="form-control" rows="5" name="Information" placeholder="我要留言"></textarea>
-  </div>
-  <div class="col-12 text-center">
-      <button class="btn btn-outline-success" type="submit" id="success">留言</button>
-  </div>
-</form>
-<!-- 取別的網頁傳來的值 -->
-<script type="text/javascript">
+    <form id="CommentForm">
+        <div class="col-12">
+            <textarea class="form-control" rows="5" name="Information" placeholder="我要留言"></textarea>
+        </div>
+        <div class="col-12 text-center">
+            <button class="btn btn-outline-success" type="submit" id="success">留言</button>
+        </div>
+    </form>
+    <!-- 取別的網頁傳來的值 -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            //取別的網頁傳來的值
+            //URL
+            var url = location.href;
+            //取得問號之後的值
+            var temp = url.split("?");
 
-$(document).ready(function() {
-  //取別的網頁傳來的值
-  //URL
-  var url = location.href;
-  //取得問號之後的值
-  var temp = url.split("?");
+            $.ajax({
+                url: 'https://ntou-store-system.herokuapp.com/product_information?' + temp[1],
+                dataType: 'json',
+                type: "GET",
+                error: function(xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status + "\n" + thrownError);
+                },
+                success: function(response) {
 
-      $.ajax({
-        url: 'https://ntou-store-system.herokuapp.com/product_information?' + temp[1],
-        dataType: 'json',
-        type: "GET",
-        error:function(xhr, ajaxOptions, thrownError){
-          alert(xhr.status+"\n"+thrownError);
-        },
-        success: function(response) {
+                    $('#BiddingTopUserID').append(response[0][0].BiddingTopUserID)
+                    $('#LowestPrice').append(response[0][0].LowestPrice)
+                    $('#BiddingPrice').append(response[0][0].BiddingPrice)
+                    $('#BiddingDeadline').append(response[0][0].BiddingDeadline)
+                    $('#BiddingUnitPrice').append(response[0][0].BiddingUnitPrice)
 
-            $('#BiddingTopUserID').append(response[0][0].BiddingTopUserID)
-            $('#LowestPrice').append(response[0][0].LowestPrice)
-            $('#BiddingPrice').append(response[0][0].BiddingPrice)
-            $('#BiddingDeadline').append(response[0][0].BiddingDeadline)
-            $('#BiddingUnitPrice').append(response[0][0].BiddingUnitPrice)
+                    //$('#inputProductID').attr('value', response[0][0].ProductID)
+                    $('#inputAmount').attr('value', response[0][0].Amount)
+                    $('#ImageURL').attr('src', response[0][0].ImageURL)
+                    $('#Category').append(response[0][0].Category)
+                    $('#ProductName').append(response[0][0].ProductName)
+                    $('#AvgEv').append(response[0][0].AvgEv)
+                    $('#Price').append(response[0][0].Price)
+                    $('#Amount').append(response[0][0].Amount)
+                    $('#Information').append(response[0][0].Information)
+                    $('#SellerImageURL').attr('src', response[0][0].SellerImageURL)
+                    $('#SellerNickName').append(response[0][0].SellerNickName)
+                    $('#sCarBtn').attr('value', temp[1])
+                    $('#CommentForm').append(
+                        $('<input/>')
+                        .attr("name", "ProductID")
+                        .attr("value", response[0][0].ProductID)
+                        .attr("type", "hidden")
+                    )
+                    if (response[1][0].state != false) {
+                        for (var i = 0; i < response[1].length; i++) {
+                            $('#Comment').append(
+                                $('<div/>')
+                                .addClass('row')
+                                .append(
+                                    $('<div/>')
+                                    .addClass('col-2')
+                                    .append(
+                                        $('<img/>')
+                                        .addClass('img')
+                                        .attr('src', response[1][i].ImageURL)
+                                        .attr('style', 'height: 100px')
+                                    )
+                                )
+                                .append(
+                                    $('<div/>')
+                                    .addClass('col-10 p-2')
+                                    .append(
+                                        $('<h5/>')
+                                        .addClass('card-text')
+                                        .append(response[1][i].NickName + "：" + response[1][i].Information)
+                                    )
+                                )
+                            )
+                        }
+                    }
 
-            //$('#inputProductID').attr('value', response[0][0].ProductID)
-            $('#inputAmount').attr('value', response[0][0].Amount)
-            $('#ImageURL').attr('src', response[0][0].ImageURL)
-            $('#Category').append(response[0][0].Category)
-            $('#ProductName').append(response[0][0].ProductName)
-            $('#AvgEv').append(response[0][0].AvgEv)
-            $('#Price').append(response[0][0].Price)
-            $('#Amount').append(response[0][0].Amount)
-            $('#Information').append(response[0][0].Information)
-            $('#SellerImageURL').attr('src', response[0][0].SellerImageURL)
-            $('#SellerNickName').append(response[0][0].SellerNickName)
-            $('#sCarBtn').attr('value', temp[1])
-            $('#CommentForm').append(
-                  $('<input/>')
-                  .attr("name", "ProductID")
-                  .attr("value", response[0][0].ProductID)
-                  .attr("type", "hidden")
-            )
-      if(response[1][0].state!=false){
-        for(var i=0;i<response[1].length;i++){
-          $('#Comment').append(
-          $('<div/>')
-                .addClass('row')
-                .append(
-                  $('<div/>')
-                  .addClass('col-2')
-                  .append(
-                    $('<img/>')
-                    .addClass('img')
-                    .attr('src', response[1][i].ImageURL)
-                    .attr('style','height: 100px')
-                  )
-                )
-          .append(
-            $('<div/>')
-            .addClass('col-10 p-2')
-            .append(
-            $('<h5/>')
-            .addClass('card-text')
-            .append(response[1][i].NickName + "：" + response[1][i].Information)
-            )
-          )
-          )
+
+
+                }
+            });
+            $.ajax({
+                url: 'https://ntou-store-system.herokuapp.com/product_surfing_record',
+                dataType: 'text',
+                data: "UserID=" + document.cookie.split("; ")[0].split("=")[1] + "&" + temp[1],
+                type: "POST",
+                error: function(xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status + "\n" + thrownError);
+                },
+                success: function(response) {}
+            });
+
+            $("#CommentForm").submit(function(e) {
+                //formtext = formtext + "MemberID=" + document.cookie.split("; ")[0].split("=")[1];
+                $.ajax({
+                    url: 'https://ntou-store-system.herokuapp.com/product_comment',
+                    dataType: 'json',
+                    type: "POST",
+                    data: "UserID=" + document.cookie.split("; ")[0].split("=")[1] + "&" + $(this).serialize(),
+                    error: function(xhr, ajaxOptions, thrownError) {
+                        alert(xhr.status + "\n" + thrownError);
+                    },
+                    success: function(response) {
+                        alert("留言成功")
+                        window.location.reload()
+                    },
+                });
+                e.preventDefault();
+            })
+
+            $("#biddingDown").submit(function(e) {
+                //alert("UserID=" + document.cookie.split("; ")[0].split("=")[1] + "&" + temp[1] + "&" +  $(this).serialize())
+                $.ajax({
+                    url: 'https://ntou-store-system.herokuapp.com/biddingDownPage',
+                    dataType: 'json',
+                    data: "MemberID=" + document.cookie.split("; ")[0].split("=")[1] + "&" + temp[1] + "&" + $(this).serialize(),
+                    type: "POST",
+                    error: function(xhr, ajaxOptions, thrownError) {
+                        alert(xhr.status + "\n" + thrownError);
+                    },
+                    success: function(response) {
+                        alert("下標成功");
+                        window.location.reload()
+                    }
+
+                });
+                e.preventDefault();
+            });
+
+        });
+
+    </script>
+    <script>
+        if (document.cookie == "") {
+            $('#idSign').append('登入')
+            $('#idSign').attr('onclick', '')
+            $('#idSign').attr('href', './login.html')
+            $('#idSignIcon').attr('class', 'fas fa-sign-in-alt')
+            $('#idScart').attr('href', '')
+            $('#idScart').attr('onclick', 'clkScartOrPerson()')
+            $('#idPerson').attr('href', '')
+            $('#idPerson').attr('onclick', 'clkScartOrPerson()')
+
+
+        } else {
+            $('#idSign').append('登出')
+            $('#idSign').attr('onclick', 'eraseCookie()')
+            $('#idSign').attr('href', '')
+            $('#idSignIcon').attr('class', 'fas fa-sign-out-alt')
+            $('#idScart').attr('href', './sCart.html')
+            $('#idScart').attr('onclick', '')
+            $('#idPerson').attr('href', './personal.html')
+            $('#idPerson').attr('onclick', '')
         }
-      }
 
-
-
+        //登出function
+        function eraseCookie() {
+            document.cookie = `${document.cookie}` + "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            document.location.href = "./login.html";
         }
-      });
-  $.ajax({
-        url: 'https://ntou-store-system.herokuapp.com/product_surfing_record',
-        dataType: 'text',
-        data: "UserID=" + document.cookie.split("; ")[0].split("=")[1] + "&" + temp[1],
-        type: "POST",
-        error:function(xhr, ajaxOptions, thrownError){
-          alert(xhr.status+"\n"+thrownError);
-        },
-        success: function(response) {
+
+        function clkScartOrPerson() {
+            alert("請先登入")
         }
-      });
 
-$("#CommentForm").submit(function(e) {
-//formtext = formtext + "MemberID=" + document.cookie.split("; ")[0].split("=")[1];
-$.ajax({
-      url: 'https://ntou-store-system.herokuapp.com/product_comment',
-      dataType: 'json',
-      type: "POST",
-      data: "UserID=" + document.cookie.split("; ")[0].split("=")[1] + "&" + $(this).serialize(),
-      error:function(xhr, ajaxOptions, thrownError){
-          alert(xhr.status+"\n"+thrownError);
-      },
-      success: function(response) {
-          alert("留言成功")
-          window.location.reload()
-      },
-  });
-  e.preventDefault();
-})
+    </script>
 
-$("#biddingDown").submit(function(e) {
-  //alert("UserID=" + document.cookie.split("; ")[0].split("=")[1] + "&" + temp[1] + "&" +  $(this).serialize())
-$.ajax({
-          url: 'https://ntou-store-system.herokuapp.com/biddingDownPage',
-          dataType: 'json',
-		      data: "MemberID=" + document.cookie.split("; ")[0].split("=")[1] + "&" + temp[1] + "&" +  $(this).serialize(),
-          type: "POST",
-          error:function(xhr, ajaxOptions, thrownError){
-            alert(xhr.status+"\n"+thrownError);
-          },
-          success: function(response) {
-            alert("下標成功");
-            window.location.reload()
-          }
-       
-        }); 
-       e.preventDefault();
-  });
-
-});
-
-
-</script>
-
-<!-- Optional JavaScript --><!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 </body>
+
 </html>
