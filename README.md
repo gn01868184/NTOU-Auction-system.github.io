@@ -1,9 +1,9 @@
 # 海大拍賣系統
 正式的網站在這裡唷(๑´ㅂ`๑)[ノノノノノ](http://140.121.197.131/NTOU-Auction/index.html) 
-> - [ ] [首頁](https://gn01868184.github.io/NTOU-Auction-system.github.io/index.html) 
+> - [x] [首頁](https://gn01868184.github.io/NTOU-Auction-system.github.io/index.html) 
 >> - [x] 頁面
 >> - [x] 美化
->> - [ ] 功能
+>> - [x] 功能
 > - [x] [登入](https://gn01868184.github.io/NTOU-Auction-system.github.io/login.html) 
 >> - [x] 頁面
 >> - [x] 美化
@@ -28,29 +28,29 @@
 >> - [x] 頁面
 >> - [x] 美化
 >> - [x] 功能
-> - [ ] [競標商品頁面](https://gn01868184.github.io/NTOU-Auction-system.github.io/biddingPage.html) 
+> - [x] [競標商品頁面](https://gn01868184.github.io/NTOU-Auction-system.github.io/biddingPage.html) 
 >> - [x] 頁面
->> - [ ] 美化
+>> - [x] 美化
 >> - [x] 功能
-> - [ ] [一般商品頁面](https://gn01868184.github.io/NTOU-Auction-system.github.io/commodityPage.html) 
+> - [x] [一般商品頁面](https://gn01868184.github.io/NTOU-Auction-system.github.io/commodityPage.html) 
 >> - [x] 頁面
->> - [ ] 美化
+>> - [x] 美化
 >> - [x] 功能
-> - [ ] [購物車](https://gn01868184.github.io/NTOU-Auction-system.github.io/sCart.html) 
+> - [x] [購物車](https://gn01868184.github.io/NTOU-Auction-system.github.io/sCart.html) 
 >> - [x] 頁面
->> - [ ] 美化
+>> - [x] 美化
 >> - [x] 功能
-> - [ ] [預約板](https://gn01868184.github.io/NTOU-Auction-system.github.io/reservation.html) 
+> - [x] [預約板](https://gn01868184.github.io/NTOU-Auction-system.github.io/reservation.html) 
 >> - [x] 頁面
->> - [ ] 美化
+>> - [x] 美化
 >> - [x] 功能
-> - [ ] [搜尋](https://gn01868184.github.io/NTOU-Auction-system.github.io/search.html) 
+> - [x] [搜尋](https://gn01868184.github.io/NTOU-Auction-system.github.io/search.html) 
 >> - [x] 頁面
->> - [ ] 美化
+>> - [x] 美化
 >> - [x] 功能
-> - [ ] [搜尋結果](https://gn01868184.github.io/NTOU-Auction-system.github.io/searchResult.html)
+> - [x] [搜尋結果](https://gn01868184.github.io/NTOU-Auction-system.github.io/searchResult.html)
 >> - [x] 頁面
->> - [ ] 美化
+>> - [x] 美化
 >> - [x] 功能
 
 ## 分工
