@@ -77,6 +77,10 @@
 			document.location.href="./login.html";
 		}
 		$(document).ready(function(){
+		    var cookie = document.cookie.split("; ");
+            if (cookie[1] == undefined) {
+                document.cookie = `ProductID=48`;
+            }
 			var cookie = document.cookie.split("; ");
 			var num = cookie[1].split("=");
 			var number = num[1].split(",");
