@@ -79,7 +79,7 @@
                     <form class="form-group col-8" id="biddingDown">
                         <input id="inputAmount" name="Amount" hidden="hidden">
                         <input class="col-4" type="text" style="text-align: center;" name="Price" placeholder="競標價">
-                        <button class="btn btn-outline-success col-4" type="submit">下標</button>
+                        <button class="btn btn-outline-success col-4" type="submit" id="bid" disabled="">下標</button>
                     </form>
                 </div>
             </ul>
@@ -87,7 +87,7 @@
                 <div class="row">
                     <li class="list-group-item col-3" id="Amount">數量: </li>
                     <li class="list-group-item col-5" id="Price">直購價: </li>
-                    <button class="btn btn-outline-success col-4" type="submit">直接購買</button>
+                    <button class="btn btn-outline-success col-4" type="submit" id="buy" disabled="">直接購買</button>
                 </div>
             </ul>
         </div>
@@ -119,7 +119,7 @@
             <textarea class="form-control" rows="5" name="Information" placeholder="我要留言"></textarea>
         </div>
         <div class="col-12 text-center">
-            <button class="btn btn-outline-success" type="submit" id="success">留言</button>
+            <button class="btn btn-outline-success" type="submit" id="success" id="commentText" disabled="">留言</button>
         </div>
     </form>
     <!-- 取別的網頁傳來的值 -->
@@ -257,8 +257,10 @@
             $('#idScart').attr('onclick', 'clkScartOrPerson()')
             $('#idPerson').attr('href', '')
             $('#idPerson').attr('onclick', 'clkScartOrPerson()')
-
-
+            $('#bid').attr('disabled', true)
+            $('#buy').attr('disabled', true)
+            $('#commentText').attr('disabled', true)
+            
         } else {
             $('#idSign').append('登出')//現在有登入！
             $('#idSign').attr('onclick', 'eraseCookie()')
@@ -268,6 +270,9 @@
             $('#idScart').attr('onclick', '')
             $('#idPerson').attr('href', './personal.html')
             $('#idPerson').attr('onclick', '')
+            $('#bid').attr('disabled', false)
+            $('#buy').attr('disabled', false)
+            $('#commentText').attr('disabled', false)
         }
 
         //登出function
