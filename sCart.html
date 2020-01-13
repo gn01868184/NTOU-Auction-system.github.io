@@ -167,7 +167,7 @@ success: function(response) {
 	var responseLength = response.length;
 	var OverBidTime = "未結標";
 	for(var i=0;i<responseLength;i++){
-		if(OverBidTime==true) OverBidTime = "已結標";
+		
 			$('#nav-profile').prepend(
 						 $('<div/>')
 							.addClass('row')
@@ -191,12 +191,27 @@ success: function(response) {
 							.append(
 								$('<div/>')
 								.addClass('col-3 border p-2')
-								.append(
-									OverBidTime
-								)
+								.attr("id", "OverBidTime" + i)
 							)
 					 )
-
+					 if(response[i].OverBidTime==true) {
+						 OverBidTime = "已結標"
+							$('#OverBidTime' + i)
+								.append(
+										OverBidTime
+								)
+								.append(
+									$('<a/>')
+										.attr("href", "./buy?ProductID=" + response[i].ProductID + "&Price=" + response[i].BiddingPrice + "&Amount=" + response[i].Amount)
+										.append("前往購買")
+								)
+					}
+					else{
+						$('#OverBidTime' + i)
+							.append(
+								OverBidTime
+							)
+					}
 		}
 	 }
 });
