@@ -65,10 +65,6 @@
             document.location.href = "./login.html";
         }
         $(document).ready(function() {
-            var cookie = document.cookie.split("; ");
-            if (cookie[1] == undefined) {
-                document.cookie = `ProductID=48`;
-            }
             $.ajax({
                 url: 'https://ntou-store-system.herokuapp.com/personalPage/reservation',
                 dataType: 'json',
